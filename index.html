@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Coach L Academy</title>
+  <link rel="icon" href="favicon.png" type="image/png">
+  
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
+  <style>
+    /* Reset & base */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: #0f0f1a;
+      color: #fff;
+      overflow-x: hidden;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* Hero Section */
+    .hero {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: url('favicon.png') center/cover no-repeat;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.5);
+      z-index: 1;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 90%;
+    }
+
+    .hero h1 {
+      font-size: 4rem;
+      font-weight: 800;
+      margin-bottom: 20px;
+      letter-spacing: 2px;
+    }
+
+    .hero p {
+      font-size: 1.5rem;
+      letter-spacing: 1px;
+    }
+
+    .cta-button {
+      display: inline-block;
+      margin-top: 22px;      /* Moved up by approx 0.5cm (18px difference) */
+      padding: 15px 40px;
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: #fff;
+      border: 2px solid #fff;
+      border-radius: 50px;
+      background: transparent;
+      cursor: pointer;
+      transition: 0.4s;
+    }
+
+    .cta-button:hover {
+      background: #ff4b2b;
+      border-color: #ff4b2b;
+      transform: translateY(-5px);
+    }
+
+    /* Sections */
+    section {
+      padding: 80px 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    section h2 {
+      font-size: 2.5rem;
+      margin-bottom: 40px;
+      position: relative;
+      display: inline-block;
+    }
+
+    section h2::after {
+      content: '';
+      display: block;
+      width: 60px;
+      height: 4px;
+      background: #ff4b2b;
+      margin: 10px auto 0;
+      border-radius: 2px;
+    }
+
+    section p {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      color: #ddd;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+
+    /* Footer */
+    footer {
+      padding: 40px 20px;
+      text-align: center;
+      background: #111;
+      color: #aaa;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 3rem; }
+      .hero p { font-size: 1.2rem; }
+      .cta-button {
+        font-size: 1rem;
+        padding: 12px 30px;
+        margin-top: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <section class="hero">
+    <div class="hero-content">
+      <h1 class="animate__animated animate__fadeInDown">Coach L Academy</h1>
+      <p class="animate__animated animate__fadeIn">Inspire | Teach | Heal</p>
+      <a href="index2.html" class="cta-button animate__animated animate__fadeInUp">Learn More</a>
+    </div>
+  </section>
+
+  <section id="about">
+    <h2 class="fade-in">About Us</h2>
+    <p class="fade-in">
+      Coach L Academy is dedicated to empowering individuals through inspiration, education, and healing. 
+      Our mission is to provide tools, guidance, and mentorship for personal and professional growth.
+    </p>
+  </section>
+
+  <section id="programs">
+    <h2 class="fade-in">Our Programs</h2>
+    <p class="fade-in">
+      We offer interactive courses, coaching sessions, and workshops designed to elevate your skills, mindset, and overall well-being. 
+      Join us and start your transformative journey today!
+    </p>
+  </section>
+
+  <footer>
+    &copy; 2026 Coach L Academy. All Rights Reserved.
+  </footer>
+
+  <script>
+    const faders = document.querySelectorAll('.fade-in');
+    const appearOptions = { threshold: 0.3, rootMargin: "0px 0px -50px 0px" };
+
+    const appearOnScroll = new IntersectionObserver(function(entries, appearOnScroll){
+      entries.forEach(entry => {
+        if(!entry.isIntersecting) return;
+        entry.target.classList.add('animate__animated', 'animate__fadeInUp');
+        entry.target.style.opacity = '1';
+        appearOnScroll.unobserve(entry.target);
+      });
+    }, appearOptions);
+
+    faders.forEach(fader => {
+      appearOnScroll.observe(fader);
+    });
+  </script>
+
+</body>
+</html>
