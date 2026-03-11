@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Coach L Academy | Mind Vault</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+<style>
+    :root { --primary: #ff4b2b; --bg-dark: #07070c; --card-bg: rgba(255,255,255,0.03); --glass-border: rgba(255,255,255,0.1); }
+
+    body.light-mode { background: #f5f5f5; color: #222; }
+    body.light-mode header { background: rgba(255,255,255,0.98); border-bottom: 1px solid #e0e0e0; }
+    body.light-mode .logo { color: #222; }
+    body.light-mode .nav-pill { border-color: #e0e0e0; color: #999; }
+    body.light-mode .hero-banner { background: linear-gradient(to bottom, rgba(255,75,43,0.05), transparent); }
+    body.light-mode .hero-banner p { color: #888; }
+    body.light-mode .category-header h2 { color: #bbb; }
+    body.light-mode .category-header .line { background: #e0e0e0; }
+    body.light-mode .course-card { background: #fff; border-color: #e0e0e0; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+    body.light-mode .course-card:hover { background: #fafafa; border-color: rgba(255,75,43,0.4); box-shadow: 0 8px 24px rgba(0,0,0,0.1); }
+    body.light-mode .course-duration { color: #bbb; }
+    body.light-mode .course-desc { color: #888; }
+    body.light-mode .modal-box { background: #fff; border-color: #e0e0e0; }
+    body.light-mode .modal-category { color: #bbb; }
+    body.light-mode .modal-title { color: #222; }
+    body.light-mode .modal-desc { color: #888; }
+    body.light-mode .modal-close { color: #ccc; }
+    body.light-mode .course-title { color: #222; }
+
+    .theme-toggle { background: none; border: 1px solid var(--glass-border); border-radius: 20px; padding: 6px 12px; cursor: pointer; font-size: 0.78rem; color: #555; font-family: 'Poppins', sans-serif; transition: 0.2s; margin-right: 8px; }
+    .theme-toggle:hover { border-color: var(--primary); color: var(--primary); }
+    body.light-mode .theme-toggle { border-color: #e0e0e0; color: #999; }
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+    html { height: 100%; }
+    body { background: radial-gradient(circle at 50% 50%, #1a1a2e 0%, #07070c 100%); color: #fff; overflow-x: hidden; overflow-y: auto; min-height: 100%; -webkit-overflow-scrolling: touch; }
+
+    header { height: 70px; display: flex; justify-content: space-between; align-items: center; padding: 0 5%; background: rgba(7,7,12,0.98); position: fixed; width: 100%; top: 0; z-index: 1000; border-bottom: 1px solid var(--glass-border); }
+    .logo { font-weight: 800; font-size: 1.5rem; letter-spacing: -1px; }
+    .logo span { color: var(--primary); }
+    .nav-pill { background: var(--primary); padding: 8px 20px; border-radius: 50px; font-size: 0.8rem; font-weight: 600; text-decoration: none; color: white; }
+
+    .hero-banner { padding: 130px 5% 40px; background: linear-gradient(to bottom, rgba(255,75,43,0.08), transparent); }
+    .hero-banner h1 { font-size: 3.2rem; font-weight: 800; line-height: 1.1; margin-bottom: 12px; }
+    .hero-banner h1 span { color: var(--primary); }
+    .hero-banner p { color: #666; max-width: 560px; font-size: 1rem; line-height: 1.6; }
+
+    .catalog { padding: 20px 5% 120px; -webkit-overflow-scrolling: touch; }
+
+    .category-section { margin-bottom: 50px; }
+    .category-header { display: flex; align-items: center; margin-bottom: 20px; gap: 15px; }
+    .category-header h2 { font-size: 1.1rem; font-weight: 600; color: #aaa; white-space: nowrap; text-transform: uppercase; letter-spacing: 1px; }
+    .category-header .line { flex-grow: 1; height: 1px; background: var(--glass-border); }
+
+    .course-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 16px; }
+
+    .course-card { background: var(--card-bg); border: 1px solid var(--glass-border); border-radius: 16px; padding: 22px 20px; position: relative; transition: all 0.35s ease; cursor: pointer; overflow: hidden; }
+    .course-card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(135deg, transparent, rgba(255,75,43,0.06), transparent); transform: translateX(-100%); transition: 0.5s; }
+    .course-card:hover { border-color: rgba(255,75,43,0.5); background: rgba(255,255,255,0.05); box-shadow: 0 12px 32px rgba(0,0,0,0.4); transform: translateY(-3px); }
+    .course-card:hover::before { transform: translateX(100%); }
+
+    .course-duration { font-size: 0.7rem; color: #444; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 10px; }
+    .course-title { font-size: 1.05rem; font-weight: 600; line-height: 1.4; margin-bottom: 14px; color: #f0f0f0; }
+    .course-desc { font-size: 0.82rem; color: #888; line-height: 1.6; margin-bottom: 18px; font-weight: 500; }
+    .unlock-trigger { display: flex; align-items: center; gap: 8px; color: var(--primary); font-weight: 600; font-size: 0.82rem; }
+    .unlock-trigger span:last-child { font-size: 1rem; transition: transform 0.2s; }
+    .course-card:hover .unlock-trigger span:last-child { transform: translateX(4px); }
+
+    /* AdMob Banner Slots */
+    .admob-banner { width: 100%; margin: 10px 0 50px 0; min-height: 60px; background: rgba(255,255,255,0.02); border: 1px dashed rgba(255,255,255,0.08); border-radius: 12px; display: flex; align-items: center; justify-content: center; }
+    .admob-banner span { font-size: 0.65rem; color: #333; text-transform: uppercase; letter-spacing: 2px; }
+
+    /* Modal */
+    .modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.92); z-index: 2000; align-items: center; justify-content: center; padding: 20px; }
+    .modal.active { display: flex; }
+    .modal-box { background: #111; width: 100%; max-width: 460px; padding: 36px 32px; border-radius: 24px; border: 1px solid var(--glass-border); text-align: center; }
+    .modal-category { font-size: 0.7rem; color: #444; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 12px; }
+    .modal-title { font-size: 1.4rem; font-weight: 800; line-height: 1.3; margin-bottom: 10px; }
+    .modal-duration { font-size: 0.8rem; color: var(--primary); font-weight: 600; margin-bottom: 16px; }
+    .modal-desc { color: #666; font-size: 0.9rem; line-height: 1.7; margin-bottom: 28px; }
+    .watch-btn { background: var(--primary); color: white; border: none; padding: 16px; border-radius: 14px; font-size: 1rem; font-weight: 700; width: 100%; cursor: pointer; box-shadow: 0 8px 24px rgba(255,75,43,0.35); transition: 0.25s; letter-spacing: 0.3px; }
+    .watch-btn:active { transform: scale(0.97); }
+    .modal-close { margin-top: 18px; color: #333; cursor: pointer; font-size: 0.78rem; display: inline-block; }
+    .modal-close:hover { color: #555; }
+
+    @media (max-width: 768px) {
+        .hero-banner h1 { font-size: 2.2rem; }
+        .course-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+        .course-desc { font-size: 0.75rem; }
+    }
+    @media (max-width: 480px) {
+        .course-grid { grid-template-columns: 1fr; }
+        .course-desc { font-size: 0.82rem; }
+    }
+</style>
+</head>
+<body>
+
+<header>
+    <div class="logo">COACH <span>L</span></div>
+    <div style="display:flex;align-items:center;gap:8px;">
+        <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()">☀️ Light</button>
+        <a href="index.html" class="nav-pill">Home</a>
+    </div>
+</header>
+
+<div class="hero-banner">
+    <h1 class="animate__animated animate__fadeInLeft">Mind <span>Vault</span></h1>
+    <p class="animate__animated animate__fadeInUp animate__delay-1s">Premium coaching programs — free to access. Short video ads appear during your learning journey to keep everything free.</p>
+</div>
+
+<div class="catalog">
+
+    <div class="category-section">
+        <div class="category-header"><h2>Narcissistic Relationships</h2><div class="line"></div></div>
+        <div class="course-grid">
+            <div class="course-card" onclick="openCourse('index5.html')"><div class="course-duration">6 Weeks</div><h3 class="course-title">Understanding Narcissistic Abuse</h3><p class="course-desc">Learn to identify narcissistic patterns, manipulation tactics, and gaslighting techniques.</p><div class="unlock-trigger"><span>Start Learning</span><span>→</span></div></div>
+            <div class="course-card" onclick="openCourse('index6.html')"><div class="course-duration">4 Weeks</div><h3 class="course-title">Healing from Gaslighting</h3><p class="course-desc">Reclaim your reality and rebuild confidence after chronic manipulation and reality-distortion.</p><div class="unlock-trigger"><span>Start Learning</span><span>→</span></div></div>
+            <div class="course-card" onclick="openCourse('index7.html')"><div class="course-duration">3 Weeks</div><h3 class="course-title">The No-Contact Blueprint</h3><p class="course-desc">A step-by-step framework for implementing no contact and managing withdrawal symptoms.</p><div class="unlock-trigger"><span>Start Learning</span><span>→</span></div></div>
+            <div class="course-card" onclick="openCourse('index8.html')"><div class="course-duration">5 Weeks</div><h3 class="course-title">Setting Ironclad Boundaries</h3><p class="course-desc">Build firm, non-negotiable boundaries that protect your peace and communicate your worth.</p><div class="unlock-trigger"><span>Start Learning</span><span>→</span></div></div>
+            <div class="course-card" onclick="openCourse('index9.html')"><div class="course-duration">6 Weeks</div><h3 class="course-title">Breaking Free from Toxic Relationships</h3><p class="course-desc">Step-by-step guidance on creating boundaries, building exit strategies, and reclaiming your power.</p><div class="unlock-trigger"><span>Start Learning</span><span>→</span></div></div>
+            <div class="course-card" onclick="openCourse('index10.html')"><div class="course-duration">6 Weeks</div><h3 class="course-title">Healing After Narcissistic Abuse</h3><p class="course-desc">Rebuild your self-esteem, process trauma, and develop healthy relationship patterns.</p><div class="unlock-trigger"><span>Start Learning</span><span>→</span></div></div>
+        </div>
+    </div>
+
+    <div id="admob-banner-1" class="admob-banner"><span>Advertisement</span></div>
+
+    <div class="category-section">
+        <div class="category-header"><h2>Overcoming Codependency</h2><div class="line"></div></div>
+        <div class="course-grid">
+            <div class="course-card" onclick="openCourse('index11.html')"><div class="course-duration">6 Weeks</div><h3 class="course-title">Recognizing Codependent Patterns</h3><p class="course-desc">Identify codependent behaviors, people-pleasing tendencies, and the roots of your patterns.</p><div class="unlock-trigger"><span>Start Learning</span><span>→</span></div></div>
+            <div class="course-card" onclick="openCourse('index12.html')"><div class="course-duration">6 Weeks</div><h3 class="course-title">Building Healthy Boundaries</h3><p class="course-desc">Master the art of saying no and maintaining emotional independence in relationships.</p><div class="unlock-trigger"><span>Start Learning</span><span>→</span></div></div>
+            <div class="course-card" onclick="openCourse('index13.html')"><div class="course-duration">6 Weeks</div><h3 class="course-title">Self-Love &amp; Independence</h3><p class="course-desc">Develop a strong sense of self and build confidence independent of others validation.</p><div class="unlock-trigger"><span>Start Learning</span><span>→</span></div></div>
+        </div>
+    </div>
+
+    <div id="admob-banner-2" class="admob-banner"><span>Advertisement</span></div>
+
+    <div class="category-section">
+        <div class="category-header"><h2>Emotional Healing &amp; Trauma Recovery</h2><div class="line"></div></div>
+        <div class="course-grid">
+            <div class="course-card" onclick="openCourse('index14.html')"><div class="course-duration">6 Weeks</div><h3 class="course-title">Trauma-Informed Healing</h3><p class="course-desc">Process past trauma with compassionate techniques including somatic practices and emotional regulation.</p><div class="unlock-trigger"><span>Start Learning</span><span>→</span></div></div>
+            <div class="course-card" onclick="openCourse('index15.html')"><div class="course-duration">6 Weeks</div><h3 class="course-title">Inner Child Healing</h3><p class="course-desc">Connect with your inner child, heal childhood wounds, and reparent yourself with love.</p><div class="unlock-trigger"><span>Start Learning</span><span>→</span></div></div>
+            <div class="course-card" onclick="openCourse('index16.html')"><div class="course-duration">6 Weeks</div><h3 class="course-title">Grief &amp; Loss Support</h3><p class="course-desc">Navigate the grieving process, honor your emotions, and find meaning after loss.</p><div class="unlock-trigger"><span>Start Learning</span><span>→</span></div></div>
+        </div>
+    </div>
+
+    <div id="admob-banner-3" class="admob-banner"><span>Advertisement</span></div>
+
+    <div class="category-section">
+        <div class="category-header"><h2>Managing Anxiety &amp; Depression</h2><div class="line"></div></div>
+        <div class="course-grid">
+            <div class="course-card" onclick="openCourse('index17.html')"><div class="course-duration">6 Weeks</div><h3 class="course-title">Anxiety Management Toolkit</h3><p class="course-desc">Learn practical strategies to reduce anxiety, manage panic attacks, and calm your nervous system.</p><div class="unlock-trigger"><span>Start Learning</span><span>→</span></div></div>
+            <div class="course-card" onclick="openCourse('index18.html')"><div class="course-duration">6 Weeks</div><h3 class="course-title">Overcoming Depression</h3><p class="course-desc">Understand depression, develop coping mechanisms, and create a personalized wellness plan.</p><div class="unlock-trigger"><span>Start Learning</span><span>→</span></div></div>
+            <div class="course-card" onclick="openCourse('index19.html')"><div class="course-duration">6 Weeks</div><h3 class="course-title">Mindfulness &amp; Emotional Balance</h3><p class="course-desc">Practice mindfulness meditation, develop emotional awareness, and find inner peace.</p><div class="unlock-trigger"><span>Start Learning</span><span>→</span></div></div>
+        </div>
+    </div>
+
+    <div id="admob-banner-4" class="admob-banner"><span>Advertisement</span></div>
+
+    <div class="category-section">
+        <div class="category-header"><h2>Personal Growth &amp; Self-Discovery</h2><div class="line"></div></div>
+        <div class="course-grid">
+            <div class="course-card" onclick="openCourse('index20.html')"><div class="course-duration">6 Weeks</div><h3 class="course-title">Finding Your Life Purpose</h3><p class="course-desc">Discover your passions, identify your values, and create a life aligned with your purpose.</p><div class="unlock-trigger"><span>Start Learning</span><span>→</span></div></div>
+            <div class="course-card" onclick="openCourse('index21.html')"><div class="course-duration">6 Weeks</div><h3 class="course-title">Confidence &amp; Self-Esteem Building</h3><p class="course-desc">Transform self-doubt into confidence, overcome impostor syndrome, and own your worth.</p><div class="unlock-trigger"><span>Start Learning</span><span>→</span></div></div>
+            <div class="course-card" onclick="openCourse('index22.html')"><div class="course-duration">6 Weeks</div><h3 class="course-title">Goal Setting &amp; Achievement</h3><p class="course-desc">Set meaningful goals, create actionable plans, and develop habits that lead to lasting success.</p><div class="unlock-trigger"><span>Start Learning</span><span>→</span></div></div>
+        </div>
+    </div>
+
+    <div id="admob-banner-5" class="admob-banner"><span>Advertisement</span></div>
+
+    <div class="category-section">
+        <div class="category-header"><h2>Healthy Relationships &amp; Communication</h2><div class="line"></div></div>
+        <div class="course-grid">
+            <div class="course-card" onclick="openCourse('index23.html')"><div class="course-duration">6 Weeks</div><h3 class="course-title">Effective Communication Skills</h3><p class="course-desc">Master active listening, assertive communication, and conflict resolution techniques.</p><div class="unlock-trigger"><span>Start Learning</span><span>→</span></div></div>
+            <div class="course-card" onclick="openCourse('index24.html')"><div class="course-duration">6 Weeks</div><h3 class="course-title">Building Healthy Relationships</h3><p class="course-desc">Learn what makes relationships thrive, recognize red flags, and cultivate authentic connections.</p><div class="unlock-trigger"><span>Start Learning</span><span>→</span></div></div>
+            <div class="course-card" onclick="openCourse('index25.html')"><div class="course-duration">6 Weeks</div><h3 class="course-title">Family Dynamics &amp; Healing</h3><p class="course-desc">Navigate family relationships, heal generational patterns, and establish healthy boundaries.</p><div class="unlock-trigger"><span>Start Learning</span><span>→</span></div></div>
+        </div>
+    </div>
+
+    <div id="admob-banner-6" class="admob-banner"><span>Advertisement</span></div>
+
+    <div class="category-section">
+        <div class="category-header"><h2>Navigating Life Transitions</h2><div class="line"></div></div>
+        <div class="course-grid">
+            <div class="course-card" onclick="openCourse('index26.html')"><div class="course-duration">6 Weeks</div><h3 class="course-title">Career Change &amp; Purpose</h3><p class="course-desc">Navigate career transitions, discover your calling, and build the courage to make bold moves.</p><div class="unlock-trigger"><span>Start Learning</span><span>→</span></div></div>
+            <div class="course-card" onclick="openCourse('index27.html')"><div class="course-duration">6 Weeks</div><h3 class="course-title">Divorce &amp; Separation Recovery</h3><p class="course-desc">Heal from relationship endings, rediscover yourself, and create a fulfilling new chapter.</p><div class="unlock-trigger"><span>Start Learning</span><span>→</span></div></div>
+            <div class="course-card" onclick="openCourse('index28.html')"><div class="course-duration">6 Weeks</div><h3 class="course-title">Life After Major Change</h3><p class="course-desc">Adapt to major life changes, find stability in uncertainty, and embrace new beginnings.</p><div class="unlock-trigger"><span>Start Learning</span><span>→</span></div></div>
+        </div>
+    </div>
+
+    <div id="admob-banner-7" class="admob-banner"><span>Advertisement</span></div>
+
+    <div class="category-section">
+        <div class="category-header"><h2>Coaching &amp; Support Topics</h2><div class="line"></div></div>
+        <div class="course-grid">
+            <div class="course-card" onclick="openCourse('index29.html')"><div class="course-duration">6 Weeks</div><h3 class="course-title">Individual Coaching Foundations</h3><p class="course-desc">Learn effective coaching techniques for one-on-one sessions and transformative interventions.</p><div class="unlock-trigger"><span>Start Learning</span><span>→</span></div></div>
+            <div class="course-card" onclick="openCourse('index30.html')"><div class="course-duration">6 Weeks</div><h3 class="course-title">Crisis Intervention &amp; Support</h3><p class="course-desc">Develop skills to provide immediate support during crises and create safety plans.</p><div class="unlock-trigger"><span>Start Learning</span><span>→</span></div></div>
+        </div>
+    </div>
+
+    <div id="admob-banner-8" class="admob-banner"><span>Advertisement</span></div>
+
+    <div class="category-section">
+        <div class="category-header"><h2>Teen Development &amp; Life Skills</h2><div class="line"></div></div>
+        <div class="course-grid">
+            <div class="course-card" onclick="openCourse('index31.html')"><div class="course-duration">12 Weeks</div><h3 class="course-title">High School Operating System</h3><p class="course-desc">Identity, discipline, financial literacy, online safety, GBV, substance awareness, sexual health, social media, and AI.</p><div class="unlock-trigger"><span>Start Learning</span><span>→</span></div></div>
+            <div class="course-card" onclick="openCourse('index32.html')"><div class="course-duration">2 Weeks</div><h3 class="course-title">Cyber-Safety for Teens</h3><p class="course-desc">Navigate the digital world safely — cyberbullying, sextortion, privacy, and building a positive online presence.</p><div class="unlock-trigger"><span>Start Learning</span><span>→</span></div></div>
+            <div class="course-card" onclick="openCourse('index33.html')"><div class="course-duration">8 Weeks</div><h3 class="course-title">The Identity Framework</h3><p class="course-desc">Who you are — values, character, peer pressure, and building an identity that stands on its own.</p><div class="unlock-trigger"><span>Start Learning</span><span>→</span></div></div>
+        </div>
+    </div>
+
+</div>
+
+<!-- Rewarded Ad Modal -->
+<!-- Name Collection Modal -->
+<div class="modal" id="nameModal" style="z-index:3000;">
+    <div class="modal-box animate__animated animate__zoomIn" style="--animate-duration:0.6s;">
+        <img src="favicon.png" alt="Coach L Academy" style="width:70px;height:70px;border-radius:14px;margin-bottom:16px;">
+        <h2 class="modal-title" style="margin-bottom:10px;">Welcome to Coach L Academy</h2>
+        <p style="color:#555;font-size:0.88rem;line-height:1.7;margin-bottom:24px;">What's your first name? This helps us personalise your learning experience.</p>
+        <input id="firstNameInput" type="text" placeholder="Your first name" style="width:100%;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:12px;padding:14px 18px;color:#fff;font-size:1rem;font-family:'Poppins',sans-serif;outline:none;margin-bottom:16px;transition:0.2s;" onfocus="this.style.borderColor='#ff4b2b'" onblur="this.style.borderColor='rgba(255,255,255,0.1)'">
+        <button class="watch-btn" onclick="saveName()">Let's Go →</button>
+    </div>
+</div>
+
+<div class="modal" id="unlockModal">
+    <div class="modal-box animate__animated animate__zoomIn" style="--animate-duration: 0.6s;">
+        <h2 class="modal-title" id="modalTitle"></h2>
+        <div class="modal-duration" id="modalDuration"></div>
+        <p class="modal-desc" id="modalDesc"></p>
+        <div style="background:rgba(255,75,43,0.07);border:1px solid rgba(255,75,43,0.2);border-radius:12px;padding:14px;margin-bottom:24px;font-size:0.8rem;color:#888;line-height:1.6;">
+            📺 Short video ads will appear automatically during your learning to keep all courses free. No payment required.
+        </div>
+        <button class="watch-btn" onclick="proceedToCourse()">I Understand — Start Learning →</button>
+        <span class="modal-close" onclick="closeModal()">Maybe later</span>
+    </div>
+</div>
+
+<script>
+// Apply saved theme on load
+if (localStorage.getItem('cl_theme') === 'light') {
+    document.body.classList.add('light-mode');
+    document.addEventListener('DOMContentLoaded', () => {
+        const btn = document.getElementById('themeToggle');
+        if (btn) btn.textContent = '🌙 Dark';
+    });
+}
+
+function toggleTheme() {
+    const isLight = document.body.classList.toggle('light-mode');
+    const btn = document.getElementById('themeToggle');
+    btn.textContent = isLight ? '🌙 Dark' : '☀️ Light';
+    localStorage.setItem('cl_theme', isLight ? 'light' : 'dark');
+}
+const courses = [
+    // Narcissistic Relationships — index5 to index10
+    { page:'index5',  cat:'narc',        category:'Narcissistic Relationships',    title:'Understanding Narcissistic Abuse',      duration:'6 Weeks',  desc:'Learn to identify narcissistic patterns, manipulation tactics, and gaslighting techniques to protect yourself.' },
+    { page:'index6',  cat:'narc',        category:'Narcissistic Relationships',    title:'Healing from Gaslighting',              duration:'4 Weeks',  desc:'Reclaim your reality and rebuild confidence after chronic manipulation and reality-distortion.' },
+    { page:'index7',  cat:'narc',        category:'Narcissistic Relationships',    title:'The No-Contact Blueprint',              duration:'3 Weeks',  desc:'A step-by-step framework for implementing no contact and managing withdrawal symptoms.' },
+    { page:'index8',  cat:'narc',        category:'Narcissistic Relationships',    title:'Setting Ironclad Boundaries',           duration:'5 Weeks',  desc:'Build firm, non-negotiable boundaries that protect your peace and communicate your worth.' },
+    { page:'index9',  cat:'narc',        category:'Narcissistic Relationships',    title:'Breaking Free from Toxic Relationships', duration:'6 Weeks',  desc:'Step-by-step guidance on creating boundaries, building exit strategies, and reclaiming your power.' },
+    { page:'index10', cat:'narc',        category:'Narcissistic Relationships',    title:'Healing After Narcissistic Abuse',      duration:'6 Weeks',  desc:'Rebuild your self-esteem, process trauma, and develop healthy relationship patterns.' },
+    // Codependency — index11 to index13
+    { page:'index11', cat:'codep',       category:'Overcoming Codependency',       title:'Recognizing Codependent Patterns',      duration:'6 Weeks',  desc:'Identify codependent behaviors, people-pleasing tendencies, and the roots of your patterns.' },
+    { page:'index12', cat:'codep',       category:'Overcoming Codependency',       title:'Building Healthy Boundaries',           duration:'6 Weeks',  desc:'Master the art of saying no and maintaining emotional independence in relationships.' },
+    { page:'index13', cat:'codep',       category:'Overcoming Codependency',       title:'Self-Love & Independence',              duration:'6 Weeks',  desc:'Develop a strong sense of self and build confidence independent of others\' validation.' },
+    // Trauma — index14 to index16
+    { page:'index14', cat:'trauma',      category:'Emotional Healing & Trauma',    title:'Trauma-Informed Healing',               duration:'6 Weeks',  desc:'Process past trauma with compassionate techniques including somatic practices and emotional regulation.' },
+    { page:'index15', cat:'trauma',      category:'Emotional Healing & Trauma',    title:'Inner Child Healing',                   duration:'6 Weeks',  desc:'Connect with your inner child, heal childhood wounds, and reparent yourself with love.' },
+    { page:'index16', cat:'trauma',      category:'Emotional Healing & Trauma',    title:'Grief & Loss Support',                  duration:'6 Weeks',  desc:'Navigate the grieving process, honor your emotions, and find meaning after loss.' },
+    // Anxiety — index17 to index19
+    { page:'index17', cat:'anxiety',     category:'Anxiety & Depression',          title:'Anxiety Management Toolkit',            duration:'6 Weeks',  desc:'Learn practical strategies to reduce anxiety, manage panic attacks, and calm your nervous system.' },
+    { page:'index18', cat:'anxiety',     category:'Anxiety & Depression',          title:'Overcoming Depression',                 duration:'6 Weeks',  desc:'Understand depression, develop coping mechanisms, and create a personalized wellness plan.' },
+    { page:'index19', cat:'anxiety',     category:'Anxiety & Depression',          title:'Mindfulness & Emotional Balance',       duration:'6 Weeks',  desc:'Practice mindfulness meditation, develop emotional awareness, and find inner peace.' },
+    // Growth — index20 to index22
+    { page:'index20', cat:'growth',      category:'Personal Growth',               title:'Finding Your Life Purpose',             duration:'6 Weeks',  desc:'Discover your passions, identify your values, and create a life aligned with your purpose.' },
+    { page:'index21', cat:'growth',      category:'Personal Growth',               title:'Confidence & Self-Esteem Building',     duration:'6 Weeks',  desc:'Transform self-doubt into confidence, overcome impostor syndrome, and own your worth.' },
+    { page:'index22', cat:'growth',      category:'Personal Growth',               title:'Goal Setting & Achievement',            duration:'6 Weeks',  desc:'Set meaningful goals, create actionable plans, and develop habits that lead to lasting success.' },
+    // Relationships — index23 to index25 (skipping index24 used for HS OS below? no — assigning sequentially)
+    { page:'index23', cat:'relations',   category:'Healthy Relationships',         title:'Effective Communication Skills',        duration:'6 Weeks',  desc:'Master active listening, assertive communication, and conflict resolution techniques.' },
+    { page:'index24', cat:'relations',   category:'Healthy Relationships',         title:'Building Healthy Relationships',        duration:'6 Weeks',  desc:'Learn what makes relationships thrive, recognize red flags, and cultivate authentic connections.' },
+    { page:'index25', cat:'relations',   category:'Healthy Relationships',         title:'Family Dynamics & Healing',             duration:'6 Weeks',  desc:'Navigate family relationships, heal generational patterns, and establish healthy boundaries.' },
+    // Transitions — index26 to index28 (not enough — use 26,27,28 but we need more; see note)
+    { page:'index26', cat:'transitions', category:'Life Transitions',              title:'Career Change & Purpose',               duration:'6 Weeks',  desc:'Navigate career transitions, discover your calling, and build the courage to make bold moves.' },
+    { page:'index27', cat:'transitions', category:'Life Transitions',              title:'Divorce & Separation Recovery',         duration:'6 Weeks',  desc:'Heal from relationship endings, rediscover yourself, and create a fulfilling new chapter.' },
+    { page:'index28', cat:'transitions', category:'Life Transitions',              title:'Life After Major Change',               duration:'6 Weeks',  desc:'Adapt to major life changes, find stability in uncertainty, and embrace new beginnings.' },
+    // Coaching — index29 to index30
+    { page:'index29', cat:'coaching',    category:'Coaching & Support',            title:'Individual Coaching Foundations',       duration:'6 Weeks',  desc:'Learn effective coaching techniques for one-on-one sessions and transformative interventions.' },
+    { page:'index30', cat:'coaching',    category:'Coaching & Support',            title:'Crisis Intervention & Support',         duration:'6 Weeks',  desc:'Develop skills to provide immediate support during crises and create safety plans.' },
+    // Teen — index31 to index33
+    { page:'index31', cat:'teen',        category:'Teen Development',              title:'High School Operating System',          duration:'12 Weeks', desc:'Identity, discipline, financial literacy, online safety, GBV, substance awareness, sexual health, social media, and AI.' },
+    { page:'index32', cat:'teen',        category:'Teen Development',              title:'Cyber-Safety for Teens',                duration:'2 Weeks',  desc:'Navigate the digital world safely — cyberbullying, sextortion, privacy, and building a positive online presence.' },
+    { page:'index33', cat:'teen',        category:'Teen Development',              title:'The Identity Framework',                duration:'8 Weeks',  desc:'Who you are — values, character, peer pressure, and building an identity that stands on its own.' },
+];
+
+let pendingPage = null;
+
+function openCourse(page) {
+    pendingPage = page;
+    // Find the clicked card and read its content
+    const cards = document.querySelectorAll('.course-card');
+    cards.forEach(card => {
+        if (card.getAttribute('onclick') && card.getAttribute('onclick').includes(page)) {
+            document.getElementById('modalTitle').innerText = card.querySelector('.course-title').innerText;
+            document.getElementById('modalDuration').innerText = card.querySelector('.course-duration').innerText;
+            document.getElementById('modalDesc').innerText = card.querySelector('.course-desc').innerText;
+        }
+    });
+    const box = document.querySelector('.modal-box');
+    box.classList.remove('animate__zoomIn');
+    void box.offsetWidth;
+    box.classList.add('animate__zoomIn');
+    document.getElementById('unlockModal').classList.add('active');
+}
+
+function closeModal() {
+    document.getElementById('unlockModal').classList.remove('active');
+    pendingPage = null;
+}
+
+const BASE_URL = 'https://coachl-academy.github.io/Inspire-Teach-Heal/';
+
+// Check if name already saved, if not show name modal
+window.onload = function() {
+    const savedName = localStorage.getItem('cl_firstName');
+    if (!savedName) {
+        document.getElementById('nameModal').classList.add('active');
+    }
+};
+
+function saveName() {
+    const name = document.getElementById('firstNameInput').value.trim();
+    if (!name) { alert('Please enter your first name.'); return; }
+    localStorage.setItem('cl_firstName', name);
+    document.getElementById('nameModal').classList.remove('active');
+}
+
+function proceedToCourse() {
+    const page = pendingPage;
+    closeModal();
+    if (!page) return;
+    window.location.href = BASE_URL + page;
+}
+</script>
+</body>
+</html>
