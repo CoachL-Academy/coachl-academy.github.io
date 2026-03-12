@@ -1,0 +1,1180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Healing from Gaslighting - Coach L Academy</title>
+<link rel="icon" type="image/png" href="favicon.png">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif; background:#07070c; color:#fff; min-height:100%; overflow-y:auto; -webkit-overflow-scrolling:touch; -webkit-tap-highlight-color:transparent; }
+body.light-mode { background:linear-gradient(135deg,#f5f7fa 0%,#c3cfe2 100%); color:#333; }
+.header { background:rgba(7,7,12,0.97); padding:14px 20px; border-bottom:1px solid rgba(255,255,255,0.08); display:flex; align-items:center; justify-content:space-between; position:sticky; top:0; z-index:100; }
+body.light-mode .header { background:linear-gradient(135deg,#667eea,#764ba2); }
+.header-left { display:flex; align-items:center; gap:12px; }
+.back-link { color:#a78bfa; font-size:1.4rem; text-decoration:none; }
+.course-title h1 { font-size:1rem; font-weight:700; }
+.course-title p { font-size:0.75rem; opacity:0.7; }
+.header-right { display:flex; align-items:center; gap:10px; }
+.theme-btn { background:rgba(255,255,255,0.1); border:1px solid rgba(255,255,255,0.2); color:#fff; padding:6px 12px; border-radius:16px; font-size:0.8rem; cursor:pointer; font-family:inherit; }
+.avatar { width:36px; height:36px; background:linear-gradient(135deg,#f093fb,#f5576c); border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:1rem; }
+.progress-section { padding:16px 20px; background:rgba(255,255,255,0.03); border-bottom:1px solid rgba(255,255,255,0.06); }
+body.light-mode .progress-section { background:#fff; border-bottom:1px solid #e0e0e0; }
+.progress-bar-wrap { height:8px; background:rgba(255,255,255,0.1); border-radius:4px; margin-bottom:12px; overflow:hidden; }
+body.light-mode .progress-bar-wrap { background:#e0e0e0; }
+.progress-bar-fill { height:100%; background:linear-gradient(90deg,#667eea,#764ba2); border-radius:4px; width:0%; transition:width 0.5s; }
+.stat-row { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; }
+.stat-box { background:linear-gradient(135deg,#667eea,#764ba2); border-radius:10px; padding:10px; text-align:center; }
+.stat-box:nth-child(2) { background:linear-gradient(135deg,#f093fb,#f5576c); }
+.stat-box:nth-child(3) { background:linear-gradient(135deg,#4facfe,#00f2fe); }
+.stat-box h3 { font-size:1.3rem; font-weight:800; }
+.stat-box p { font-size:0.65rem; opacity:0.9; }
+.tabs-row { display:flex; gap:6px; padding:14px 20px 0; border-bottom:2px solid rgba(255,255,255,0.08); }
+body.light-mode .tabs-row { border-bottom-color:#e0e0e0; }
+.tab { flex:1; padding:10px 4px; text-align:center; background:rgba(255,255,255,0.04); border:none; border-radius:8px 8px 0 0; color:#888; font-size:0.9rem; font-weight:600; cursor:pointer; font-family:inherit; }
+body.light-mode .tab { background:#f0f0f0; color:#666; }
+.tab.active { background:linear-gradient(135deg,#667eea,#764ba2); color:#fff; }
+.week-row { display:flex; flex-wrap:wrap; gap:8px; padding:14px 20px; border-bottom:1px solid rgba(255,255,255,0.06); }
+body.light-mode .week-row { border-bottom-color:#e0e0e0; }
+.module-btn { padding:8px 16px; background:rgba(255,255,255,0.05); border:2px solid rgba(102,126,234,0.5); border-radius:20px; color:#a78bfa; font-size:0.85rem; font-weight:600; cursor:pointer; font-family:inherit; }
+body.light-mode .module-btn { background:#fff; border-color:#667eea; color:#667eea; }
+.module-btn.active { background:linear-gradient(135deg,#667eea,#764ba2); border-color:transparent; color:#fff; }
+.module-btn.completed { background:#4caf50; border-color:#4caf50; color:#fff; }
+.content-area { padding:0 0 80px 0; }
+.week-panel { display:none; }
+.week-panel.active { display:block; }
+.tab-panel { display:none; }
+.tab-panel.active { display:block; }
+.video-section { padding:20px; border-bottom:1px solid rgba(255,255,255,0.06); }
+body.light-mode .video-section { background:#fff; border-bottom-color:#e0e0e0; }
+.video-section h2 { font-size:1.1rem; margin-bottom:16px; color:#a78bfa; }
+body.light-mode .video-section h2 { color:#667eea; }
+.video-grid { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+@media(max-width:480px) { .video-grid { grid-template-columns:1fr; } }
+.video-player { background:#000; border-radius:10px; overflow:hidden; position:relative; padding-top:56.25%; }
+.video-placeholder { position:absolute; top:0; left:0; width:100%; height:100%; display:flex; align-items:center; justify-content:center; background:linear-gradient(135deg,#1a1a2e,#16213e); flex-direction:column; gap:8px; }
+.play-btn-placeholder { width:50px; height:50px; background:rgba(102,126,234,0.4); border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:1.2rem; color:rgba(255,255,255,0.4); border:2px dashed rgba(102,126,234,0.4); }
+.video-coming { font-size:0.7rem; color:rgba(255,255,255,0.3); }
+.video-title { margin-top:8px; font-size:0.85rem; font-weight:600; color:#ccc; }
+body.light-mode .video-title { color:#333; }
+.lesson-content { padding:20px; }
+body.light-mode .lesson-content { background:#fff; }
+.lesson-content h2 { color:#a78bfa; margin-bottom:16px; font-size:1.3rem; }
+.lesson-content h3 { color:#c4b5fd; margin:20px 0 10px; font-size:1.1rem; }
+.lesson-content h4 { color:#a78bfa; margin:16px 0 8px; }
+.lesson-content p { line-height:1.8; margin-bottom:12px; color:#ccc; }
+.lesson-content ul { margin-left:20px; margin-bottom:12px; }
+.lesson-content li { margin-bottom:8px; line-height:1.6; color:#ccc; }
+.lesson-content em { color:#c4b5fd; font-style:italic; }
+.lesson-content strong { color:#e0d7ff; }
+body.light-mode .lesson-content h2 { color:#667eea; }
+body.light-mode .lesson-content h3 { color:#764ba2; }
+body.light-mode .lesson-content h4 { color:#667eea; }
+body.light-mode .lesson-content p, body.light-mode .lesson-content li { color:#555; }
+body.light-mode .lesson-content strong { color:#333; }
+body.light-mode .lesson-content em { color:#764ba2; }
+.resources-grid { display:grid; grid-template-columns:1fr 1fr; gap:12px; padding-top:10px; }
+@media(max-width:480px) { .resources-grid { grid-template-columns:1fr; } }
+.resource-card { background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.08); border-radius:12px; padding:16px; cursor:pointer; }
+body.light-mode .resource-card { background:#fff; border-color:#e0e0e0; }
+.resource-icon { font-size:1.5rem; margin-bottom:8px; }
+.resource-card h4 { font-size:0.9rem; margin-bottom:6px; }
+.resource-card p { font-size:0.78rem; color:#999; }
+body.light-mode .resource-card p { color:#666; }
+.download-badge { display:inline-block; padding:3px 10px; background:#4caf50; color:#fff; border-radius:10px; font-size:0.7rem; margin-top:8px; }
+.assessment-section { padding:20px; }
+body.light-mode .assessment-section { background:#fff; }
+.assessment-section h2 { color:#a78bfa; margin-bottom:16px; font-size:1.2rem; }
+body.light-mode .assessment-section h2 { color:#667eea; }
+.quiz-question { background:rgba(255,255,255,0.05); padding:16px; border-radius:10px; margin-bottom:14px; border-left:4px solid #667eea; }
+body.light-mode .quiz-question { background:#f8f9fa; }
+.quiz-question h4 { margin-bottom:12px; font-size:0.95rem; }
+body.light-mode .quiz-question h4 { color:#333; }
+.quiz-options { display:flex; flex-direction:column; gap:8px; }
+.quiz-option { padding:10px 14px; background:rgba(255,255,255,0.04); border:2px solid rgba(255,255,255,0.1); border-radius:8px; cursor:pointer; color:#ccc; font-size:0.9rem; display:flex; align-items:center; gap:8px; }
+body.light-mode .quiz-option { background:#fff; border-color:#e0e0e0; color:#333; }
+.quiz-option input { margin:0; flex-shrink:0; }
+.already-passed { background:rgba(76,175,80,0.1); border:2px solid #4caf50; border-radius:10px; padding:16px; margin-bottom:16px; text-align:center; }
+.already-passed h3 { color:#4caf50; margin-bottom:6px; }
+.already-passed p { color:#aaa; font-size:0.9rem; }
+.submit-btn { display:block; width:100%; padding:14px; background:linear-gradient(135deg,#667eea,#764ba2); color:#fff; border:none; border-radius:12px; font-size:1rem; font-weight:700; cursor:pointer; margin-top:16px; font-family:inherit; }
+.results-fab { position:fixed; bottom:20px; right:20px; padding:12px 20px; background:linear-gradient(135deg,#f093fb,#f5576c); color:#fff; border:none; border-radius:30px; font-size:0.9rem; font-weight:600; cursor:pointer; box-shadow:0 4px 16px rgba(240,147,251,0.4); z-index:50; font-family:inherit; }
+#resultsOverlay { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:#07070c; z-index:9999; overflow-y:auto; padding:20px; box-sizing:border-box; }
+body.light-mode #resultsOverlay { background:#f5f5f5; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-left">
+    <a href="https://coachl-academy.github.io/Inspire-Teach-Heal/index2.html" class="back-link">←</a>
+    <img src="favicon.png" style="width:36px;height:36px;border-radius:8px;">
+    <div class="course-title">
+      <h1>Healing from Gaslighting</h1>
+      <p>6-Week Course</p>
+    </div>
+  </div>
+  <div class="header-right">
+    <button class="theme-btn" id="themeToggle" onclick="toggleTheme()">☀️ Light</button>
+    <div class="avatar" id="userAvatar">A</div>
+  </div>
+</div>
+
+<div class="progress-section">
+  <div class="progress-bar-wrap"><div class="progress-bar-fill" id="progressBar"></div></div>
+  <div class="stat-row">
+    <div class="stat-box"><h3 id="modulesComplete">0/6</h3><p>Modules Done</p></div>
+    <div class="stat-box"><h3 id="lessonsViewed">0/12</h3><p>Lessons Viewed</p></div>
+    <div class="stat-box"><h3 id="assessmentsPassed">0/6</h3><p>Assessments</p></div>
+  </div>
+</div>
+
+<div class="tabs-row">
+  <button class="tab active" id="tab-content" onclick="switchTab('content')">Content</button>
+  <button class="tab" id="tab-resources" onclick="switchTab('resources')">Resources</button>
+  <button class="tab" id="tab-assessment" onclick="switchTab('assessment')">Assessment</button>
+</div>
+
+<div class="week-row">
+    <button class="module-btn active" id="wbtn1" onclick="selectWeek(1)">Week 1</button>
+    <button class="module-btn" id="wbtn2" onclick="selectWeek(2)">Week 2</button>
+    <button class="module-btn" id="wbtn3" onclick="selectWeek(3)">Week 3</button>
+    <button class="module-btn" id="wbtn4" onclick="selectWeek(4)">Week 4</button>
+    <button class="module-btn" id="wbtn5" onclick="selectWeek(5)">Week 5</button>
+    <button class="module-btn" id="wbtn6" onclick="selectWeek(6)">Week 6</button>
+
+</div>
+
+<div class="content-area">
+
+  <div id="week1" class="week-panel active">
+    <div id="week1-content" class="tab-panel active">
+      <div class="video-section">
+        <h2>📹 Week 1: Understanding Gaslighting</h2>
+        <div class="video-grid">
+          <div>
+            <div class="video-player"><div class="video-placeholder"><div class="play-btn-placeholder">▶</div></div></div>
+            <div class="video-title">What is Gaslighting?</div>
+          </div>
+          <div>
+            <div class="video-player"><div class="video-placeholder"><div class="play-btn-placeholder">▶</div></div></div>
+            <div class="video-title">How Gaslighting Works</div>
+          </div>
+        </div>
+      </div>
+      <div class="lesson-content"><h2>Week 1: Understanding Gaslighting</h2>
+      <h3>🎯 Learning Objectives</h3>
+      <ul>
+        <li>Define gaslighting and understand its origins</li>
+        <li>Recognise the different forms gaslighting takes</li>
+        <li>Understand how gaslighting affects your sense of reality</li>
+        <li>Begin to identify gaslighting in your own experience</li>
+      </ul>
+      <h3>📖 Key Concepts</h3>
+      <h4>1. What is Gaslighting?</h4>
+      <p>Gaslighting is a form of psychological manipulation where someone causes you to question your own memory, perception, and sanity. The term comes from the 1944 film <em>Gaslight</em>, where a husband manipulates his wife into thinking she is going insane.</p>
+      <ul>
+        <li>It is deliberate — designed to make you doubt yourself</li>
+        <li>It erodes your confidence in your own reality</li>
+        <li>It occurs in romantic relationships, families, workplaces, and friendships</li>
+        <li>Over time it becomes difficult to trust your own judgment</li>
+      </ul>
+      <h4>2. Common Gaslighting Phrases</h4>
+      <ul>
+        <li><strong>"That never happened"</strong> — denying events you clearly remember</li>
+        <li><strong>"You're too sensitive"</strong> — invalidating your emotional response</li>
+        <li><strong>"You're imagining things"</strong> — questioning your perception</li>
+        <li><strong>"You're crazy"</strong> — attacking your mental stability</li>
+        <li><strong>"Everyone agrees with me, not you"</strong> — isolating you</li>
+        <li><strong>"You always do this"</strong> — rewriting your character</li>
+        <li><strong>"I was just joking"</strong> — minimising harmful behaviour</li>
+      </ul>
+      <h4>3. Types of Gaslighting</h4>
+      <ul>
+        <li><strong>Trivialising:</strong> Making your feelings seem unimportant or excessive</li>
+        <li><strong>Diverting:</strong> Changing the subject to avoid accountability</li>
+        <li><strong>Blocking/Forgetting:</strong> Refusing to engage or pretending not to remember</li>
+        <li><strong>Countering:</strong> Questioning your memory even when you are certain</li>
+        <li><strong>Withholding:</strong> Pretending not to understand to avoid conversation</li>
+      </ul>
+      <h4>4. Why It Is So Damaging</h4>
+      <p>Gaslighting is insidious because it attacks the very tool you use to protect yourself — your mind. When you can no longer trust your own perceptions, you become dependent on the gaslighter to define reality for you.</p>
+      <ul>
+        <li>You begin apologising constantly, even when you have done nothing wrong</li>
+        <li>You make excuses for the gaslighter's behaviour</li>
+        <li>You feel confused and "foggy" much of the time</li>
+        <li>Your self-esteem steadily erodes</li>
+      </ul>
+      <h3>💡 Practical Exercises</h3>
+      <p><strong>Exercise 1: The Phrase Journal</strong><br>Write down any phrases from the list above that sound familiar. Next to each one, write a memory of when you heard it and how it made you feel.</p>
+      <p><strong>Exercise 2: Reality Check List</strong><br>Write five things you know to be true about yourself that no one can take away — your values, your strengths, a memory only you hold.</p>
+      <h3>📝 Reflection Questions</h3>
+      <ul>
+        <li>When did you first start doubting your own memory?</li>
+        <li>Which gaslighting phrases feel most familiar to you?</li>
+        <li>How has your confidence in your own perception changed over time?</li>
+        <li>What do you wish someone had told you earlier?</li>
+      </ul>
+      <button class="submit-btn" onclick="markComplete(1)">Mark as Complete</button></div>
+    </div>
+    <div id="week1-resources" class="tab-panel">
+      <div class="video-section">
+        <h2>📚 Resources — Week 1</h2>
+        <div class="resources-grid">
+        <div class="resource-card" onclick="downloadResource('gaslighting-phrases.pdf','Gaslighting Phrase Checklist')">
+          <div class="resource-icon">📄</div>
+          <h4>Gaslighting Phrase Checklist</h4>
+          <p>Identify the phrases used against you</p>
+          <span class="download-badge">📥 Download</span>
+        </div>
+        <div class="resource-card" onclick="downloadResource('reality-anchor.pdf','Reality Anchor Worksheet')">
+          <div class="resource-icon">📝</div>
+          <h4>Reality Anchor Worksheet</h4>
+          <p>Ground yourself in your own truth</p>
+          <span class="download-badge">📥 Download</span>
+        </div>
+        <div class="resource-card" onclick="downloadResource('gaslighting-vs-misc.pdf','Gaslighting vs Miscommunication')">
+          <div class="resource-icon">📚</div>
+          <h4>Gaslighting vs Miscommunication</h4>
+          <p>Learn the difference</p>
+          <span class="download-badge">📥 Download</span>
+        </div></div>
+      </div>
+    </div>
+    <div id="week1-assessment" class="tab-panel">
+      <div class="assessment-section" id="assess1">
+        <h2>📝 Week 1 Assessment</h2>
+        <p style="margin-bottom:20px;color:#ccc;">You need 70% to pass.</p>
+        
+        <div class="quiz-question">
+          <h4>Q1: Where does the term "gaslighting" come from?</h4>
+          <div class="quiz-options"><label class="quiz-option"><input type="radio" name="w1q0" value="0"> A medical textbook</label>
+<label class="quiz-option"><input type="radio" name="w1q0" value="1"> A 1944 film where a husband manipulates his wife</label>
+<label class="quiz-option"><input type="radio" name="w1q0" value="2"> A social media trend</label>
+<label class="quiz-option"><input type="radio" name="w1q0" value="3"> A legal term</label>
+</div>
+        </div>
+        <div class="quiz-question">
+          <h4>Q2: What is the main goal of gaslighting?</h4>
+          <div class="quiz-options"><label class="quiz-option"><input type="radio" name="w1q1" value="0"> To start an argument</label>
+<label class="quiz-option"><input type="radio" name="w1q1" value="1"> To make you question your own memory and perception</label>
+<label class="quiz-option"><input type="radio" name="w1q1" value="2"> To express frustration</label>
+<label class="quiz-option"><input type="radio" name="w1q1" value="3"> To end a relationship</label>
+</div>
+        </div>
+        <div class="quiz-question">
+          <h4>Q3: Which of these is a gaslighting phrase?</h4>
+          <div class="quiz-options"><label class="quiz-option"><input type="radio" name="w1q2" value="0"> "I understand why you feel that way"</label>
+<label class="quiz-option"><input type="radio" name="w1q2" value="1"> "Let's talk about this calmly"</label>
+<label class="quiz-option"><input type="radio" name="w1q2" value="2"> "That never happened — you're imagining things"</label>
+<label class="quiz-option"><input type="radio" name="w1q2" value="3"> "I'm sorry, I was wrong"</label>
+</div>
+        </div>
+        <div class="quiz-question">
+          <h4>Q4: What is "trivialising" in gaslighting?</h4>
+          <div class="quiz-options"><label class="quiz-option"><input type="radio" name="w1q3" value="0"> Making your feelings seem unimportant or excessive</label>
+<label class="quiz-option"><input type="radio" name="w1q3" value="1"> Giving you compliments</label>
+<label class="quiz-option"><input type="radio" name="w1q3" value="2"> Avoiding conflict</label>
+<label class="quiz-option"><input type="radio" name="w1q3" value="3"> Apologising sincerely</label>
+</div>
+        </div>
+        <div class="quiz-question">
+          <h4>Q5: Why is gaslighting particularly damaging?</h4>
+          <div class="quiz-options"><label class="quiz-option"><input type="radio" name="w1q4" value="0"> It causes physical injury</label>
+<label class="quiz-option"><input type="radio" name="w1q4" value="1"> It attacks your ability to trust your own mind</label>
+<label class="quiz-option"><input type="radio" name="w1q4" value="2"> It is always very obvious</label>
+<label class="quiz-option"><input type="radio" name="w1q4" value="3"> It only happens once</label>
+</div>
+        </div><button class="submit-btn" onclick="submitQuiz(1)">Submit Assessment</button>
+      </div>
+    </div>
+  </div>
+  <div id="week2" class="week-panel">
+    <div id="week2-content" class="tab-panel active">
+      <div class="video-section">
+        <h2>📹 Week 2: The Impact on Your Identity</h2>
+        <div class="video-grid">
+          <div>
+            <div class="video-player"><div class="video-placeholder"><div class="play-btn-placeholder">▶</div></div></div>
+            <div class="video-title">How Gaslighting Destroys Self-Trust</div>
+          </div>
+          <div>
+            <div class="video-player"><div class="video-placeholder"><div class="play-btn-placeholder">▶</div></div></div>
+            <div class="video-title">Identity Loss in Abusive Relationships</div>
+          </div>
+        </div>
+      </div>
+      <div class="lesson-content"><h2>Week 2: The Impact on Your Identity</h2>
+      <h3>🎯 Learning Objectives</h3>
+      <ul>
+        <li>Understand how prolonged gaslighting reshapes your identity</li>
+        <li>Recognise the signs of identity erosion</li>
+        <li>Learn how gaslighting creates emotional dependency</li>
+        <li>Begin reconnecting with who you were before the gaslighting</li>
+      </ul>
+      <h3>📖 Key Concepts</h3>
+      <h4>1. Identity Erosion</h4>
+      <p>When someone consistently tells you that your feelings, memories, and perceptions are wrong, you begin to internalise their version of reality. Over time your sense of self is replaced by a version shaped entirely by the gaslighter.</p>
+      <ul>
+        <li>You stop voicing opinions to avoid conflict</li>
+        <li>You adopt their preferences, interests, and values</li>
+        <li>You can no longer remember who you were before the relationship</li>
+        <li>You define yourself through their eyes rather than your own</li>
+      </ul>
+      <h4>2. The Inner Critic</h4>
+      <p>One of the most lasting effects of gaslighting is the internalised critical voice. The gaslighter's words become your own self-talk:</p>
+      <ul>
+        <li>"I'm too sensitive"</li>
+        <li>"I always make things worse"</li>
+        <li>"I can't trust myself"</li>
+        <li>"Maybe I really am the problem"</li>
+      </ul>
+      <p>Recognising this voice as theirs — not yours — is a crucial step in healing.</p>
+      <h4>3. Emotional Dependency</h4>
+      <p>Gaslighting creates a cycle of dependency. Because you can no longer trust your own perception, you turn to the gaslighter to validate your reality — giving them enormous power over your emotional state.</p>
+      <ul>
+        <li>You feel anxious without their approval</li>
+        <li>Their mood determines your mood</li>
+        <li>You constantly monitor their reactions for clues about how to feel</li>
+        <li>Moments of kindness from them feel like enormous relief</li>
+      </ul>
+      <h4>4. Who Were You Before?</h4>
+      <p>Healing begins by remembering. Think back to who you were before this relationship:</p>
+      <ul>
+        <li>What did you enjoy? What made you laugh?</li>
+        <li>What were your opinions, values, and dreams?</li>
+        <li>How did you carry yourself? What were you proud of?</li>
+        <li>Who were your people?</li>
+      </ul>
+      <h3>💡 Practical Exercises</h3>
+      <p><strong>Exercise 1: The Inner Critic Audit</strong><br>Write down your most common self-critical thoughts. Next to each one, write whose voice that actually sounds like. Is it yours — or theirs?</p>
+      <p><strong>Exercise 2: The Before Letter</strong><br>Write a letter to your current self from the version of you that existed before. What would that person say to you right now?</p>
+      <h3>📝 Reflection Questions</h3>
+      <ul>
+        <li>When did you start losing confidence in your own opinions?</li>
+        <li>Which parts of yourself did you give up to keep the peace?</li>
+        <li>What does your inner critic say most often? Whose voice is it?</li>
+        <li>What is one quality you had before that you want to reclaim?</li>
+      </ul>
+      <button class="submit-btn" onclick="markComplete(2)">Mark as Complete</button></div>
+    </div>
+    <div id="week2-resources" class="tab-panel">
+      <div class="video-section">
+        <h2>📚 Resources — Week 2</h2>
+        <div class="resources-grid">
+        <div class="resource-card" onclick="downloadResource('inner-critic-audit.pdf','Inner Critic Audit Worksheet')">
+          <div class="resource-icon">📝</div>
+          <h4>Inner Critic Audit Worksheet</h4>
+          <p>Identify whose voice is in your head</p>
+          <span class="download-badge">📥 Download</span>
+        </div>
+        <div class="resource-card" onclick="downloadResource('identity-inventory.pdf','Identity Inventory')">
+          <div class="resource-icon">📄</div>
+          <h4>Identity Inventory</h4>
+          <p>Reconnect with your authentic self</p>
+          <span class="download-badge">📥 Download</span>
+        </div>
+        <div class="resource-card" onclick="downloadResource('self-compassion-audio.mp3','Self-Compassion Meditation')">
+          <div class="resource-icon">🎧</div>
+          <h4>Self-Compassion Meditation</h4>
+          <p>10-minute guided practice</p>
+          <span class="download-badge">📥 Download</span>
+        </div></div>
+      </div>
+    </div>
+    <div id="week2-assessment" class="tab-panel">
+      <div class="assessment-section" id="assess2">
+        <h2>📝 Week 2 Assessment</h2>
+        <p style="margin-bottom:20px;color:#ccc;">You need 70% to pass.</p>
+        
+        <div class="quiz-question">
+          <h4>Q1: What is identity erosion in the context of gaslighting?</h4>
+          <div class="quiz-options"><label class="quiz-option"><input type="radio" name="w2q0" value="0"> Forgetting your name</label>
+<label class="quiz-option"><input type="radio" name="w2q0" value="1"> Your sense of self being gradually replaced by the gaslighter's version of you</label>
+<label class="quiz-option"><input type="radio" name="w2q0" value="2"> Changing your hairstyle</label>
+<label class="quiz-option"><input type="radio" name="w2q0" value="3"> Moving to a new city</label>
+</div>
+        </div>
+        <div class="quiz-question">
+          <h4>Q2: Where does the "inner critic" come from after gaslighting?</h4>
+          <div class="quiz-options"><label class="quiz-option"><input type="radio" name="w2q1" value="0"> Your own childhood insecurities only</label>
+<label class="quiz-option"><input type="radio" name="w2q1" value="1"> The internalised voice of the gaslighter</label>
+<label class="quiz-option"><input type="radio" name="w2q1" value="2"> Social media</label>
+<label class="quiz-option"><input type="radio" name="w2q1" value="3"> Natural self-reflection</label>
+</div>
+        </div>
+        <div class="quiz-question">
+          <h4>Q3: What is emotional dependency in gaslighting?</h4>
+          <div class="quiz-options"><label class="quiz-option"><input type="radio" name="w2q2" value="0"> Being financially dependent</label>
+<label class="quiz-option"><input type="radio" name="w2q2" value="1"> Turning to the gaslighter to validate your reality because you no longer trust yourself</label>
+<label class="quiz-option"><input type="radio" name="w2q2" value="2"> Loving someone deeply</label>
+<label class="quiz-option"><input type="radio" name="w2q2" value="3"> Needing emotional support</label>
+</div>
+        </div>
+        <div class="quiz-question">
+          <h4>Q4: What is the first step in reclaiming your identity?</h4>
+          <div class="quiz-options"><label class="quiz-option"><input type="radio" name="w2q3" value="0"> Starting a new relationship immediately</label>
+<label class="quiz-option"><input type="radio" name="w2q3" value="1"> Remembering who you were before the gaslighting</label>
+<label class="quiz-option"><input type="radio" name="w2q3" value="2"> Confronting the gaslighter</label>
+<label class="quiz-option"><input type="radio" name="w2q3" value="3"> Moving away</label>
+</div>
+        </div>
+        <div class="quiz-question">
+          <h4>Q5: Which thought pattern is a sign of internalised gaslighting?</h4>
+          <div class="quiz-options"><label class="quiz-option"><input type="radio" name="w2q4" value="0"> "I deserve to be treated well"</label>
+<label class="quiz-option"><input type="radio" name="w2q4" value="1"> "My feelings are valid"</label>
+<label class="quiz-option"><input type="radio" name="w2q4" value="2"> "Maybe I really am the problem"</label>
+<label class="quiz-option"><input type="radio" name="w2q4" value="3"> "I trust my own memory"</label>
+</div>
+        </div><button class="submit-btn" onclick="submitQuiz(2)">Submit Assessment</button>
+      </div>
+    </div>
+  </div>
+  <div id="week3" class="week-panel">
+    <div id="week3-content" class="tab-panel active">
+      <div class="video-section">
+        <h2>📹 Week 3: Rebuilding Self-Trust</h2>
+        <div class="video-grid">
+          <div>
+            <div class="video-player"><div class="video-placeholder"><div class="play-btn-placeholder">▶</div></div></div>
+            <div class="video-title">Trusting Yourself Again After Manipulation</div>
+          </div>
+          <div>
+            <div class="video-player"><div class="video-placeholder"><div class="play-btn-placeholder">▶</div></div></div>
+            <div class="video-title">Rebuilding Your Internal Compass</div>
+          </div>
+        </div>
+      </div>
+      <div class="lesson-content"><h2>Week 3: Rebuilding Self-Trust</h2>
+      <h3>🎯 Learning Objectives</h3>
+      <ul>
+        <li>Understand why self-trust breaks down under gaslighting</li>
+        <li>Learn practical strategies to rebuild trust in your own perceptions</li>
+        <li>Develop tools to validate your own reality</li>
+        <li>Begin making decisions confidently again</li>
+      </ul>
+      <h3>📖 Key Concepts</h3>
+      <h4>1. Why Self-Trust Breaks Down</h4>
+      <p>Self-trust is built through a cycle: you perceive something, you act on that perception, and the outcome validates your judgment. Gaslighting disrupts every stage of this cycle. When someone consistently tells you your perceptions are wrong, you stop relying on them entirely.</p>
+      <h4>2. The Evidence Journal</h4>
+      <p>One of the most powerful tools for rebuilding self-trust is documentation. When you write things down as they happen, you create an external record that cannot be rewritten by someone else.</p>
+      <ul>
+        <li>Record events with dates, what was said, and how you felt</li>
+        <li>Note physical sensations — your body often knows before your mind does</li>
+        <li>Review your entries regularly to recognise patterns</li>
+        <li>Trust your documentation over their denials</li>
+      </ul>
+      <h4>3. Rebuilding Your Internal Compass</h4>
+      <p>Your gut feelings did not disappear — they were suppressed. To rebuild your internal compass:</p>
+      <ul>
+        <li><strong>Start small:</strong> Make low-stakes decisions without seeking approval</li>
+        <li><strong>Notice physical cues:</strong> Tightness in your chest, unease in your stomach are data</li>
+        <li><strong>Celebrate being right:</strong> Every time your instinct proves accurate, acknowledge it</li>
+        <li><strong>Stop over-explaining:</strong> You do not need to justify your feelings to anyone</li>
+      </ul>
+      <h4>4. The "Would I Tell a Friend?" Test</h4>
+      <p>When you doubt yourself, ask: if a trusted friend told me this happened to them, would I believe them? The answer is almost always yes. Apply that same belief to yourself.</p>
+      <h4>5. Seeking Outside Perspective</h4>
+      <p>Trusted friends, family, or a therapist can serve as a reality check while you rebuild. Choose people who have no connection to the gaslighter and who have shown they respect your perspective.</p>
+      <h3>💡 Practical Exercises</h3>
+      <p><strong>Exercise 1: The Evidence Journal</strong><br>Start a private journal today. For one week, document your experiences exactly as they happen. Resist the urge to edit or second-guess your entries.</p>
+      <p><strong>Exercise 2: The Small Decisions Challenge</strong><br>Each day this week, make three decisions without asking for anyone's opinion — what to eat, what to wear, what to watch. Notice how it feels.</p>
+      <h3>📝 Reflection Questions</h3>
+      <ul>
+        <li>When do you most distrust your own perception?</li>
+        <li>Can you remember a time your gut feeling was right that you ignored?</li>
+        <li>What would it feel like to fully trust yourself again?</li>
+        <li>Who in your life validates your reality without agenda?</li>
+      </ul>
+      <button class="submit-btn" onclick="markComplete(3)">Mark as Complete</button></div>
+    </div>
+    <div id="week3-resources" class="tab-panel">
+      <div class="video-section">
+        <h2>📚 Resources — Week 3</h2>
+        <div class="resources-grid">
+        <div class="resource-card" onclick="downloadResource('evidence-journal.pdf','Evidence Journal Template')">
+          <div class="resource-icon">📝</div>
+          <h4>Evidence Journal Template</h4>
+          <p>Document your reality as it happens</p>
+          <span class="download-badge">📥 Download</span>
+        </div>
+        <div class="resource-card" onclick="downloadResource('self-trust-guide.pdf','Self-Trust Rebuilding Guide')">
+          <div class="resource-icon">📄</div>
+          <h4>Self-Trust Rebuilding Guide</h4>
+          <p>Step-by-step strategies</p>
+          <span class="download-badge">📥 Download</span>
+        </div>
+        <div class="resource-card" onclick="downloadResource('decision-making.pdf','Decision-Making Worksheet')">
+          <div class="resource-icon">📋</div>
+          <h4>Decision-Making Worksheet</h4>
+          <p>Practice trusting your own judgment</p>
+          <span class="download-badge">📥 Download</span>
+        </div></div>
+      </div>
+    </div>
+    <div id="week3-assessment" class="tab-panel">
+      <div class="assessment-section" id="assess3">
+        <h2>📝 Week 3 Assessment</h2>
+        <p style="margin-bottom:20px;color:#ccc;">You need 70% to pass.</p>
+        
+        <div class="quiz-question">
+          <h4>Q1: How does gaslighting break down self-trust?</h4>
+          <div class="quiz-options"><label class="quiz-option"><input type="radio" name="w3q0" value="0"> By being kind</label>
+<label class="quiz-option"><input type="radio" name="w3q0" value="1"> By disrupting the perception-action-outcome cycle</label>
+<label class="quiz-option"><input type="radio" name="w3q0" value="2"> By encouraging independence</label>
+<label class="quiz-option"><input type="radio" name="w3q0" value="3"> By providing clear feedback</label>
+</div>
+        </div>
+        <div class="quiz-question">
+          <h4>Q2: What is the purpose of an evidence journal?</h4>
+          <div class="quiz-options"><label class="quiz-option"><input type="radio" name="w3q1" value="0"> To build a legal case</label>
+<label class="quiz-option"><input type="radio" name="w3q1" value="1"> To create an external record of events that cannot be rewritten by the gaslighter</label>
+<label class="quiz-option"><input type="radio" name="w3q1" value="2"> To track your mood only</label>
+<label class="quiz-option"><input type="radio" name="w3q1" value="3"> To share with others</label>
+</div>
+        </div>
+        <div class="quiz-question">
+          <h4>Q3: What does "starting small" mean when rebuilding self-trust?</h4>
+          <div class="quiz-options"><label class="quiz-option"><input type="radio" name="w3q2" value="0"> Avoiding all decisions</label>
+<label class="quiz-option"><input type="radio" name="w3q2" value="1"> Making low-stakes decisions without seeking approval first</label>
+<label class="quiz-option"><input type="radio" name="w3q2" value="2"> Only trusting others</label>
+<label class="quiz-option"><input type="radio" name="w3q2" value="3"> Waiting until you feel fully healed</label>
+</div>
+        </div>
+        <div class="quiz-question">
+          <h4>Q4: What is the "Would I Tell a Friend?" test?</h4>
+          <div class="quiz-options"><label class="quiz-option"><input type="radio" name="w3q3" value="0"> Asking friends for advice</label>
+<label class="quiz-option"><input type="radio" name="w3q3" value="1"> Applying to yourself the same belief you would extend to a trusted friend</label>
+<label class="quiz-option"><input type="radio" name="w3q3" value="2"> Sharing your journal with a friend</label>
+<label class="quiz-option"><input type="radio" name="w3q3" value="3"> Getting a second opinion on everything</label>
+</div>
+        </div>
+        <div class="quiz-question">
+          <h4>Q5: Which is a sign you are rebuilding your internal compass?</h4>
+          <div class="quiz-options"><label class="quiz-option"><input type="radio" name="w3q4" value="0"> You still need approval before every decision</label>
+<label class="quiz-option"><input type="radio" name="w3q4" value="1"> You begin noticing and acting on physical gut feelings</label>
+<label class="quiz-option"><input type="radio" name="w3q4" value="2"> You avoid making any decisions</label>
+<label class="quiz-option"><input type="radio" name="w3q4" value="3"> You rely entirely on others to validate you</label>
+</div>
+        </div><button class="submit-btn" onclick="submitQuiz(3)">Submit Assessment</button>
+      </div>
+    </div>
+  </div>
+  <div id="week4" class="week-panel">
+    <div id="week4-content" class="tab-panel active">
+      <div class="video-section">
+        <h2>📹 Week 4: Setting Boundaries After Gaslighting</h2>
+        <div class="video-grid">
+          <div>
+            <div class="video-player"><div class="video-placeholder"><div class="play-btn-placeholder">▶</div></div></div>
+            <div class="video-title">Boundaries for Gaslighting Survivors</div>
+          </div>
+          <div>
+            <div class="video-player"><div class="video-placeholder"><div class="play-btn-placeholder">▶</div></div></div>
+            <div class="video-title">Saying No Without Guilt</div>
+          </div>
+        </div>
+      </div>
+      <div class="lesson-content"><h2>Week 4: Setting Boundaries After Gaslighting</h2>
+      <h3>🎯 Learning Objectives</h3>
+      <ul>
+        <li>Understand why boundaries are especially difficult for gaslighting survivors</li>
+        <li>Learn how to identify what your boundaries actually are</li>
+        <li>Practice communicating boundaries clearly and calmly</li>
+        <li>Manage the guilt and pushback that comes with boundary-setting</li>
+      </ul>
+      <h3>📖 Key Concepts</h3>
+      <h4>1. Why Boundaries Feel Impossible</h4>
+      <p>Gaslighting conditions you to believe that your needs are unreasonable. Every time you tried to assert a boundary it was met with denial, ridicule, or punishment. Over time, you stopped trying. Now boundary-setting feels terrifying — and that makes complete sense.</p>
+      <h4>2. Identifying Your Boundaries</h4>
+      <p>Before you can communicate a boundary, you need to know what it is. Ask yourself:</p>
+      <ul>
+        <li>What interactions leave me feeling drained, ashamed, or confused?</li>
+        <li>What behaviours do I tolerate that I deeply do not want to?</li>
+        <li>When do I feel my values are being compromised?</li>
+        <li>What would I never allow if I fully believed I deserved respect?</li>
+      </ul>
+      <h4>3. The Boundary Formula</h4>
+      <p>Keep it simple and factual:</p>
+      <ul>
+        <li><strong>State the behaviour:</strong> "When you raise your voice at me..."</li>
+        <li><strong>State your response:</strong> "...I will leave the room."</li>
+        <li><strong>Follow through — every time.</strong></li>
+      </ul>
+      <p>You do not need to explain, justify, or apologise for your boundaries. A boundary is not a negotiation.</p>
+      <h4>4. Handling the Guilt</h4>
+      <p>Gaslighting survivors almost always feel guilty when they set a boundary. This guilt was installed deliberately — it kept you compliant. Recognise it for what it is:</p>
+      <ul>
+        <li>Guilt about having needs is not a sign your needs are wrong</li>
+        <li>Their anger at your boundary is not evidence your boundary is unfair</li>
+        <li>You are not responsible for managing their reaction to your boundary</li>
+      </ul>
+      <h4>5. No JADE</h4>
+      <p>Do not Justify, Argue, Defend, or Explain your boundaries to someone who has gaslighted you. Every explanation becomes material for further manipulation.</p>
+      <h3>💡 Practical Exercises</h3>
+      <p><strong>Exercise 1: Boundary Inventory</strong><br>List five situations where you currently feel your boundaries are being violated. For each one, write what you would say if you fully believed you deserved respect.</p>
+      <p><strong>Exercise 2: The Guilt Letter</strong><br>Write a letter to your guilt. Acknowledge it. Then tell it that it was given to you by someone else and you are choosing to return it.</p>
+      <h3>📝 Reflection Questions</h3>
+      <ul>
+        <li>What happens in your body when you try to say no?</li>
+        <li>Whose reaction are you most afraid of when you set a boundary?</li>
+        <li>What boundary, if you held it firmly, would change your life most?</li>
+        <li>What do you need to believe about yourself to set that boundary?</li>
+      </ul>
+      <button class="submit-btn" onclick="markComplete(4)">Mark as Complete</button></div>
+    </div>
+    <div id="week4-resources" class="tab-panel">
+      <div class="video-section">
+        <h2>📚 Resources — Week 4</h2>
+        <div class="resources-grid">
+        <div class="resource-card" onclick="downloadResource('boundary-inventory.pdf','Boundary Inventory Worksheet')">
+          <div class="resource-icon">📋</div>
+          <h4>Boundary Inventory Worksheet</h4>
+          <p>Identify and plan your boundaries</p>
+          <span class="download-badge">📥 Download</span>
+        </div>
+        <div class="resource-card" onclick="downloadResource('boundary-scripts.pdf','Boundary Scripts for Survivors')">
+          <div class="resource-icon">💬</div>
+          <h4>Boundary Scripts for Survivors</h4>
+          <p>Ready-to-use phrases</p>
+          <span class="download-badge">📥 Download</span>
+        </div>
+        <div class="resource-card" onclick="downloadResource('no-jade.pdf','No JADE Guide')">
+          <div class="resource-icon">📄</div>
+          <h4>No JADE Guide</h4>
+          <p>Why you never need to explain yourself</p>
+          <span class="download-badge">📥 Download</span>
+        </div></div>
+      </div>
+    </div>
+    <div id="week4-assessment" class="tab-panel">
+      <div class="assessment-section" id="assess4">
+        <h2>📝 Week 4 Assessment</h2>
+        <p style="margin-bottom:20px;color:#ccc;">You need 70% to pass.</p>
+        
+        <div class="quiz-question">
+          <h4>Q1: Why do gaslighting survivors struggle to set boundaries?</h4>
+          <div class="quiz-options"><label class="quiz-option"><input type="radio" name="w4q0" value="0"> They don't care about respect</label>
+<label class="quiz-option"><input type="radio" name="w4q0" value="1"> They were conditioned to believe their needs are unreasonable</label>
+<label class="quiz-option"><input type="radio" name="w4q0" value="2"> They are naturally passive</label>
+<label class="quiz-option"><input type="radio" name="w4q0" value="3"> Boundaries are not important</label>
+</div>
+        </div>
+        <div class="quiz-question">
+          <h4>Q2: What does JADE stand for?</h4>
+          <div class="quiz-options"><label class="quiz-option"><input type="radio" name="w4q1" value="0"> Just Avoid Difficult Emotions</label>
+<label class="quiz-option"><input type="radio" name="w4q1" value="1"> Don't Justify, Argue, Defend, or Explain</label>
+<label class="quiz-option"><input type="radio" name="w4q1" value="2"> Join And Decide Everything</label>
+<label class="quiz-option"><input type="radio" name="w4q1" value="3"> Just Ask Direct Explanations</label>
+</div>
+        </div>
+        <div class="quiz-question">
+          <h4>Q3: What is the correct response to guilt when setting a boundary?</h4>
+          <div class="quiz-options"><label class="quiz-option"><input type="radio" name="w4q2" value="0"> Remove the boundary immediately</label>
+<label class="quiz-option"><input type="radio" name="w4q2" value="1"> Recognise the guilt was installed by the gaslighter and does not mean your boundary is wrong</label>
+<label class="quiz-option"><input type="radio" name="w4q2" value="2"> Apologise for having boundaries</label>
+<label class="quiz-option"><input type="radio" name="w4q2" value="3"> Explain yourself in detail</label>
+</div>
+        </div>
+        <div class="quiz-question">
+          <h4>Q4: What does a boundary statement need to include?</h4>
+          <div class="quiz-options"><label class="quiz-option"><input type="radio" name="w4q3" value="0"> A long explanation and apology</label>
+<label class="quiz-option"><input type="radio" name="w4q3" value="1"> The behaviour and your response — clearly and simply</label>
+<label class="quiz-option"><input type="radio" name="w4q3" value="2"> Permission from the other person</label>
+<label class="quiz-option"><input type="radio" name="w4q3" value="3"> A list of their past wrongs</label>
+</div>
+        </div>
+        <div class="quiz-question">
+          <h4>Q5: Whose reaction to your boundary are you responsible for?</h4>
+          <div class="quiz-options"><label class="quiz-option"><input type="radio" name="w4q4" value="0"> Everyone's</label>
+<label class="quiz-option"><input type="radio" name="w4q4" value="1"> Your own only — not theirs</label>
+<label class="quiz-option"><input type="radio" name="w4q4" value="2"> The gaslighter's only</label>
+<label class="quiz-option"><input type="radio" name="w4q4" value="3"> Your family's</label>
+</div>
+        </div><button class="submit-btn" onclick="submitQuiz(4)">Submit Assessment</button>
+      </div>
+    </div>
+  </div>
+  <div id="week5" class="week-panel">
+    <div id="week5-content" class="tab-panel active">
+      <div class="video-section">
+        <h2>📹 Week 5: Processing the Grief</h2>
+        <div class="video-grid">
+          <div>
+            <div class="video-player"><div class="video-placeholder"><div class="play-btn-placeholder">▶</div></div></div>
+            <div class="video-title">Grieving What Was Never Real</div>
+          </div>
+          <div>
+            <div class="video-player"><div class="video-placeholder"><div class="play-btn-placeholder">▶</div></div></div>
+            <div class="video-title">Moving Through Grief Without Getting Stuck</div>
+          </div>
+        </div>
+      </div>
+      <div class="lesson-content"><h2>Week 5: Processing the Grief</h2>
+      <h3>🎯 Learning Objectives</h3>
+      <ul>
+        <li>Understand the unique grief that comes with gaslighting recovery</li>
+        <li>Recognise the stages of grief in your own healing journey</li>
+        <li>Learn to grieve the relationship you thought you had</li>
+        <li>Develop healthy ways to move through grief without suppressing it</li>
+      </ul>
+      <h3>📖 Key Concepts</h3>
+      <h4>1. The Grief That Nobody Talks About</h4>
+      <p>Recovering from gaslighting involves a grief that is hard to explain to others. You are not only grieving the relationship — you are grieving:</p>
+      <ul>
+        <li>The person you thought they were (who never truly existed)</li>
+        <li>The relationship you believed you had</li>
+        <li>The years you invested based on a false reality</li>
+        <li>The version of yourself you lost during that time</li>
+        <li>The future you imagined together</li>
+      </ul>
+      <h4>2. The Stages of Grief in Recovery</h4>
+      <ul>
+        <li><strong>Shock and Denial:</strong> "This can't have been deliberate"</li>
+        <li><strong>Anger:</strong> "How could they do this to me?" — a healthy and necessary stage</li>
+        <li><strong>Bargaining:</strong> "What if I had handled things differently?"</li>
+        <li><strong>Depression:</strong> The full weight of the loss settles in</li>
+        <li><strong>Acceptance:</strong> Understanding what happened without needing it to have been different</li>
+      </ul>
+      <p>These stages are not linear. You may move between them many times.</p>
+      <h4>3. Allowing Yourself to Grieve</h4>
+      <p>Many survivors feel they have no right to grieve — after all, the relationship was not what they thought. But your grief is real. The love you felt was real even if it was not reciprocated honestly. Give yourself permission to mourn.</p>
+      <h4>4. Grief vs Rumination</h4>
+      <p>There is a difference between processing grief and ruminating. Healthy grief moves — it rises, peaks, and passes. Rumination loops — the same thoughts cycling without resolution.</p>
+      <ul>
+        <li>If you are crying and feeling — you are grieving. Let it happen.</li>
+        <li>If you are replaying conversations trying to find different outcomes — that is rumination. Gently redirect yourself.</li>
+      </ul>
+      <h3>💡 Practical Exercises</h3>
+      <p><strong>Exercise 1: The Grief List</strong><br>Write down everything you are grieving — the relationship, the person, the time, the self you lost. Be specific. Naming your losses is the first step to releasing them.</p>
+      <p><strong>Exercise 2: The Anger Letter</strong><br>Write an uncensored letter to the person who gaslighted you. Say everything you never could. You do not send this letter — it is for you alone.</p>
+      <h3>📝 Reflection Questions</h3>
+      <ul>
+        <li>What are you finding hardest to grieve?</li>
+        <li>Which stage of grief feels most present for you right now?</li>
+        <li>Do you give yourself permission to be angry? Why or why not?</li>
+        <li>What would it mean to reach acceptance?</li>
+      </ul>
+      <button class="submit-btn" onclick="markComplete(5)">Mark as Complete</button></div>
+    </div>
+    <div id="week5-resources" class="tab-panel">
+      <div class="video-section">
+        <h2>📚 Resources — Week 5</h2>
+        <div class="resources-grid">
+        <div class="resource-card" onclick="downloadResource('grief-journal.pdf','Grief Processing Journal')">
+          <div class="resource-icon">📝</div>
+          <h4>Grief Processing Journal</h4>
+          <p>Guided prompts for moving through loss</p>
+          <span class="download-badge">📥 Download</span>
+        </div>
+        <div class="resource-card" onclick="downloadResource('grief-rumination.pdf','Grief vs Rumination Guide')">
+          <div class="resource-icon">📄</div>
+          <h4>Grief vs Rumination Guide</h4>
+          <p>Know the difference and move forward</p>
+          <span class="download-badge">📥 Download</span>
+        </div>
+        <div class="resource-card" onclick="downloadResource('grief-meditation.mp3','Grief Release Meditation')">
+          <div class="resource-icon">🎧</div>
+          <h4>Grief Release Meditation</h4>
+          <p>Guided practice for emotional release</p>
+          <span class="download-badge">📥 Download</span>
+        </div></div>
+      </div>
+    </div>
+    <div id="week5-assessment" class="tab-panel">
+      <div class="assessment-section" id="assess5">
+        <h2>📝 Week 5 Assessment</h2>
+        <p style="margin-bottom:20px;color:#ccc;">You need 70% to pass.</p>
+        
+        <div class="quiz-question">
+          <h4>Q1: What makes grief in gaslighting recovery unique?</h4>
+          <div class="quiz-options"><label class="quiz-option"><input type="radio" name="w5q0" value="0"> There is nothing to grieve</label>
+<label class="quiz-option"><input type="radio" name="w5q0" value="1"> You are grieving someone who never truly existed as you believed</label>
+<label class="quiz-option"><input type="radio" name="w5q0" value="2"> The grief is shorter than normal</label>
+<label class="quiz-option"><input type="radio" name="w5q0" value="3"> Only the future is mourned</label>
+</div>
+        </div>
+        <div class="quiz-question">
+          <h4>Q2: Which stage of grief involves saying "How could they do this to me?"</h4>
+          <div class="quiz-options"><label class="quiz-option"><input type="radio" name="w5q1" value="0"> Denial</label>
+<label class="quiz-option"><input type="radio" name="w5q1" value="1"> Bargaining</label>
+<label class="quiz-option"><input type="radio" name="w5q1" value="2"> Anger</label>
+<label class="quiz-option"><input type="radio" name="w5q1" value="3"> Acceptance</label>
+</div>
+        </div>
+        <div class="quiz-question">
+          <h4>Q3: Is it valid to grieve a relationship that was based on manipulation?</h4>
+          <div class="quiz-options"><label class="quiz-option"><input type="radio" name="w5q2" value="0"> No — it was not real so there is nothing to grieve</label>
+<label class="quiz-option"><input type="radio" name="w5q2" value="1"> Yes — the love you felt was real even if it was not honestly reciprocated</label>
+<label class="quiz-option"><input type="radio" name="w5q2" value="2"> Only if the relationship was long</label>
+<label class="quiz-option"><input type="radio" name="w5q2" value="3"> Only if you were married</label>
+</div>
+        </div>
+        <div class="quiz-question">
+          <h4>Q4: What is the difference between grief and rumination?</h4>
+          <div class="quiz-options"><label class="quiz-option"><input type="radio" name="w5q3" value="0"> There is no difference</label>
+<label class="quiz-option"><input type="radio" name="w5q3" value="1"> Grief moves and passes; rumination loops without resolution</label>
+<label class="quiz-option"><input type="radio" name="w5q3" value="2"> Rumination is healthier</label>
+<label class="quiz-option"><input type="radio" name="w5q3" value="3"> Grief is always destructive</label>
+</div>
+        </div>
+        <div class="quiz-question">
+          <h4>Q5: What is the purpose of writing an anger letter you never send?</h4>
+          <div class="quiz-options"><label class="quiz-option"><input type="radio" name="w5q4" value="0"> To prepare to send it later</label>
+<label class="quiz-option"><input type="radio" name="w5q4" value="1"> To release suppressed feelings safely without consequence</label>
+<label class="quiz-option"><input type="radio" name="w5q4" value="2"> To build a legal case</label>
+<label class="quiz-option"><input type="radio" name="w5q4" value="3"> To share with a therapist only</label>
+</div>
+        </div><button class="submit-btn" onclick="submitQuiz(5)">Submit Assessment</button>
+      </div>
+    </div>
+  </div>
+  <div id="week6" class="week-panel">
+    <div id="week6-content" class="tab-panel active">
+      <div class="video-section">
+        <h2>📹 Week 6: Reclaiming Your Reality & Moving Forward</h2>
+        <div class="video-grid">
+          <div>
+            <div class="video-player"><div class="video-placeholder"><div class="play-btn-placeholder">▶</div></div></div>
+            <div class="video-title">Reclaiming Your Truth After Gaslighting</div>
+          </div>
+          <div>
+            <div class="video-player"><div class="video-placeholder"><div class="play-btn-placeholder">▶</div></div></div>
+            <div class="video-title">Building a Life You Trust Again</div>
+          </div>
+        </div>
+      </div>
+      <div class="lesson-content"><h2>Week 6: Reclaiming Your Reality & Moving Forward</h2>
+      <h3>🎯 Learning Objectives</h3>
+      <ul>
+        <li>Understand what full recovery from gaslighting looks like</li>
+        <li>Build a personalised healing plan</li>
+        <li>Learn to recognise gaslighting in future relationships</li>
+        <li>Step into your reclaimed identity with confidence</li>
+      </ul>
+      <h3>📖 Key Concepts</h3>
+      <h4>1. What Recovery Actually Looks Like</h4>
+      <p>Recovery is not the absence of pain — it is the return of your own voice. You will know you are healing when:</p>
+      <ul>
+        <li>You trust your own perception more often than you doubt it</li>
+        <li>You feel your feelings without immediately questioning if they are valid</li>
+        <li>You can say no without the world collapsing</li>
+        <li>You recognise manipulation earlier and respond instead of absorbing it</li>
+        <li>You feel like yourself again — curious, opinionated, alive</li>
+      </ul>
+      <h4>2. Protecting Yourself Going Forward</h4>
+      <p>Red flags to watch for in new relationships:</p>
+      <ul>
+        <li><strong>Consistent denial</strong> of things you clearly experienced</li>
+        <li><strong>Minimising your emotions:</strong> "You're overreacting"</li>
+        <li><strong>Blame-shifting:</strong> Every conflict becomes your fault</li>
+        <li><strong>Isolation tactics:</strong> Creating distance between you and your support system</li>
+        <li><strong>Moving too fast:</strong> Intensity early on to create dependency</li>
+      </ul>
+      <h4>3. Green Flags in Healthy Relationships</h4>
+      <ul>
+        <li>They say "I hear you" and mean it</li>
+        <li>They take responsibility without being prompted</li>
+        <li>Disagreements are resolved — not weaponised</li>
+        <li>You feel more like yourself around them, not less</li>
+        <li>Their words and actions are consistent over time</li>
+      </ul>
+      <h4>4. Your Reclaimed Identity</h4>
+      <p>You are not who the gaslighting made you believe you were. You are the person who survived it, who sought understanding, who did this work. That person is remarkable.</p>
+      <ul>
+        <li>Reconnect with the things you love that were mocked or discouraged</li>
+        <li>Voice your opinions — even the unpopular ones</li>
+        <li>Trust your instincts as data worth listening to</li>
+        <li>Celebrate every moment of self-trust, no matter how small</li>
+      </ul>
+      <h4>5. Ongoing Self-Care</h4>
+      <ul>
+        <li>Consider a trauma-informed therapist if you have not already</li>
+        <li>Maintain your evidence journal as a self-trust practice</li>
+        <li>Build a support network of people who validate your reality</li>
+        <li>Be patient — healing from gaslighting takes time and it is non-linear</li>
+      </ul>
+      <h3>💡 Practical Exercises</h3>
+      <p><strong>Exercise 1: The Reclaimed Self Portrait</strong><br>Write a description of who you are now that you are healing — your values, your strengths, what you will no longer accept, what you are building toward.</p>
+      <p><strong>Exercise 2: Letter to Your Future Self</strong><br>Write a letter to yourself one year from now. What do you hope they have — in their life, in their relationships, in their relationship with themselves?</p>
+      <h3>📝 Reflection Questions</h3>
+      <ul>
+        <li>What does your reclaimed identity look like?</li>
+        <li>Which red flags will you never dismiss again?</li>
+        <li>What is the most important thing you have learned through this course?</li>
+        <li>What do you want to tell someone who is where you were at Week 1?</li>
+      </ul>
+      <h3>🎉 Congratulations!</h3>
+      <p>You have completed Healing from Gaslighting. You came here questioning your own reality — you leave with the tools to reclaim it. Your perception is valid. Your feelings are real. Your story is true. Keep going.</p>
+      <button class="submit-btn" onclick="markComplete(6)">Mark as Complete & Get Certificate</button></div>
+    </div>
+    <div id="week6-resources" class="tab-panel">
+      <div class="video-section">
+        <h2>📚 Resources — Week 6</h2>
+        <div class="resources-grid">
+        <div class="resource-card" onclick="downloadResource('recovery-roadmap.pdf','Recovery Roadmap')">
+          <div class="resource-icon">📖</div>
+          <h4>Recovery Roadmap</h4>
+          <p>What healing looks like week by week</p>
+          <span class="download-badge">📥 Download</span>
+        </div>
+        <div class="resource-card" onclick="downloadResource('red-green-flags.pdf','Red & Green Flags Checklist')">
+          <div class="resource-icon">🚩</div>
+          <h4>Red & Green Flags Checklist</h4>
+          <p>Protect yourself in future relationships</p>
+          <span class="download-badge">📥 Download</span>
+        </div>
+        <div class="resource-card" onclick="downloadResource('reclaimed-identity.pdf','Reclaimed Identity Journal')">
+          <div class="resource-icon">📝</div>
+          <h4>Reclaimed Identity Journal</h4>
+          <p>Prompts to step into your healed self</p>
+          <span class="download-badge">📥 Download</span>
+        </div>
+        <div class="resource-card" onclick="downloadResource('certificate-hfg.pdf','Course Certificate')">
+          <div class="resource-icon">🏆</div>
+          <h4>Course Certificate</h4>
+          <p>Download your completion certificate</p>
+          <span class="download-badge">📥 Download</span>
+        </div></div>
+      </div>
+    </div>
+    <div id="week6-assessment" class="tab-panel">
+      <div class="assessment-section" id="assess6">
+        <h2>📝 Week 6 Assessment</h2>
+        <p style="margin-bottom:20px;color:#ccc;">You need 70% to pass.</p>
+        
+        <div class="quiz-question">
+          <h4>Q1: Which is a sign of genuine recovery from gaslighting?</h4>
+          <div class="quiz-options"><label class="quiz-option"><input type="radio" name="w6q0" value="0"> You never feel doubt again</label>
+<label class="quiz-option"><input type="radio" name="w6q0" value="1"> You trust your own perception more often than you doubt it</label>
+<label class="quiz-option"><input type="radio" name="w6q0" value="2"> You avoid all relationships</label>
+<label class="quiz-option"><input type="radio" name="w6q0" value="3"> You no longer have any emotions</label>
+</div>
+        </div>
+        <div class="quiz-question">
+          <h4>Q2: Which is a red flag in a new relationship?</h4>
+          <div class="quiz-options"><label class="quiz-option"><input type="radio" name="w6q1" value="0"> Taking responsibility without being prompted</label>
+<label class="quiz-option"><input type="radio" name="w6q1" value="1"> Consistent denial of things you clearly experienced</label>
+<label class="quiz-option"><input type="radio" name="w6q1" value="2"> Feeling more like yourself around them</label>
+<label class="quiz-option"><input type="radio" name="w6q1" value="3"> Resolving disagreements calmly</label>
+</div>
+        </div>
+        <div class="quiz-question">
+          <h4>Q3: Which is a green flag in a healthy relationship?</h4>
+          <div class="quiz-options"><label class="quiz-option"><input type="radio" name="w6q2" value="0"> Their words and actions are consistent over time</label>
+<label class="quiz-option"><input type="radio" name="w6q2" value="1"> Every conflict becomes your fault</label>
+<label class="quiz-option"><input type="radio" name="w6q2" value="2"> They move very fast to create intensity</label>
+<label class="quiz-option"><input type="radio" name="w6q2" value="3"> They minimise your emotions</label>
+</div>
+        </div>
+        <div class="quiz-question">
+          <h4>Q4: What does your reclaimed identity represent?</h4>
+          <div class="quiz-options"><label class="quiz-option"><input type="radio" name="w6q3" value="0"> The person the gaslighter said you were</label>
+<label class="quiz-option"><input type="radio" name="w6q3" value="1"> The person who survived, sought understanding, and did this healing work</label>
+<label class="quiz-option"><input type="radio" name="w6q3" value="2"> A completely new person with no past</label>
+<label class="quiz-option"><input type="radio" name="w6q3" value="3"> Someone who never makes mistakes</label>
+</div>
+        </div>
+        <div class="quiz-question">
+          <h4>Q5: What is the most important ongoing practice after this course?</h4>
+          <div class="quiz-options"><label class="quiz-option"><input type="radio" name="w6q4" value="0"> Avoiding all future relationships</label>
+<label class="quiz-option"><input type="radio" name="w6q4" value="1"> Maintaining self-trust, seeking support, and being patient with your non-linear healing</label>
+<label class="quiz-option"><input type="radio" name="w6q4" value="2"> Pretending the gaslighting never happened</label>
+<label class="quiz-option"><input type="radio" name="w6q4" value="3"> Focusing only on the gaslighter's behaviour</label>
+</div>
+        </div><button class="submit-btn" onclick="submitQuiz(6)">Submit Assessment</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="resultsOverlay">
+  <div style="max-width:700px;margin:0 auto;">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;">
+      <h1 style="color:#a78bfa;font-size:1.3rem;">📊 Assessment Results</h1>
+      <button onclick="document.getElementById('resultsOverlay').style.display='none'" style="background:#f44336;color:#fff;border:none;padding:8px 16px;border-radius:20px;cursor:pointer;font-family:inherit;">✕ Close</button>
+    </div>
+    <div id="resultsContent"></div>
+  </div>
+</div>
+
+<button class="results-fab" onclick="viewAllResults()">📊 Results</button>
+
+<script>
+const STORAGE_PREFIX = 'coachL_HFG_';
+const TOTAL_WEEKS = 6;
+const GOOGLE_SHEET_URL = 'https://script.google.com/macros/s/AKfycbz89hcA4Z70ZyOKnk2MBBc5kVWKG5aXljNgSzpXZbfXDOhGvtpeZXGSOadoZB_RdyPK/exec';
+const SECRET_KEY = 'CoachL2025SecureKey';
+const COURSE_NAME = 'Healing from Gaslighting';
+
+let currentWeek = 1;
+let currentTab = 'content';
+let completedWeeks = new Set(JSON.parse(localStorage.getItem(STORAGE_PREFIX + 'completedWeeks') || '[]'));
+let studentName = localStorage.getItem('cl_firstName') || localStorage.getItem('studentName') || 'Learner';
+let studentEmail = localStorage.getItem('studentEmail') || 'anonymous@coachlacademy.app';
+
+const correctAnswers = {
+  1: [1, 1, 2, 0, 1],
+  2: [1, 1, 1, 1, 2],
+  3: [1, 1, 1, 1, 1],
+  4: [1, 1, 1, 1, 1],
+  5: [1, 2, 1, 1, 1],
+  6: [1, 1, 0, 1, 1],
+};
+
+document.getElementById('userAvatar').textContent = studentName.charAt(0).toUpperCase();
+
+if (localStorage.getItem('cl_theme') === 'light') {
+  document.body.classList.add('light-mode');
+  document.getElementById('themeToggle').textContent = '🌙 Dark';
+}
+
+updateProgress();
+refreshWeekButtons();
+
+function toggleTheme() {
+  const isLight = document.body.classList.toggle('light-mode');
+  document.getElementById('themeToggle').textContent = isLight ? '🌙 Dark' : '☀️ Light';
+  localStorage.setItem('cl_theme', isLight ? 'light' : 'dark');
+}
+
+function selectWeek(w) {
+  currentWeek = w;
+  for (let i = 1; i <= 6; i++) {
+    document.getElementById('week' + i).classList.remove('active');
+    document.getElementById('wbtn' + i).classList.remove('active');
+  }
+  document.getElementById('week' + w).classList.add('active');
+  document.getElementById('wbtn' + w).classList.add('active');
+  switchTab(currentTab, false);
+  refreshAssessment(w);
+}
+
+function switchTab(tab, scroll) {
+  currentTab = tab;
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('tab-' + tab).classList.add('active');
+  for (let i = 1; i <= 6; i++) {
+    ['content','resources','assessment'].forEach(t => {
+      var el = document.getElementById('week' + i + '-' + t);
+      if (el) el.classList.remove('active');
+    });
+    var show = document.getElementById('week' + i + '-' + tab);
+    if (show) show.classList.add('active');
+  }
+}
+
+function updateProgress() {
+  const done = completedWeeks.size;
+  const pct = Math.round((done / TOTAL_WEEKS) * 100);
+  document.getElementById('progressBar').style.width = pct + '%';
+  document.getElementById('modulesComplete').textContent = done + '/' + TOTAL_WEEKS;
+  document.getElementById('lessonsViewed').textContent = (done * 2) + '/' + (TOTAL_WEEKS * 2);
+  document.getElementById('assessmentsPassed').textContent = done + '/' + TOTAL_WEEKS;
+}
+
+function refreshWeekButtons() {
+  for (let w = 1; w <= 6; w++) {
+    const btn = document.getElementById('wbtn' + w);
+    btn.classList.remove('completed');
+    btn.textContent = completedWeeks.has(w) ? 'Week ' + w + ' ✓' : 'Week ' + w;
+    if (completedWeeks.has(w)) btn.classList.add('completed');
+  }
+}
+
+function refreshAssessment(w) {
+  const el = document.getElementById('assess' + w);
+  if (!el) return;
+  if (completedWeeks.has(w)) {
+    const notice = el.querySelector('.already-passed');
+    if (!notice) {
+      el.insertAdjacentHTML('afterbegin', '<div class="already-passed"><h3>✅ Already Passed!</h3><p>You can review the questions below.</p></div>');
+    }
+    el.querySelectorAll('input[type=radio]').forEach(i => i.disabled = true);
+    const btn = el.querySelector('.submit-btn');
+    if (btn) btn.style.display = 'none';
+  }
+}
+
+function submitQuiz(week) {
+  const correct = correctAnswers[week];
+  const total = correct.length;
+  let score = 0;
+  let allAnswered = true;
+  const answers = [];
+  for (let i = 0; i < total; i++) {
+    const sel = document.querySelector('input[name="w' + week + 'q' + i + '"]:checked');
+    if (!sel) { allAnswered = false; break; }
+    const ua = parseInt(sel.value);
+    const ok = ua === correct[i];
+    if (ok) score++;
+    answers.push({ question: 'Q' + (i+1), userAnswer: ua, correctAnswer: correct[i], isCorrect: ok });
+  }
+  if (!allAnswered) { alert('Please answer all questions.'); return; }
+  const pct = Math.round((score / total) * 100);
+  const passed = pct >= 70;
+  submitToSheets(week, pct, score, total, answers, passed);
+  if (passed) {
+    completedWeeks.add(week);
+    localStorage.setItem(STORAGE_PREFIX + 'completedWeeks', JSON.stringify([...completedWeeks]));
+    updateProgress();
+    refreshWeekButtons();
+    refreshAssessment(week);
+    alert('🎉 You passed with ' + pct + '%! (' + score + '/' + total + ' correct)');
+  } else {
+    alert('You scored ' + pct + '%. You need 70% to pass. Review and try again!');
+  }
+}
+
+function submitToSheets(week, score, correct, total, answers, passed) {
+  const payload = {
+    secretKey: SECRET_KEY, timestamp: new Date().toLocaleString(),
+    studentName, studentEmail, courseName: COURSE_NAME,
+    week, score, correct, total,
+    passed: passed ? 'YES' : 'NO',
+    detailedAnswers: JSON.stringify(answers)
+  };
+  fetch(GOOGLE_SHEET_URL, { method:'POST', mode:'no-cors', headers:{'Content-Type':'application/json'}, body:JSON.stringify(payload) })
+    .catch(e => console.error(e));
+  const all = JSON.parse(localStorage.getItem('assessmentResults') || '[]');
+  all.push({...payload, answers});
+  localStorage.setItem('assessmentResults', JSON.stringify(all));
+}
+
+function viewAllResults() {
+  const all = JSON.parse(localStorage.getItem('assessmentResults') || '[]');
+  if (!all.length) { alert('No results yet.'); return; }
+  const rows = all.map((r, i) => `
+    <div style="background:rgba(255,255,255,0.05);padding:16px;border-radius:10px;margin-bottom:16px;border-left:4px solid ${r.passed==='YES'?'#4caf50':'#f44336'};">
+      <h3 style="color:${r.passed==='YES'?'#4caf50':'#f44336'};margin-bottom:8px;">Submission #${i+1} — ${r.passed==='YES'?'✅ PASSED':'❌ FAILED'}</h3>
+      <p>Student: ${r.studentName} | Week: ${r.week} | Score: ${r.score}% (${r.correct}/${r.total})</p>
+      <p style="font-size:0.8rem;color:#999;margin-top:4px;">${r.timestamp}</p>
+    </div>`).join('');
+  document.getElementById('resultsContent').innerHTML = '<p style="margin-bottom:16px;color:#999;">Total: ' + all.length + ' submissions</p>' + rows;
+  document.getElementById('resultsOverlay').style.display = 'block';
+}
+
+function downloadResource(file, title) {
+  const url = 'resources/' + file;
+  fetch(url, {method:'HEAD'})
+    .then(r => {
+      if (r.ok) {
+        const a = document.createElement('a');
+        a.href = url; a.download = file; a.target = '_blank';
+        document.body.appendChild(a); a.click(); document.body.removeChild(a);
+      } else {
+        alert('📁 ' + title + '\nAdd "' + file + '" to your /resources/ folder.');
+      }
+    })
+    .catch(() => alert('📁 ' + title + '\nAdd "' + file + '" to your /resources/ folder.'));
+}
+
+function markComplete(week) {
+  switchTab('assessment');
+  window.scrollTo(0, 0);
+}
+
+completedWeeks.forEach(w => refreshAssessment(w));
+</script>
+</body>
+</html>
