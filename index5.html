@@ -1,0 +1,1700 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Understanding Narcissistic Abuse - Coach L Academy</title>
+<link rel="icon" type="image/png" href="favicon.png">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #07070c;
+  color: #fff;
+  min-height: 100%;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body.light-mode { background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%); color: #333; }
+
+/* HEADER */
+.header {
+  background: rgba(7,7,12,0.97);
+  padding: 14px 20px;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+body.light-mode .header { background: linear-gradient(135deg,#667eea,#764ba2); }
+.header-left { display:flex; align-items:center; gap:12px; }
+.back-link { color:#a78bfa; font-size:1.4rem; text-decoration:none; }
+.course-title h1 { font-size:1rem; font-weight:700; }
+.course-title p { font-size:0.75rem; opacity:0.7; }
+.header-right { display:flex; align-items:center; gap:10px; }
+.theme-btn { background:rgba(255,255,255,0.1); border:1px solid rgba(255,255,255,0.2); color:#fff; padding:6px 12px; border-radius:16px; font-size:0.8rem; cursor:pointer; }
+.avatar { width:36px; height:36px; background:linear-gradient(135deg,#f093fb,#f5576c); border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:1rem; }
+
+/* PROGRESS */
+.progress-section {
+  padding: 16px 20px;
+  background: rgba(255,255,255,0.03);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+body.light-mode .progress-section { background:#fff; border-bottom:1px solid #e0e0e0; }
+.progress-bar-wrap { height:8px; background:rgba(255,255,255,0.1); border-radius:4px; margin-bottom:12px; overflow:hidden; }
+body.light-mode .progress-bar-wrap { background:#e0e0e0; }
+.progress-bar-fill { height:100%; background:linear-gradient(90deg,#667eea,#764ba2); border-radius:4px; width:0%; transition:width 0.5s; }
+.stat-row { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; }
+.stat-box { background:linear-gradient(135deg,#667eea,#764ba2); border-radius:10px; padding:10px; text-align:center; }
+.stat-box:nth-child(2) { background:linear-gradient(135deg,#f093fb,#f5576c); }
+.stat-box:nth-child(3) { background:linear-gradient(135deg,#4facfe,#00f2fe); }
+.stat-box h3 { font-size:1.3rem; font-weight:800; }
+.stat-box p { font-size:0.65rem; opacity:0.9; }
+
+/* TABS */
+.tabs-row {
+  display:flex; gap:6px; padding:14px 20px 0;
+  border-bottom:2px solid rgba(255,255,255,0.08);
+}
+body.light-mode .tabs-row { border-bottom-color:#e0e0e0; }
+.tab {
+  flex:1; padding:10px 4px; text-align:center;
+  background:rgba(255,255,255,0.04); border:none;
+  border-radius:8px 8px 0 0; color:#888;
+  font-size:0.9rem; font-weight:600; cursor:pointer;
+  font-family:inherit;
+}
+body.light-mode .tab { background:#f0f0f0; color:#666; }
+.tab.active { background:linear-gradient(135deg,#667eea,#764ba2); color:#fff; }
+
+/* WEEK BUTTONS */
+.week-row {
+  display:flex; flex-wrap:wrap; gap:8px;
+  padding:14px 20px;
+  border-bottom:1px solid rgba(255,255,255,0.06);
+}
+body.light-mode .week-row { border-bottom-color:#e0e0e0; }
+.module-btn {
+  padding:8px 16px;
+  background:rgba(255,255,255,0.05);
+  border:2px solid rgba(102,126,234,0.5);
+  border-radius:20px; color:#a78bfa;
+  font-size:0.85rem; font-weight:600;
+  cursor:pointer; font-family:inherit;
+}
+body.light-mode .module-btn { background:#fff; border-color:#667eea; color:#667eea; }
+.module-btn.active { background:linear-gradient(135deg,#667eea,#764ba2); border-color:transparent; color:#fff; }
+.module-btn.completed { background:#4caf50; border-color:#4caf50; color:#fff; }
+
+/* CONTENT AREA */
+.content-area { padding:0 0 80px 0; }
+
+.week-panel { display:none; }
+.week-panel.active { display:block; }
+.tab-panel { display:none; }
+.tab-panel.active { display:block; }
+
+.video-section {
+  padding:20px;
+  border-bottom:1px solid rgba(255,255,255,0.06);
+}
+body.light-mode .video-section { background:#fff; border-bottom-color:#e0e0e0; }
+.video-section h2 { font-size:1.1rem; margin-bottom:16px; color:#a78bfa; }
+body.light-mode .video-section h2 { color:#667eea; }
+.video-grid { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+@media(max-width:480px) { .video-grid { grid-template-columns:1fr; } }
+.video-player { background:#000; border-radius:10px; overflow:hidden; position:relative; padding-top:56.25%; }
+.video-placeholder { position:absolute; top:0; left:0; width:100%; height:100%; display:flex; align-items:center; justify-content:center; background:linear-gradient(135deg,#1a1a2e,#16213e); }
+.play-btn { width:50px; height:50px; background:rgba(102,126,234,0.9); border-radius:50%; display:flex; align-items:center; justify-content:center; cursor:pointer; }
+.play-btn::after { content:'▶'; color:#fff; font-size:1.2rem; margin-left:4px; }
+.video-title { margin-top:8px; font-size:0.85rem; font-weight:600; color:#ccc; }
+body.light-mode .video-title { color:#333; }
+
+.lesson-content { padding:20px; }
+body.light-mode .lesson-content { background:#fff; }
+.lesson-content h2 { color:#a78bfa; margin-bottom:16px; font-size:1.3rem; }
+.lesson-content h3 { color:#c4b5fd; margin:20px 0 10px; font-size:1.1rem; }
+.lesson-content h4 { color:#a78bfa; margin:16px 0 8px; }
+.lesson-content p { line-height:1.8; margin-bottom:12px; color:#ccc; }
+.lesson-content ul { margin-left:20px; margin-bottom:12px; }
+.lesson-content li { margin-bottom:8px; line-height:1.6; color:#ccc; }
+body.light-mode .lesson-content h2 { color:#667eea; }
+body.light-mode .lesson-content h3 { color:#764ba2; }
+body.light-mode .lesson-content h4 { color:#667eea; }
+body.light-mode .lesson-content p,
+body.light-mode .lesson-content li { color:#555; }
+
+.resources-grid { display:grid; grid-template-columns:1fr 1fr; gap:12px; padding-top:10px; }
+@media(max-width:480px) { .resources-grid { grid-template-columns:1fr; } }
+.resource-card { background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.08); border-radius:12px; padding:16px; cursor:pointer; }
+body.light-mode .resource-card { background:#fff; border-color:#e0e0e0; }
+.resource-icon { font-size:1.5rem; margin-bottom:8px; }
+.resource-card h4 { font-size:0.9rem; margin-bottom:6px; }
+.resource-card p { font-size:0.78rem; color:#999; }
+body.light-mode .resource-card p { color:#666; }
+.download-badge { display:inline-block; padding:3px 10px; background:#4caf50; color:#fff; border-radius:10px; font-size:0.7rem; margin-top:8px; }
+
+.assessment-section { padding:20px; }
+body.light-mode .assessment-section { background:#fff; }
+.assessment-section h2 { color:#a78bfa; margin-bottom:16px; font-size:1.2rem; }
+body.light-mode .assessment-section h2 { color:#667eea; }
+.quiz-question { background:rgba(255,255,255,0.05); padding:16px; border-radius:10px; margin-bottom:14px; border-left:4px solid #667eea; }
+body.light-mode .quiz-question { background:#f8f9fa; }
+.quiz-question h4 { margin-bottom:12px; font-size:0.95rem; }
+body.light-mode .quiz-question h4 { color:#333; }
+.quiz-options { display:flex; flex-direction:column; gap:8px; }
+.quiz-option { padding:10px 14px; background:rgba(255,255,255,0.04); border:2px solid rgba(255,255,255,0.1); border-radius:8px; cursor:pointer; color:#ccc; font-size:0.9rem; display:flex; align-items:center; gap:8px; }
+body.light-mode .quiz-option { background:#fff; border-color:#e0e0e0; color:#333; }
+.quiz-option input { margin:0; flex-shrink:0; }
+.already-passed { background:rgba(76,175,80,0.1); border:2px solid #4caf50; border-radius:10px; padding:16px; margin-bottom:16px; text-align:center; }
+.already-passed h3 { color:#4caf50; margin-bottom:6px; }
+.already-passed p { color:#aaa; font-size:0.9rem; }
+
+.submit-btn {
+  display:block; width:100%; padding:14px;
+  background:linear-gradient(135deg,#667eea,#764ba2);
+  color:#fff; border:none; border-radius:12px;
+  font-size:1rem; font-weight:700; cursor:pointer;
+  margin-top:16px; font-family:inherit;
+}
+
+/* VIEW RESULTS BUTTON */
+.results-fab {
+  position:fixed; bottom:20px; right:20px;
+  padding:12px 20px;
+  background:linear-gradient(135deg,#f093fb,#f5576c);
+  color:#fff; border:none; border-radius:30px;
+  font-size:0.9rem; font-weight:600; cursor:pointer;
+  box-shadow:0 4px 16px rgba(240,147,251,0.4);
+  z-index:50; font-family:inherit;
+}
+
+/* RESULTS OVERLAY */
+#resultsOverlay {
+  display:none; position:fixed; top:0; left:0;
+  width:100%; height:100%; background:#07070c;
+  z-index:9999; overflow-y:auto; padding:20px;
+  box-sizing:border-box;
+}
+body.light-mode #resultsOverlay { background:#f5f5f5; }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <div class="header-left">
+    <a href="https://coachl-academy.github.io/Inspire-Teach-Heal/index2.html" class="back-link">←</a>
+    <img src="favicon.png" style="width:36px;height:36px;border-radius:8px;">
+    <div class="course-title">
+      <h1>Understanding Narcissistic Abuse</h1>
+      <p>6-Week Course</p>
+    </div>
+  </div>
+  <div class="header-right">
+    <button class="theme-btn" id="themeToggle" onclick="toggleTheme()">☀️ Light</button>
+    <div class="avatar" id="userAvatar">A</div>
+  </div>
+</div>
+
+<!-- PROGRESS -->
+<div class="progress-section">
+  <div class="progress-bar-wrap"><div class="progress-bar-fill" id="progressBar"></div></div>
+  <div class="stat-row">
+    <div class="stat-box"><h3 id="modulesComplete">0/6</h3><p>Modules Done</p></div>
+    <div class="stat-box"><h3 id="lessonsViewed">0/12</h3><p>Lessons Viewed</p></div>
+    <div class="stat-box"><h3 id="assessmentsPassed">0/6</h3><p>Assessments</p></div>
+  </div>
+</div>
+
+<!-- TABS -->
+<div class="tabs-row">
+  <button class="tab active" id="tab-content" onclick="switchTab('content')">Content</button>
+  <button class="tab" id="tab-resources" onclick="switchTab('resources')">Resources</button>
+  <button class="tab" id="tab-assessment" onclick="switchTab('assessment')">Assessment</button>
+</div>
+
+<!-- WEEK BUTTONS -->
+<div class="week-row">
+    <button class="module-btn active" id="wbtn1" onclick="selectWeek(1)">Week 1</button>
+    <button class="module-btn" id="wbtn2" onclick="selectWeek(2)">Week 2</button>
+    <button class="module-btn" id="wbtn3" onclick="selectWeek(3)">Week 3</button>
+    <button class="module-btn" id="wbtn4" onclick="selectWeek(4)">Week 4</button>
+    <button class="module-btn" id="wbtn5" onclick="selectWeek(5)">Week 5</button>
+    <button class="module-btn" id="wbtn6" onclick="selectWeek(6)">Week 6</button>
+
+</div>
+
+<!-- CONTENT AREA — all weeks baked in statically -->
+<div class="content-area">
+
+  <!-- WEEK 1 PANEL -->
+  <div id="week1" class="week-panel active">
+
+    <!-- Content tab -->
+    <div id="week1-content" class="tab-panel active">
+      <div class="video-section">
+        <h2>📹 Week 1: Introduction to Narcissistic Abuse</h2>
+        <div class="video-grid">
+          <div>
+            <div class="video-player"><iframe src="https://www.youtube.com/embed/J4yraZiJ9D8" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;border-radius:10px;"></iframe></div>
+            <div class="video-title">Understanding Narcissism Basics</div>
+          </div>
+          <div>
+            <div class="video-player"><iframe src="https://www.youtube.com/embed/IEfS-_a21kk" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;border-radius:10px;"></iframe></div>
+            <div class="video-title">Narcissistic Personality Disorder</div>
+          </div>
+        </div>
+      </div>
+      <div class="lesson-content">
+      <h2>Week 1: Introduction to Narcissistic Abuse</h2>
+      
+      <h3>🎯 Learning Objectives</h3>
+      <ul>
+        <li>Understand what narcissistic personality disorder is</li>
+        <li>Differentiate between healthy narcissism and pathological narcissism</li>
+        <li>Recognize the spectrum of narcissistic behavior</li>
+        <li>Learn about different types of narcissists</li>
+      </ul>
+
+      <h3>📖 Key Concepts</h3>
+      
+      <h4>1. What is Narcissism?</h4>
+      <p>Narcissism exists on a spectrum from healthy self-esteem to pathological narcissistic personality disorder (NPD). Understanding this spectrum helps you identify when behavior crosses the line from confidence into manipulation and abuse.</p>
+      <ul>
+        <li><strong>Healthy Narcissism:</strong> Appropriate self-esteem, ability to accept criticism, empathy for others</li>
+        <li><strong>Narcissistic Traits:</strong> Self-centered behavior without meeting full NPD criteria</li>
+        <li><strong>Narcissistic Personality Disorder:</strong> Pervasive pattern of grandiosity, need for admiration, lack of empathy</li>
+      </ul>
+
+      <h4>2. Types of Narcissists</h4>
+      <ul>
+        <li><strong>Overt/Grandiose Narcissist:</strong> Loud, boastful, demands attention and admiration openly</li>
+        <li><strong>Covert/Vulnerable Narcissist:</strong> Appears shy or modest but harbors same sense of superiority</li>
+        <li><strong>Malignant Narcissist:</strong> Most dangerous type; combines narcissism with antisocial traits</li>
+        <li><strong>Communal Narcissist:</strong> Gains admiration through appearing selfless and charitable</li>
+      </ul>
+
+      <h4>3. Core Characteristics of NPD</h4>
+      <ul>
+        <li>Grandiose sense of self-importance</li>
+        <li>Preoccupation with fantasies of success, power, or beauty</li>
+        <li>Belief they are "special" and unique</li>
+        <li>Need for excessive admiration</li>
+        <li>Sense of entitlement</li>
+        <li>Interpersonally exploitative</li>
+        <li>Lack of empathy</li>
+        <li>Envious of others or believes others are envious of them</li>
+        <li>Arrogant behaviors or attitudes</li>
+      </ul>
+
+      <h3>💡 Practical Exercises</h3>
+      <p><strong>Exercise 1: Self-Assessment</strong><br>
+      Reflect on your relationship. Write down behaviors that concerned you initially but you dismissed or rationalized away.</p>
+
+      <p><strong>Exercise 2: Pattern Recognition</strong><br>
+      Create a timeline of your relationship. Note when behaviors changed and what triggered those changes.</p>
+
+      <h3>📝 Reflection Questions</h3>
+      <ul>
+        <li>What first attracted you to this person?</li>
+        <li>When did you first notice something was "off"?</li>
+        <li>Have you seen patterns of behavior repeat?</li>
+        <li>How has your self-esteem changed since the relationship began?</li>
+      </ul>
+
+      <button class="submit-btn" onclick="markComplete(1)">Mark as Complete</button>
+    </div>
+    </div>
+
+    <!-- Resources tab -->
+    <div id="week1-resources" class="tab-panel">
+      <div class="video-section">
+        <h2>📚 Resources — Week 1</h2>
+        <div class="resources-grid">
+        <div class="resource-card" onclick="downloadResource('Narcissism-Workbook.pdf','Narcissism Workbook')">
+          <div class="resource-icon">📄</div>
+          <h4>Narcissism Workbook</h4>
+          <p>Comprehensive workbook for understanding narcissism</p>
+          <span class="download-badge">📥 Download</span>
+        </div>
+        <div class="resource-card" onclick="downloadResource('dsm-5-criteria-for-narcissistic-personality-disorder.pdf','DSM-5 NPD Criteria')">
+          <div class="resource-icon">📋</div>
+          <h4>DSM-5 NPD Criteria</h4>
+          <p>Official diagnostic criteria for narcissistic personality disorder</p>
+          <span class="download-badge">📥 Download</span>
+        </div>
+        <div class="resource-card" onclick="downloadResource('Narcissistic-Abuse-Cycle-Worksheet-1.pdf','Narcissistic Abuse Cycle Worksheet')">
+          <div class="resource-icon">📝</div>
+          <h4>Narcissistic Abuse Cycle Worksheet</h4>
+          <p>Identify and track the abuse cycle in your relationship</p>
+          <span class="download-badge">📥 Download</span>
+        </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Assessment tab -->
+    <div id="week1-assessment" class="tab-panel">
+      <div class="assessment-section" id="assess1">
+        <h2>📝 Week 1 Assessment</h2>
+        <p style="margin-bottom:20px;color:#ccc;">You need 70% to pass.</p>
+        
+        <div class="quiz-question">
+          <h4>Q1: What is the key difference between healthy narcissism and NPD?</h4>
+          <div class="quiz-options"><label class="quiz-option"><input type="radio" name="w1q0" value="0"> Healthy narcissism includes empathy and ability to accept criticism</label>
+<label class="quiz-option"><input type="radio" name="w1q0" value="1"> There is no difference</label>
+<label class="quiz-option"><input type="radio" name="w1q0" value="2"> NPD is just extreme confidence</label>
+<label class="quiz-option"><input type="radio" name="w1q0" value="3"> Healthy narcissism is always bad</label>
+</div>
+        </div>
+        <div class="quiz-question">
+          <h4>Q2: Which type of narcissist appears modest but harbors superiority?</h4>
+          <div class="quiz-options"><label class="quiz-option"><input type="radio" name="w1q1" value="0"> Overt narcissist</label>
+<label class="quiz-option"><input type="radio" name="w1q1" value="1"> Covert narcissist</label>
+<label class="quiz-option"><input type="radio" name="w1q1" value="2"> Malignant narcissist</label>
+<label class="quiz-option"><input type="radio" name="w1q1" value="3"> Communal narcissist</label>
+</div>
+        </div>
+        <div class="quiz-question">
+          <h4>Q3: How many characteristics must be present for NPD diagnosis?</h4>
+          <div class="quiz-options"><label class="quiz-option"><input type="radio" name="w1q2" value="0"> 3 or more</label>
+<label class="quiz-option"><input type="radio" name="w1q2" value="1"> 5 or more</label>
+<label class="quiz-option"><input type="radio" name="w1q2" value="2"> 7 or more</label>
+<label class="quiz-option"><input type="radio" name="w1q2" value="3"> All 9</label>
+</div>
+        </div>
+        <div class="quiz-question">
+          <h4>Q4: What is a malignant narcissist?</h4>
+          <div class="quiz-options"><label class="quiz-option"><input type="radio" name="w1q3" value="0"> A narcissist who is physically ill</label>
+<label class="quiz-option"><input type="radio" name="w1q3" value="1"> The most dangerous type combining narcissism with antisocial traits</label>
+<label class="quiz-option"><input type="radio" name="w1q3" value="2"> A narcissist who can be cured</label>
+<label class="quiz-option"><input type="radio" name="w1q3" value="3"> A term for all narcissists</label>
+</div>
+        </div>
+        <div class="quiz-question">
+          <h4>Q5: Why is creating a relationship timeline helpful?</h4>
+          <div class="quiz-options"><label class="quiz-option"><input type="radio" name="w1q4" value="0"> To blame the narcissist</label>
+<label class="quiz-option"><input type="radio" name="w1q4" value="1"> To recognize patterns and validate your experience</label>
+<label class="quiz-option"><input type="radio" name="w1q4" value="2"> It's not helpful</label>
+<label class="quiz-option"><input type="radio" name="w1q4" value="3"> To share on social media</label>
+</div>
+        </div><button class="submit-btn" onclick="submitQuiz(1)">Submit Assessment</button>
+      </div>
+    </div>
+
+  </div>
+  <!-- WEEK 2 PANEL -->
+  <div id="week2" class="week-panel">
+
+    <!-- Content tab -->
+    <div id="week2-content" class="tab-panel active">
+      <div class="video-section">
+        <h2>📹 Week 2: Identifying Narcissistic Patterns</h2>
+        <div class="video-grid">
+                    <div>
+            <div class="video-player"><iframe src="https://www.youtube.com/embed/vC7xdn8rQTY" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;border-radius:10px;"></iframe></div>
+            <div class="video-title">Understanding Narcissistic Patterns</div>
+          </div>
+          <div>
+            <div class="video-player"><iframe src="https://www.youtube.com/embed/FISZshe9L3s" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;border-radius:10px;"></iframe></div>
+            <div class="video-title">Gaslighting Explained</div>
+          </div>
+        </div>
+      </div>
+      <div class="lesson-content">
+      <h2>Week 2: Identifying Narcissistic Patterns</h2>
+      
+      <h3>🎯 Learning Objectives</h3>
+      <ul>
+        <li>Recognize common manipulation tactics used by narcissists</li>
+        <li>Understand the cycle of narcissistic abuse</li>
+        <li>Identify gaslighting techniques and their effects</li>
+        <li>Learn to document patterns of behavior</li>
+      </ul>
+
+      <h3>📖 Key Concepts</h3>
+      
+      <h4>1. Common Manipulation Tactics</h4>
+      <p>Narcissists employ various manipulation techniques to maintain control:</p>
+      <ul>
+        <li><strong>Love Bombing:</strong> Excessive attention and affection in the beginning to create dependency</li>
+        <li><strong>Triangulation:</strong> Bringing a third person into the relationship dynamic to create jealousy</li>
+        <li><strong>Silent Treatment:</strong> Withholding communication as punishment</li>
+        <li><strong>Projection:</strong> Accusing you of behaviors they themselves exhibit</li>
+        <li><strong>Word Salad:</strong> Confusing circular conversations that leave you disoriented</li>
+        <li><strong>Future Faking:</strong> Making promises about the future they never intend to keep</li>
+        <li><strong>Hoovering:</strong> Attempts to "suck you back in" after a discard</li>
+      </ul>
+
+      <h4>2. The Narcissistic Abuse Cycle</h4>
+      <p>Understanding the cycle helps you recognize patterns:</p>
+      <ul>
+        <li><strong>Idealization Phase:</strong> You're put on a pedestal; everything feels perfect. They mirror your values and interests.</li>
+        <li><strong>Devaluation Phase:</strong> Criticism begins; you can't do anything right. They systematically tear down your self-esteem.</li>
+        <li><strong>Discard Phase:</strong> You're rejected or abandoned, often suddenly and cruelly.</li>
+        <li><strong>Hoover Phase:</strong> They attempt to pull you back in with promises of change, love bombing, or inducing guilt.</li>
+      </ul>
+
+      <h4>3. Gaslighting Recognition</h4>
+      <p>Gaslighting makes you question your reality. Common phrases include:</p>
+      <ul>
+        <li>"That never happened" (denying events you clearly remember)</li>
+        <li>"You're too sensitive" (invalidating your feelings)</li>
+        <li>"You're crazy/imagining things" (questioning your sanity)</li>
+        <li>"Everyone thinks you're the problem" (isolating you)</li>
+        <li>"You're remembering it wrong" (rewriting history)</li>
+        <li>"I never said that" (denying their own words)</li>
+        <li>"You're overreacting" (minimizing abuse)</li>
+      </ul>
+
+      <h4>4. Effects of Gaslighting</h4>
+      <ul>
+        <li>Constant self-doubt</li>
+        <li>Second-guessing your memories</li>
+        <li>Difficulty making decisions</li>
+        <li>Feeling like you're "going crazy"</li>
+        <li>Apologizing constantly</li>
+        <li>Making excuses for their behavior</li>
+        <li>Loss of identity and confidence</li>
+      </ul>
+
+      <h3>💡 Practical Exercises</h3>
+      <p><strong>Exercise 1: Pattern Documentation</strong><br>
+      Keep a daily journal noting interactions that made you feel confused, upset, or manipulated. Look for recurring patterns. Include dates, what was said, and how you felt.</p>
+
+      <p><strong>Exercise 2: Reality Check</strong><br>
+      When you doubt yourself, write down the facts of what happened. Compare your account with any evidence (texts, emails). Trust your documentation over their denials.</p>
+
+      <p><strong>Exercise 3: Manipulation Identification</strong><br>
+      Review the manipulation tactics list. Circle the ones you've experienced. This helps validate that what you're experiencing has a name and pattern.</p>
+
+      <h3>📝 Reflection Questions</h3>
+      <ul>
+        <li>Which manipulation tactics have you experienced most frequently?</li>
+        <li>Where are you in the abuse cycle currently?</li>
+        <li>What gaslighting phrases sound most familiar to you?</li>
+        <li>How has this affected your sense of reality?</li>
+        <li>When did you first notice these patterns?</li>
+      </ul>
+
+      <button class="submit-btn" onclick="markComplete(2)">Mark as Complete</button>
+    </div>
+    </div>
+
+    <!-- Resources tab -->
+    <div id="week2-resources" class="tab-panel">
+      <div class="video-section">
+        <h2>📚 Resources — Week 2</h2>
+        <div class="resources-grid">
+        <div class="resource-card" onclick="downloadResource('manipulation-checklist.pdf','Manipulation Tactics Checklist')">
+          <div class="resource-icon">📄</div>
+          <h4>Manipulation Tactics Checklist</h4>
+          <p>Identify manipulation in your relationship</p>
+          <span class="download-badge">📥 Download</span>
+        </div>
+        <div class="resource-card" onclick="downloadResource('pattern-tracking.pdf','Pattern Tracking Worksheet')">
+          <div class="resource-icon">📝</div>
+          <h4>Pattern Tracking Worksheet</h4>
+          <p>Document behavioral patterns over time</p>
+          <span class="download-badge">📥 Download</span>
+        </div>
+        <div class="resource-card" onclick="downloadResource('abuse-cycle.pdf','Abuse Cycle Diagram')">
+          <div class="resource-icon">📊</div>
+          <h4>Abuse Cycle Diagram</h4>
+          <p>Visual guide to narcissistic abuse cycle</p>
+          <span class="download-badge">📥 Download</span>
+        </div>
+        <div class="resource-card" onclick="downloadResource('evidence-guide.pdf','Evidence Collection Guide')">
+          <div class="resource-icon">📱</div>
+          <h4>Evidence Collection Guide</h4>
+          <p>How to safely document abuse</p>
+          <span class="download-badge">📥 Download</span>
+        </div>
+        <div class="resource-card" onclick="downloadResource('grounding-meditation.mp3','Grounding Exercise')">
+          <div class="resource-icon">🎧</div>
+          <h4>Grounding Exercise</h4>
+          <p>10-minute meditation for clarity</p>
+          <span class="download-badge">📥 Download</span>
+        </div>
+        <div class="resource-card" onclick="downloadResource('gaslighting-recovery.pdf','Gaslighting Recovery Guide')">
+          <div class="resource-icon">📚</div>
+          <h4>Gaslighting Recovery Guide</h4>
+          <p>Rebuild trust in yourself</p>
+          <span class="download-badge">📥 Download</span>
+        </div></div>
+      </div>
+    </div>
+
+    <!-- Assessment tab -->
+    <div id="week2-assessment" class="tab-panel">
+      <div class="assessment-section" id="assess2">
+        <h2>📝 Week 2 Assessment</h2>
+        <p style="margin-bottom:20px;color:#ccc;">You need 70% to pass.</p>
+        
+        <div class="quiz-question">
+          <h4>Q1: What is 'love bombing'?</h4>
+          <div class="quiz-options"><label class="quiz-option"><input type="radio" name="w2q0" value="0"> A form of physical abuse</label>
+<label class="quiz-option"><input type="radio" name="w2q0" value="1"> Excessive attention and affection used to create dependency</label>
+<label class="quiz-option"><input type="radio" name="w2q0" value="2"> A type of emotional withdrawal</label>
+<label class="quiz-option"><input type="radio" name="w2q0" value="3"> Giving too many gifts</label>
+</div>
+        </div>
+        <div class="quiz-question">
+          <h4>Q2: Which phase comes after idealization in the narcissistic abuse cycle?</h4>
+          <div class="quiz-options"><label class="quiz-option"><input type="radio" name="w2q1" value="0"> Hoover phase</label>
+<label class="quiz-option"><input type="radio" name="w2q1" value="1"> Discard phase</label>
+<label class="quiz-option"><input type="radio" name="w2q1" value="2"> Devaluation phase</label>
+<label class="quiz-option"><input type="radio" name="w2q1" value="3"> Recovery phase</label>
+</div>
+        </div>
+        <div class="quiz-question">
+          <h4>Q3: What is gaslighting designed to do?</h4>
+          <div class="quiz-options"><label class="quiz-option"><input type="radio" name="w2q2" value="0"> Make you question your reality and sanity</label>
+<label class="quiz-option"><input type="radio" name="w2q2" value="1"> Provide emotional support</label>
+<label class="quiz-option"><input type="radio" name="w2q2" value="2"> Help you understand their perspective</label>
+<label class="quiz-option"><input type="radio" name="w2q2" value="3"> Improve communication</label>
+</div>
+        </div>
+        <div class="quiz-question">
+          <h4>Q4: What is triangulation?</h4>
+          <div class="quiz-options"><label class="quiz-option"><input type="radio" name="w2q3" value="0"> A geometric pattern</label>
+<label class="quiz-option"><input type="radio" name="w2q3" value="1"> Bringing a third person into the relationship to create jealousy or competition</label>
+<label class="quiz-option"><input type="radio" name="w2q3" value="2"> A therapy technique</label>
+<label class="quiz-option"><input type="radio" name="w2q3" value="3"> A form of meditation</label>
+</div>
+        </div>
+        <div class="quiz-question">
+          <h4>Q5: Why is documenting patterns important?</h4>
+          <div class="quiz-options"><label class="quiz-option"><input type="radio" name="w2q4" value="0"> To use against the abuser later</label>
+<label class="quiz-option"><input type="radio" name="w2q4" value="1"> To help you recognize recurring behaviors and validate your reality</label>
+<label class="quiz-option"><input type="radio" name="w2q4" value="2"> To share on social media</label>
+<label class="quiz-option"><input type="radio" name="w2q4" value="3"> It's not important</label>
+</div>
+        </div><button class="submit-btn" onclick="submitQuiz(2)">Submit Assessment</button>
+      </div>
+    </div>
+
+  </div>
+  <!-- WEEK 3 PANEL -->
+  <div id="week3" class="week-panel">
+
+    <!-- Content tab -->
+    <div id="week3-content" class="tab-panel active">
+      <div class="video-section">
+        <h2>📹 Week 3: Understanding Trauma Bonds</h2>
+        <div class="video-grid">
+                    <div>
+            <div class="video-player"><iframe src="https://www.youtube.com/embed/vIFJHH8V8go" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;border-radius:10px;"></iframe></div>
+            <div class="video-title">Breaking Trauma Bonds</div>
+          </div>
+          <div>
+            <div class="video-player"><iframe src="https://www.youtube.com/embed/vJf9zx1V22U" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;border-radius:10px;"></iframe></div>
+            <div class="video-title">Why You Can't Just Leave</div>
+          </div>
+        </div>
+      </div>
+      <div class="lesson-content">
+      <h2>Week 3: Understanding Trauma Bonds</h2>
+      
+      <h3>🎯 Learning Objectives</h3>
+      <ul>
+        <li>Understand what trauma bonding is and how it forms</li>
+        <li>Recognize the signs of trauma bonding in your relationship</li>
+        <li>Learn the psychology behind why leaving is so difficult</li>
+        <li>Identify cognitive dissonance and how it keeps you stuck</li>
+      </ul>
+
+      <h3>📖 Key Concepts</h3>
+      
+      <h4>1. What is Trauma Bonding?</h4>
+      <p>Trauma bonding is a powerful emotional attachment that forms between an abuser and victim through cycles of abuse, devaluation, and positive reinforcement. It's not love—it's a survival mechanism.</p>
+      <ul>
+        <li>Creates intense emotional dependency</li>
+        <li>Formed through intermittent reinforcement (unpredictable rewards and punishments)</li>
+        <li>Similar to addiction—literal chemical changes in the brain</li>
+        <li>Makes leaving feel impossible despite knowing you should</li>
+      </ul>
+
+      <h4>2. How Trauma Bonds Form</h4>
+      <ul>
+        <li><strong>Initial Idealization:</strong> Creates the "high" you keep chasing</li>
+        <li><strong>Intermittent Reinforcement:</strong> Occasional kindness after cruelty keeps you hoping</li>
+        <li><strong>Isolation:</strong> Cuts you off from other support systems</li>
+        <li><strong>Degradation:</strong> Lowers your self-esteem so you feel lucky they stay</li>
+        <li><strong>Gaslighting:</strong> Makes you doubt your perception and depend on theirs</li>
+        <li><strong>Small Kindnesses:</strong> Feel like massive gestures after abuse</li>
+      </ul>
+
+      <h4>3. Signs You're Trauma Bonded</h4>
+      <ul>
+        <li>You keep returning despite knowing you shouldn't</li>
+        <li>You make excuses for their behavior to others and yourself</li>
+        <li>You feel you can't live without them</li>
+        <li>You obsess about them constantly when apart</li>
+        <li>You feel euphoric during the brief good times</li>
+        <li>You defend them when others point out red flags</li>
+        <li>You believe you're the only one who truly understands them</li>
+        <li>You feel protective of them despite the harm they cause</li>
+        <li>You crave their validation and approval desperately</li>
+      </ul>
+
+      <h4>4. Cognitive Dissonance</h4>
+      <p>Cognitive dissonance is holding two conflicting beliefs simultaneously:</p>
+      <ul>
+        <li>"They love me" vs. "They hurt me repeatedly"</li>
+        <li>"I know I should leave" vs. "But what if they change?"</li>
+        <li>"They're terrible to me" vs. "But they can be so wonderful"</li>
+      </ul>
+      <p>Your brain tries to resolve this conflict by minimizing the abuse, making excuses, or blaming yourself.</p>
+
+      <h4>5. The Biochemistry of Trauma Bonding</h4>
+      <ul>
+        <li><strong>Dopamine:</strong> Released during love bombing and intermittent rewards—highly addictive</li>
+        <li><strong>Oxytocin:</strong> Bonding hormone released during any intimacy, even after abuse</li>
+        <li><strong>Cortisol:</strong> Stress hormone kept chronically elevated, affecting judgment</li>
+        <li><strong>Adrenaline:</strong> The "high" of the drama becomes addictive</li>
+      </ul>
+
+      <h3>💡 Practical Exercises</h3>
+      <p><strong>Exercise 1: The Good/Bad List</strong><br>
+      Create two columns. List all the good times and all the bad times. Be honest. Look at the ratio. Notice which list is longer.</p>
+
+      <p><strong>Exercise 2: If a Friend...</strong><br>
+      Write down what you would tell a friend experiencing your exact situation. Would you tell them to stay? Read this advice to yourself daily.</p>
+
+      <p><strong>Exercise 3: No Contact Preparation</strong><br>
+      Begin planning what no contact would look like. Who would support you? What would you need? Where would you live?</p>
+
+      <h3>📝 Reflection Questions</h3>
+      <ul>
+        <li>Do you feel addicted to this person?</li>
+        <li>What excuses do you make for staying?</li>
+        <li>When was the last time you felt genuinely happy?</li>
+        <li>What are you afraid would happen if you left?</li>
+        <li>Which version of them do you keep hoping will return?</li>
+      </ul>
+
+      <button class="submit-btn" onclick="markComplete(3)">Mark as Complete</button>
+    </div>
+    </div>
+
+    <!-- Resources tab -->
+    <div id="week3-resources" class="tab-panel">
+      <div class="video-section">
+        <h2>📚 Resources — Week 3</h2>
+        <div class="resources-grid">
+        <div class="resource-card" onclick="downloadResource('trauma-bond-assessment.pdf','Trauma Bond Assessment')">
+          <div class="resource-icon">📄</div>
+          <h4>Trauma Bond Assessment</h4>
+          <p>Evaluate the strength of your trauma bond</p>
+          <span class="download-badge">📥 Download</span>
+        </div>
+        <div class="resource-card" onclick="downloadResource('brain-chemistry.pdf','Brain Chemistry Guide')">
+          <div class="resource-icon">🧠</div>
+          <h4>Brain Chemistry Guide</h4>
+          <p>Understanding the addiction aspect</p>
+          <span class="download-badge">📥 Download</span>
+        </div>
+        <div class="resource-card" onclick="downloadResource('good-bad-worksheet.pdf','Good/Bad Exercise Worksheet')">
+          <div class="resource-icon">📝</div>
+          <h4>Good/Bad Exercise Worksheet</h4>
+          <p>Honest relationship evaluation</p>
+          <span class="download-badge">📥 Download</span>
+        </div>
+        <div class="resource-card" onclick="downloadResource('breaking-bonds.pdf','Breaking Bonds Workbook')">
+          <div class="resource-icon">💪</div>
+          <h4>Breaking Bonds Workbook</h4>
+          <p>Step-by-step trauma bond breaking</p>
+          <span class="download-badge">📥 Download</span>
+        </div>
+        <div class="resource-card" onclick="downloadResource('detachment-meditation.mp3','Detachment Meditation')">
+          <div class="resource-icon">🎧</div>
+          <h4>Detachment Meditation</h4>
+          <p>Guided practice for emotional release</p>
+          <span class="download-badge">📥 Download</span>
+        </div>
+        <div class="resource-card" onclick="downloadResource('support-groups.pdf','Support Group Directory')">
+          <div class="resource-icon">📞</div>
+          <h4>Support Group Directory</h4>
+          <p>Connect with others breaking bonds</p>
+          <span class="download-badge">📥 Download</span>
+        </div></div>
+      </div>
+    </div>
+
+    <!-- Assessment tab -->
+    <div id="week3-assessment" class="tab-panel">
+      <div class="assessment-section" id="assess3">
+        <h2>📝 Week 3 Assessment</h2>
+        <p style="margin-bottom:20px;color:#ccc;">You need 70% to pass.</p>
+        
+        <div class="quiz-question">
+          <h4>Q1: What is trauma bonding?</h4>
+          <div class="quiz-options"><label class="quiz-option"><input type="radio" name="w3q0" value="0"> A healthy form of attachment</label>
+<label class="quiz-option"><input type="radio" name="w3q0" value="1"> An emotional attachment formed through cycles of abuse and positive reinforcement</label>
+<label class="quiz-option"><input type="radio" name="w3q0" value="2"> A therapy technique</label>
+<label class="quiz-option"><input type="radio" name="w3q0" value="3"> A type of PTSD</label>
+</div>
+        </div>
+        <div class="quiz-question">
+          <h4>Q2: Which chemical is most responsible for the 'addictive' quality of trauma bonds?</h4>
+          <div class="quiz-options"><label class="quiz-option"><input type="radio" name="w3q1" value="0"> Serotonin</label>
+<label class="quiz-option"><input type="radio" name="w3q1" value="1"> Dopamine</label>
+<label class="quiz-option"><input type="radio" name="w3q1" value="2"> Melatonin</label>
+<label class="quiz-option"><input type="radio" name="w3q1" value="3"> Endorphins</label>
+</div>
+        </div>
+        <div class="quiz-question">
+          <h4>Q3: What is cognitive dissonance in abusive relationships?</h4>
+          <div class="quiz-options"><label class="quiz-option"><input type="radio" name="w3q2" value="0"> A mental illness</label>
+<label class="quiz-option"><input type="radio" name="w3q2" value="1"> Holding conflicting beliefs like 'they love me' and 'they hurt me'</label>
+<label class="quiz-option"><input type="radio" name="w3q2" value="2"> A form of amnesia</label>
+<label class="quiz-option"><input type="radio" name="w3q2" value="3"> A defense mechanism</label>
+</div>
+        </div>
+        <div class="quiz-question">
+          <h4>Q4: Why does intermittent reinforcement create strong bonds?</h4>
+          <div class="quiz-options"><label class="quiz-option"><input type="radio" name="w3q3" value="0"> It's predictable</label>
+<label class="quiz-option"><input type="radio" name="w3q3" value="1"> Unpredictable rewards keep you hoping and trying</label>
+<label class="quiz-option"><input type="radio" name="w3q3" value="2"> It shows true love</label>
+<label class="quiz-option"><input type="radio" name="w3q3" value="3"> It builds trust</label>
+</div>
+        </div>
+        <div class="quiz-question">
+          <h4>Q5: What should you do if you recognize trauma bonding?</h4>
+          <div class="quiz-options"><label class="quiz-option"><input type="radio" name="w3q4" value="0"> Accept it's love and stay</label>
+<label class="quiz-option"><input type="radio" name="w3q4" value="1"> Begin planning safety and separation</label>
+<label class="quiz-option"><input type="radio" name="w3q4" value="2"> Ignore it</label>
+<label class="quiz-option"><input type="radio" name="w3q4" value="3"> Try harder to please them</label>
+</div>
+        </div><button class="submit-btn" onclick="submitQuiz(3)">Submit Assessment</button>
+      </div>
+    </div>
+
+  </div>
+  <!-- WEEK 4 PANEL -->
+  <div id="week4" class="week-panel">
+
+    <!-- Content tab -->
+    <div id="week4-content" class="tab-panel active">
+      <div class="video-section">
+        <h2>📹 Week 4: Setting Boundaries & Self-Protection</h2>
+        <div class="video-grid">
+                    <div>
+            <div class="video-player"><iframe src="https://www.youtube.com/embed/dXvlwXMNbXI" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;border-radius:10px;"></iframe></div>
+            <div class="video-title">Establishing Firm Boundaries</div>
+          </div>
+          <div>
+            <div class="video-player"><iframe src="https://www.youtube.com/embed/L_sbMP8T8aE" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;border-radius:10px;"></iframe></div>
+            <div class="video-title">Protecting Your Energy</div>
+          </div>
+        </div>
+      </div>
+      <div class="lesson-content">
+      <h2>Week 4: Setting Boundaries & Self-Protection</h2>
+      
+      <h3>🎯 Learning Objectives</h3>
+      <ul>
+        <li>Understand what healthy boundaries are</li>
+        <li>Learn how to identify your boundaries</li>
+        <li>Practice communicating boundaries effectively</li>
+        <li>Develop strategies to protect yourself emotionally and physically</li>
+      </ul>
+
+      <h3>📖 Key Concepts</h3>
+      
+      <h4>1. What Are Healthy Boundaries?</h4>
+      <p>Boundaries are limits that protect your physical, emotional, mental, and spiritual well-being. They define where you end and others begin.</p>
+      <ul>
+        <li><strong>Physical Boundaries:</strong> Your body, personal space, privacy</li>
+        <li><strong>Emotional Boundaries:</strong> Your feelings, ability to say no</li>
+        <li><strong>Mental Boundaries:</strong> Your thoughts, values, opinions</li>
+        <li><strong>Material Boundaries:</strong> Your money, possessions, resources</li>
+        <li><strong>Time Boundaries:</strong> How you spend your time and energy</li>
+      </ul>
+
+      <h4>2. Why Narcissists Violate Boundaries</h4>
+      <ul>
+        <li>They don't see you as separate from them</li>
+        <li>Your boundaries threaten their control</li>
+        <li>They feel entitled to access you however they want</li>
+        <li>They view boundary-setting as a personal attack</li>
+        <li>They need to prove they're above rules that apply to others</li>
+      </ul>
+
+      <h4>3. How to Identify Your Boundaries</h4>
+      <p>Ask yourself these questions:</p>
+      <ul>
+        <li>What makes me feel uncomfortable, resentful, or drained?</li>
+        <li>What behaviors do I tolerate that I shouldn't?</li>
+        <li>When do I feel my values are being compromised?</li>
+        <li>What am I afraid to say no to?</li>
+        <li>Where do I feel taken advantage of?</li>
+      </ul>
+
+      <h4>4. Communicating Boundaries</h4>
+      <p><strong>The Boundary Formula:</strong></p>
+      <ul>
+        <li><strong>Clear Statement:</strong> "I'm not comfortable with..."</li>
+        <li><strong>Consequence:</strong> "If you continue to..., I will..."</li>
+        <li><strong>Follow Through:</strong> Actually enforce the consequence</li>
+      </ul>
+      <p><strong>Examples:</strong></p>
+      <ul>
+        <li>"I'm not comfortable being yelled at. If you continue to raise your voice, I will leave the room."</li>
+        <li>"I won't discuss this topic anymore. If you bring it up again, I'll end the conversation."</li>
+        <li>"I need privacy when I'm on the phone. If you continue to interrupt, I'll take my calls elsewhere."</li>
+      </ul>
+
+      <h4>5. What to Expect When You Set Boundaries</h4>
+      <ul>
+        <li><strong>Pushback:</strong> They'll test your boundaries repeatedly</li>
+        <li><strong>Guilt:</strong> "You're being unreasonable/selfish/cruel"</li>
+        <li><strong>Rage:</strong> Anger at your "defiance"</li>
+        <li><strong>Love Bombing:</strong> Sudden niceness to make you drop boundaries</li>
+        <li><strong>Gaslighting:</strong> "I never did that" or "You're overreacting"</li>
+        <li><strong>Silent Treatment:</strong> Punishment for standing up for yourself</li>
+      </ul>
+
+      <h4>6. Protecting Yourself</h4>
+      <ul>
+        <li><strong>Grey Rock Method:</strong> Be boring and unresponsive (if you must interact)</li>
+        <li><strong>No JADE:</strong> Don't Justify, Argue, Defend, or Explain</li>
+        <li><strong>Document Everything:</strong> Keep records of violations</li>
+        <li><strong>Build Support System:</strong> People who validate your reality</li>
+        <li><strong>Safety Planning:</strong> Know your exit strategy</li>
+        <li><strong>Self-Care:</strong> Prioritize your physical and mental health</li>
+      </ul>
+
+      <h3>💡 Practical Exercises</h3>
+      <p><strong>Exercise 1: Boundary Inventory</strong><br>
+      List 10 boundaries you need to set or reinforce. Start with the easiest and work toward harder ones.</p>
+
+      <p><strong>Exercise 2: Practice Scripts</strong><br>
+      Write out and rehearse boundary statements. Practice saying them out loud until they feel natural.</p>
+
+      <p><strong>Exercise 3: Consequence Planning</strong><br>
+      For each boundary, decide what consequence you'll enforce if it's violated. Make sure you're willing to follow through.</p>
+
+      <h3>📝 Reflection Questions</h3>
+      <ul>
+        <li>What boundaries have been violated most in your relationship?</li>
+        <li>Why do you find it hard to set boundaries?</li>
+        <li>What are you afraid will happen if you enforce boundaries?</li>
+        <li>Which boundaries feel most urgent to establish?</li>
+        <li>Who in your life respects your boundaries?</li>
+      </ul>
+
+      <button class="submit-btn" onclick="markComplete(4)">Mark as Complete</button>
+    </div>
+    </div>
+
+    <!-- Resources tab -->
+    <div id="week4-resources" class="tab-panel">
+      <div class="video-section">
+        <h2>📚 Resources — Week 4</h2>
+        <div class="resources-grid">
+        <div class="resource-card" onclick="downloadResource('boundary-guide.pdf','Boundary Setting Guide')">
+          <div class="resource-icon">📋</div>
+          <h4>Boundary Setting Guide</h4>
+          <p>Complete guide to healthy boundaries</p>
+          <span class="download-badge">📥 Download</span>
+        </div>
+        <div class="resource-card" onclick="downloadResource('boundary-scripts.pdf','Boundary Scripts')">
+          <div class="resource-icon">💬</div>
+          <h4>Boundary Scripts</h4>
+          <p>50 ready-to-use boundary statements</p>
+          <span class="download-badge">📥 Download</span>
+        </div>
+        <div class="resource-card" onclick="downloadResource('grey-rock.pdf','Grey Rock Method Guide')">
+          <div class="resource-icon">🛡️</div>
+          <h4>Grey Rock Method Guide</h4>
+          <p>How to be "boring" effectively</p>
+          <span class="download-badge">📥 Download</span>
+        </div>
+        <div class="resource-card" onclick="downloadResource('boundary-worksheet.pdf','Boundary Worksheet')">
+          <div class="resource-icon">📝</div>
+          <h4>Boundary Worksheet</h4>
+          <p>Identify and plan your boundaries</p>
+          <span class="download-badge">📥 Download</span>
+        </div>
+        <div class="resource-card" onclick="downloadResource('confidence-audio.mp3','Confidence Building Audio')">
+          <div class="resource-icon">🎧</div>
+          <h4>Confidence Building Audio</h4>
+          <p>Strengthen your resolve</p>
+          <span class="download-badge">📥 Download</span>
+        </div>
+        <div class="resource-card" onclick="downloadResource('safety-planning.pdf','Safety Planning Guide')">
+          <div class="resource-icon">⚠️</div>
+          <h4>Safety Planning Guide</h4>
+          <p>Create your exit strategy</p>
+          <span class="download-badge">📥 Download</span>
+        </div></div>
+      </div>
+    </div>
+
+    <!-- Assessment tab -->
+    <div id="week4-assessment" class="tab-panel">
+      <div class="assessment-section" id="assess4">
+        <h2>📝 Week 4 Assessment</h2>
+        <p style="margin-bottom:20px;color:#ccc;">You need 70% to pass.</p>
+        
+        <div class="quiz-question">
+          <h4>Q1: What is the purpose of setting boundaries?</h4>
+          <div class="quiz-options"><label class="quiz-option"><input type="radio" name="w4q0" value="0"> To punish the other person</label>
+<label class="quiz-option"><input type="radio" name="w4q0" value="1"> To protect your physical, emotional, and mental well-being</label>
+<label class="quiz-option"><input type="radio" name="w4q0" value="2"> To control others</label>
+<label class="quiz-option"><input type="radio" name="w4q0" value="3"> To avoid conflict</label>
+</div>
+        </div>
+        <div class="quiz-question">
+          <h4>Q2: What is the Grey Rock method?</h4>
+          <div class="quiz-options"><label class="quiz-option"><input type="radio" name="w4q1" value="0"> A meditation technique</label>
+<label class="quiz-option"><input type="radio" name="w4q1" value="1"> Being boring and unresponsive to reduce narcissistic supply</label>
+<label class="quiz-option"><input type="radio" name="w4q1" value="2"> A type of therapy</label>
+<label class="quiz-option"><input type="radio" name="w4q1" value="3"> Ignoring everyone</label>
+</div>
+        </div>
+        <div class="quiz-question">
+          <h4>Q3: What does JADE stand for?</h4>
+          <div class="quiz-options"><label class="quiz-option"><input type="radio" name="w4q2" value="0"> Just Accept Difficult Emotions</label>
+<label class="quiz-option"><input type="radio" name="w4q2" value="1"> Don't Justify, Argue, Defend, or Explain</label>
+<label class="quiz-option"><input type="radio" name="w4q2" value="2"> Join And Decide Everything</label>
+<label class="quiz-option"><input type="radio" name="w4q2" value="3"> Just Ask Direct Explanations</label>
+</div>
+        </div>
+        <div class="quiz-question">
+          <h4>Q4: How should you communicate a boundary?</h4>
+          <div class="quiz-options"><label class="quiz-option"><input type="radio" name="w4q3" value="0"> Apologetically and with lots of explanation</label>
+<label class="quiz-option"><input type="radio" name="w4q3" value="1"> Clearly state it with a consequence and follow through</label>
+<label class="quiz-option"><input type="radio" name="w4q3" value="2"> Hint at it indirectly</label>
+<label class="quiz-option"><input type="radio" name="w4q3" value="3"> Wait for them to guess</label>
+</div>
+        </div>
+        <div class="quiz-question">
+          <h4>Q5: What should you expect when you first set boundaries?</h4>
+          <div class="quiz-options"><label class="quiz-option"><input type="radio" name="w4q4" value="0"> Immediate respect and compliance</label>
+<label class="quiz-option"><input type="radio" name="w4q4" value="1"> Testing, pushback, guilt-tripping, and other manipulative responses</label>
+<label class="quiz-option"><input type="radio" name="w4q4" value="2"> No reaction at all</label>
+<label class="quiz-option"><input type="radio" name="w4q4" value="3"> Gratitude for being clear</label>
+</div>
+        </div><button class="submit-btn" onclick="submitQuiz(4)">Submit Assessment</button>
+      </div>
+    </div>
+
+  </div>
+  <!-- WEEK 5 PANEL -->
+  <div id="week5" class="week-panel">
+
+    <!-- Content tab -->
+    <div id="week5-content" class="tab-panel active">
+      <div class="video-section">
+        <h2>📹 Week 5: Planning Your Exit & Going No Contact</h2>
+        <div class="video-grid">
+                    <div>
+            <div class="video-player"><iframe src="https://www.youtube.com/embed/d3YVZ1olU4Y" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;border-radius:10px;"></iframe></div>
+            <div class="video-title">Creating a Safe Exit Plan</div>
+          </div>
+          <div>
+            <div class="video-player"><iframe src="https://www.youtube.com/embed/AunY7Y8Eyq8" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;border-radius:10px;"></iframe></div>
+            <div class="video-title">No Contact Explained</div>
+          </div>
+        </div>
+      </div>
+      <div class="lesson-content">
+      <h2>Week 5: Planning Your Exit & Going No Contact</h2>
+      
+      <h3>🎯 Learning Objectives</h3>
+      <ul>
+        <li>Understand why no contact is crucial for healing</li>
+        <li>Learn how to safely plan and execute an exit strategy</li>
+        <li>Prepare for common manipulation tactics during separation</li>
+        <li>Develop coping strategies for the challenges of no contact</li>
+      </ul>
+
+      <h3>📖 Key Concepts</h3>
+      
+      <h4>1. Why No Contact is Essential</h4>
+      <p>No contact (NC) means completely cutting off all communication with the narcissist. This includes:</p>
+      <ul>
+        <li>No phone calls, texts, or emails</li>
+        <li>Blocking on all social media</li>
+        <li>No checking their social media</li>
+        <li>No contact through mutual friends</li>
+        <li>No "just one more conversation"</li>
+      </ul>
+      <p><strong>Why it's necessary:</strong></p>
+      <ul>
+        <li>Breaks the trauma bond</li>
+        <li>Allows your brain to detox from the addiction</li>
+        <li>Prevents further manipulation</li>
+        <li>Gives you space to heal and think clearly</li>
+        <li>Protects you from hoovering attempts</li>
+      </ul>
+
+      <h4>2. Safety Planning</h4>
+      <p><strong>Before You Leave:</strong></p>
+      <ul>
+        <li>Gather important documents (birth certificates, passports, financial records)</li>
+        <li>Secure your own money if finances are shared</li>
+        <li>Document evidence of abuse (texts, emails, photos)</li>
+        <li>Pack an emergency bag and store it somewhere safe</li>
+        <li>Identify safe places you can go</li>
+        <li>Tell trusted friends/family of your plan</li>
+        <li>Change passwords on accounts they might access</li>
+        <li>Consider legal protection (restraining order if needed)</li>
+      </ul>
+
+      <h4>3. The Exit Strategy</h4>
+      <p><strong>Choose Your Method:</strong></p>
+      <ul>
+        <li><strong>Direct Confrontation:</strong> Only if safe. Keep it brief. Don't JADE.</li>
+        <li><strong>Letter/Message:</strong> State your decision clearly, then block immediately</li>
+        <li><strong>Disappear:</strong> If safety is a concern, leave without warning</li>
+      </ul>
+      <p><strong>Key Principles:</strong></p>
+      <ul>
+        <li>Don't seek closure from them—closure comes from within</li>
+        <li>Don't try to make them understand—they won't/can't</li>
+        <li>Keep it simple: "This relationship isn't working for me. I'm done."</li>
+        <li>Don't list reasons—they'll just argue or use it to manipulate</li>
+        <li>Have support people present if you must have final interaction</li>
+      </ul>
+
+      <h4>4. What to Expect After</h4>
+      <p><strong>They May Try:</strong></p>
+      <ul>
+        <li><strong>Hoovering:</strong> Attempts to suck you back in (love bombing, apologies, promises)</li>
+        <li><strong>Smear Campaign:</strong> Telling others lies about you</li>
+        <li><strong>Flying Monkeys:</strong> Getting others to contact you on their behalf</li>
+        <li><strong>Rage:</strong> Angry outbursts, threats, intimidation</li>
+        <li><strong>Self-Pity:</strong> "I'll change," "I need you," suicide threats</li>
+        <li><strong>New Supply:</strong> Flaunting a new relationship to make you jealous</li>
+      </ul>
+
+      <h4>5. Maintaining No Contact</h4>
+      <p><strong>Strategies:</strong></p>
+      <ul>
+        <li>Block on everything immediately</li>
+        <li>Change your number if needed</li>
+        <li>Vary your routine so you don't "run into" them</li>
+        <li>Have accountability partner who supports no contact</li>
+        <li>Write down all the bad times to read when you're tempted</li>
+        <li>Remind yourself: Every day of NC is a day of healing</li>
+        <li>Use urge surfing techniques when tempted to reach out</li>
+      </ul>
+
+      <h4>6. Modified Contact (If Necessary)</h4>
+      <p>If you share children or cannot go full no contact:</p>
+      <ul>
+        <li>Use communication apps designed for co-parents (like OurFamilyWizard)</li>
+        <li>Keep all communication in writing</li>
+        <li>Use Grey Rock method exclusively</li>
+        <li>Only discuss children or necessary logistics</li>
+        <li>Don't respond to baiting or personal attacks</li>
+        <li>Have a third party handle exchanges if possible</li>
+      </ul>
+
+      <h3>💡 Practical Exercises</h3>
+      <p><strong>Exercise 1: Safety Checklist</strong><br>
+      Complete the safety planning checklist. Check off items as you accomplish them. Don't rush—prioritize your safety.</p>
+
+      <p><strong>Exercise 2: Support Team</strong><br>
+      List 5 people who will support you through no contact. Contact them now and explain you'll need their help.</p>
+
+      <p><strong>Exercise 3: Temptation List</strong><br>
+      Write down all the reasons you need to stay no contact. Keep this list accessible for weak moments.</p>
+
+      <h3>📝 Reflection Questions</h3>
+      <ul>
+        <li>What makes you most afraid to leave?</li>
+        <li>What resources do you need to leave safely?</li>
+        <li>Who will support you?</li>
+        <li>What might tempt you to break no contact?</li>
+        <li>What do you hope your life will look like in 6 months?</li>
+      </ul>
+
+      <button class="submit-btn" onclick="markComplete(5)">Mark as Complete</button>
+    </div>
+    </div>
+
+    <!-- Resources tab -->
+    <div id="week5-resources" class="tab-panel">
+      <div class="video-section">
+        <h2>📚 Resources — Week 5</h2>
+        <div class="resources-grid">
+        <div class="resource-card" onclick="downloadResource('safety-checklist.pdf','Safety Planning Checklist')">
+          <div class="resource-icon">📋</div>
+          <h4>Safety Planning Checklist</h4>
+          <p>Complete exit preparation guide</p>
+          <span class="download-badge">📥 Download</span>
+        </div>
+        <div class="resource-card" onclick="downloadResource('nc-letters.pdf','No Contact Letter Templates')">
+          <div class="resource-icon">📝</div>
+          <h4>No Contact Letter Templates</h4>
+          <p>Sample letters for different situations</p>
+          <span class="download-badge">📥 Download</span>
+        </div>
+        <div class="resource-card" onclick="downloadResource('blocking-guide.pdf','Blocking Guide')">
+          <div class="resource-icon">🚫</div>
+          <h4>Blocking Guide</h4>
+          <p>How to block on all platforms</p>
+          <span class="download-badge">📥 Download</span>
+        </div>
+        <div class="resource-card" onclick="downloadResource('nc-maintenance.pdf','No Contact Maintenance Guide')">
+          <div class="resource-icon">💪</div>
+          <h4>No Contact Maintenance Guide</h4>
+          <p>Stay strong in your decision</p>
+          <span class="download-badge">📥 Download</span>
+        </div>
+        <div class="resource-card" onclick="downloadResource('coparenting.pdf','Co-Parenting Strategies')">
+          <div class="resource-icon">👥</div>
+          <h4>Co-Parenting Strategies</h4>
+          <p>Modified contact for shared custody</p>
+          <span class="download-badge">📥 Download</span>
+        </div>
+        <div class="resource-card" onclick="downloadResource('emergency-contacts.pdf','Emergency Contacts')">
+          <div class="resource-icon">📞</div>
+          <h4>Emergency Contacts</h4>
+          <p>Shelters, hotlines, legal aid</p>
+          <span class="download-badge">📥 Download</span>
+        </div></div>
+      </div>
+    </div>
+
+    <!-- Assessment tab -->
+    <div id="week5-assessment" class="tab-panel">
+      <div class="assessment-section" id="assess5">
+        <h2>📝 Week 5 Assessment</h2>
+        <p style="margin-bottom:20px;color:#ccc;">You need 70% to pass.</p>
+        
+        <div class="quiz-question">
+          <h4>Q1: What does 'no contact' mean?</h4>
+          <div class="quiz-options"><label class="quiz-option"><input type="radio" name="w5q0" value="0"> Limited communication</label>
+<label class="quiz-option"><input type="radio" name="w5q0" value="1"> Completely cutting off all communication with the narcissist</label>
+<label class="quiz-option"><input type="radio" name="w5q0" value="2"> Only texting, no calls</label>
+<label class="quiz-option"><input type="radio" name="w5q0" value="3"> Talking only about important matters</label>
+</div>
+        </div>
+        <div class="quiz-question">
+          <h4>Q2: Why is no contact essential for healing?</h4>
+          <div class="quiz-options"><label class="quiz-option"><input type="radio" name="w5q1" value="0"> To punish them</label>
+<label class="quiz-option"><input type="radio" name="w5q1" value="1"> It breaks the trauma bond and prevents further manipulation</label>
+<label class="quiz-option"><input type="radio" name="w5q1" value="2"> To make them miss you</label>
+<label class="quiz-option"><input type="radio" name="w5q1" value="3"> It's not essential</label>
+</div>
+        </div>
+        <div class="quiz-question">
+          <h4>Q3: What is 'hoovering'?</h4>
+          <div class="quiz-options"><label class="quiz-option"><input type="radio" name="w5q2" value="0"> Cleaning up after the relationship</label>
+<label class="quiz-option"><input type="radio" name="w5q2" value="1"> Attempts to suck you back into the relationship</label>
+<label class="quiz-option"><input type="radio" name="w5q2" value="2"> A vacuum cleaner brand</label>
+<label class="quiz-option"><input type="radio" name="w5q2" value="3"> A therapy technique</label>
+</div>
+        </div>
+        <div class="quiz-question">
+          <h4>Q4: What should you do when leaving?</h4>
+          <div class="quiz-options"><label class="quiz-option"><input type="radio" name="w5q3" value="0"> Try to make them understand why</label>
+<label class="quiz-option"><input type="radio" name="w5q3" value="1"> List all the reasons they're terrible</label>
+<label class="quiz-option"><input type="radio" name="w5q3" value="2"> Keep it simple and brief, then maintain no contact</label>
+<label class="quiz-option"><input type="radio" name="w5q3" value="3"> Give them multiple chances to change</label>
+</div>
+        </div>
+        <div class="quiz-question">
+          <h4>Q5: What is the Grey Rock method used for?</h4>
+          <div class="quiz-options"><label class="quiz-option"><input type="radio" name="w5q4" value="0"> Ignoring everyone</label>
+<label class="quiz-option"><input type="radio" name="w5q4" value="1"> Being boring and unresponsive to minimize narcissistic supply</label>
+<label class="quiz-option"><input type="radio" name="w5q4" value="2"> Building rock collections</label>
+<label class="quiz-option"><input type="radio" name="w5q4" value="3"> A meditation practice</label>
+</div>
+        </div><button class="submit-btn" onclick="submitQuiz(5)">Submit Assessment</button>
+      </div>
+    </div>
+
+  </div>
+  <!-- WEEK 6 PANEL -->
+  <div id="week6" class="week-panel">
+
+    <!-- Content tab -->
+    <div id="week6-content" class="tab-panel active">
+      <div class="video-section">
+        <h2>📹 Week 6: Healing & Moving Forward</h2>
+        <div class="video-grid">
+                    <div>
+            <div class="video-player"><iframe src="https://www.youtube.com/embed/e86MdvubfjQ" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;border-radius:10px;"></iframe></div>
+            <div class="video-title">Rebuilding Your Life</div>
+          </div>
+          <div>
+            <div class="video-player"><iframe src="https://www.youtube.com/embed/YmLPLzaQ5MY" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;border-radius:10px;"></iframe></div>
+            <div class="video-title">Self-Care & Recovery</div>
+          </div>
+        </div>
+      </div>
+      <div class="lesson-content">
+      <h2>Week 6: Healing & Moving Forward</h2>
+      
+      <h3>🎯 Learning Objectives</h3>
+      <ul>
+        <li>Understand the stages of healing from narcissistic abuse</li>
+        <li>Learn strategies for rebuilding self-esteem and identity</li>
+        <li>Develop a comprehensive self-care plan</li>
+        <li>Recognize and prevent future narcissistic relationships</li>
+      </ul>
+
+      <h3>📖 Key Concepts</h3>
+      
+      <h4>1. Stages of Healing</h4>
+      <p>Healing isn't linear—you may move back and forth between stages:</p>
+      <ul>
+        <li><strong>Denial/Shock:</strong> "Did this really happen?" Initial disbelief</li>
+        <li><strong>Grief:</strong> Mourning the person you thought they were and the relationship you hoped for</li>
+        <li><strong>Anger:</strong> Rage at what was done to you (this is healthy!)</li>
+        <li><strong>Bargaining:</strong> "What if I had done things differently?"</li>
+        <li><strong>Depression:</strong> The weight of what happened settles in</li>
+        <li><strong>Acceptance:</strong> Understanding what happened wasn't your fault</li>
+        <li><strong>Integration:</strong> Incorporating lessons learned into your life</li>
+        <li><strong>Transformation:</strong> Using your experience to grow stronger</li>
+      </ul>
+
+      <h4>2. Rebuilding Your Identity</h4>
+      <p>Narcissistic abuse often leaves you not knowing who you are anymore:</p>
+      <ul>
+        <li><strong>Reconnect with yourself:</strong> What did you enjoy before? Who were you?</li>
+        <li><strong>Explore new interests:</strong> Try things they discouraged or mocked</li>
+        <li><strong>Journal:</strong> "Who am I?" "What do I value?" "What do I want?"</li>
+        <li><strong>Set personal goals:</strong> Things for YOU, not to impress anyone</li>
+        <li><strong>Practice decision-making:</strong> Start small—choose your own meal, movie, activity</li>
+        <li><strong>Voice your opinions:</strong> Practice saying what you think and feel</li>
+      </ul>
+
+      <h4>3. Rebuilding Self-Esteem</h4>
+      <ul>
+        <li><strong>Challenge negative self-talk:</strong> Would you say this to a friend?</li>
+        <li><strong>List your strengths:</strong> Write 20 positive things about yourself</li>
+        <li><strong>Celebrate small wins:</strong> Made it through a day? That's huge!</li>
+        <li><strong>Positive affirmations:</strong> "I am worthy. I am enough. I deserve respect."</li>
+        <li><strong>Avoid comparing:</strong> Your journey is your own</li>
+        <li><strong>Surround yourself with positivity:</strong> People who build you up, not tear you down</li>
+      </ul>
+
+      <h4>4. Self-Care is Not Selfish</h4>
+      <p><strong>Physical Self-Care:</strong></p>
+      <ul>
+        <li>Prioritize sleep—your body needs to heal</li>
+        <li>Eat nourishing foods</li>
+        <li>Move your body (yoga, walks, dancing)</li>
+        <li>Get outside in nature</li>
+        <li>Limit alcohol and other substances</li>
+      </ul>
+      <p><strong>Emotional Self-Care:</strong></p>
+      <ul>
+        <li>Allow yourself to feel without judgment</li>
+        <li>Cry when you need to</li>
+        <li>Express anger in healthy ways (journaling, exercise, therapy)</li>
+        <li>Set boundaries with people who don't support your healing</li>
+        <li>Join support groups—you're not alone</li>
+      </ul>
+      <p><strong>Mental Self-Care:</strong></p>
+      <ul>
+        <li>Limit news and social media if overwhelming</li>
+        <li>Read books about recovery</li>
+        <li>Practice mindfulness and meditation</li>
+        <li>Challenge cognitive distortions</li>
+        <li>Consider therapy (look for trauma-informed or abuse specialist)</li>
+      </ul>
+
+      <h4>5. Red Flags to Watch For</h4>
+      <p>Protect yourself from future narcissistic relationships:</p>
+      <ul>
+        <li><strong>Love bombing:</strong> Too much too soon</li>
+        <li><strong>Moving too fast:</strong> "Soulmate" within weeks</li>
+        <li><strong>Mirroring:</strong> They seem "perfect" for you</li>
+        <li><strong>Disrespecting boundaries:</strong> "But I love you so much I can't help it"</li>
+        <li><strong>Lack of empathy:</strong> Dismissive of your feelings</li>
+        <li><strong>Arrogance/entitlement:</strong> Rules don't apply to them</li>
+        <li><strong>Bad-mouthing exes:</strong> Everyone before you was "crazy"</li>
+        <li><strong>Isolation attempts:</strong> Don't want you seeing friends/family</li>
+        <li><strong>Inconsistency:</strong> Words don't match actions</li>
+      </ul>
+
+      <h4>6. Building Healthy Relationships</h4>
+      <p><strong>Green flags to look for:</strong></p>
+      <ul>
+        <li>Respects your boundaries</li>
+        <li>Takes responsibility for mistakes</li>
+        <li>Shows consistent behavior over time</li>
+        <li>Encourages your growth and independence</li>
+        <li>Communicates openly and honestly</li>
+        <li>Shows genuine empathy</li>
+        <li>Wants you to maintain other relationships</li>
+        <li>Actions match their words</li>
+        <li>Respects your "no"</li>
+      </ul>
+
+      <h4>7. Your New Life</h4>
+      <p>You are not broken. You are healing. You survived. Now it's time to thrive.</p>
+      <ul>
+        <li><strong>Be patient with yourself:</strong> Healing takes time</li>
+        <li><strong>Celebrate progress:</strong> Even tiny steps forward matter</li>
+        <li><strong>Practice self-compassion:</strong> Treat yourself with kindness</li>
+        <li><strong>Keep learning:</strong> Knowledge is power</li>
+        <li><strong>Help others when ready:</strong> Your story can help someone else</li>
+        <li><strong>Trust the process:</strong> You will feel okay again</li>
+      </ul>
+
+      <h3>💡 Practical Exercises</h3>
+      <p><strong>Exercise 1: Future Self Letter</strong><br>
+      Write a letter to yourself one year from now. What do you hope your life looks like? What will you be proud of accomplishing?</p>
+
+      <p><strong>Exercise 2: Rediscovery Journal</strong><br>
+      Each day this week, try one thing you used to enjoy or one new thing. Write about the experience.</p>
+
+      <p><strong>Exercise 3: Self-Care Plan</strong><br>
+      Create a detailed self-care plan covering physical, emotional, and mental health. Schedule specific self-care activities weekly.</p>
+
+      <h3>📝 Reflection Questions</h3>
+      <ul>
+        <li>What stage of healing do you think you're in?</li>
+        <li>What parts of yourself do you want to rediscover?</li>
+        <li>What does self-care mean to you?</li>
+        <li>What red flags will you never ignore again?</li>
+        <li>What are you most looking forward to in your new life?</li>
+      </ul>
+
+      <h3>🎉 Congratulations!</h3>
+      <p>You've completed the Understanding Narcissistic Abuse course. You now have the knowledge and tools to protect yourself, heal, and build a beautiful life. Remember: You deserve love, respect, and happiness. Keep going—you've got this!</p>
+
+      <button class="submit-btn" onclick="markComplete(6)">Mark as Complete & Get Certificate</button>
+    </div>
+    </div>
+
+    <!-- Resources tab -->
+    <div id="week6-resources" class="tab-panel">
+      <div class="video-section">
+        <h2>📚 Resources — Week 6</h2>
+        <div class="resources-grid">
+        <div class="resource-card" onclick="downloadResource('healing-timeline.pdf','Healing Timeline Guide')">
+          <div class="resource-icon">📖</div>
+          <h4>Healing Timeline Guide</h4>
+          <p>What to expect in recovery</p>
+          <span class="download-badge">📥 Download</span>
+        </div>
+        <div class="resource-card" onclick="downloadResource('selfcare-workbook.pdf','Self-Care Workbook')">
+          <div class="resource-icon">💝</div>
+          <h4>Self-Care Workbook</h4>
+          <p>Comprehensive care strategies</p>
+          <span class="download-badge">📥 Download</span>
+        </div>
+        <div class="resource-card" onclick="downloadResource('flags-list.pdf','Red & Green Flags List')">
+          <div class="resource-icon">🚩</div>
+          <h4>Red & Green Flags List</h4>
+          <p>Printable relationship checklist</p>
+          <span class="download-badge">📥 Download</span>
+        </div>
+        <div class="resource-card" onclick="downloadResource('identity-journal.pdf','Identity Rediscovery Journal')">
+          <div class="resource-icon">📝</div>
+          <h4>Identity Rediscovery Journal</h4>
+          <p>Prompts to reconnect with yourself</p>
+          <span class="download-badge">📥 Download</span>
+        </div>
+        <div class="resource-card" onclick="downloadResource('healing-meditations.mp3','Healing Meditation Series')">
+          <div class="resource-icon">🎧</div>
+          <h4>Healing Meditation Series</h4>
+          <p>7 guided meditations for recovery</p>
+          <span class="download-badge">📥 Download</span>
+        </div>
+        <div class="resource-card" onclick="downloadResource('resources-list.pdf','Recommended Resources')">
+          <div class="resource-icon">📚</div>
+          <h4>Recommended Resources</h4>
+          <p>Books, podcasts, therapists</p>
+          <span class="download-badge">📥 Download</span>
+        </div>
+        <div class="resource-card" onclick="downloadResource('certificate.pdf','Course Certificate')">
+          <div class="resource-icon">🏆</div>
+          <h4>Course Certificate</h4>
+          <p>Download your completion certificate</p>
+          <span class="download-badge">📥 Download</span>
+        </div></div>
+      </div>
+    </div>
+
+    <!-- Assessment tab -->
+    <div id="week6-assessment" class="tab-panel">
+      <div class="assessment-section" id="assess6">
+        <h2>📝 Week 6 Assessment</h2>
+        <p style="margin-bottom:20px;color:#ccc;">You need 70% to pass.</p>
+        
+        <div class="quiz-question">
+          <h4>Q1: Which is NOT a stage of healing?</h4>
+          <div class="quiz-options"><label class="quiz-option"><input type="radio" name="w6q0" value="0"> Denial</label>
+<label class="quiz-option"><input type="radio" name="w6q0" value="1"> Revenge</label>
+<label class="quiz-option"><input type="radio" name="w6q0" value="2"> Acceptance</label>
+<label class="quiz-option"><input type="radio" name="w6q0" value="3"> Integration</label>
+</div>
+        </div>
+        <div class="quiz-question">
+          <h4>Q2: What should you do to rebuild your identity?</h4>
+          <div class="quiz-options"><label class="quiz-option"><input type="radio" name="w6q1" value="0"> Copy someone else's personality</label>
+<label class="quiz-option"><input type="radio" name="w6q1" value="1"> Reconnect with who you were and explore new interests</label>
+<label class="quiz-option"><input type="radio" name="w6q1" value="2"> Immediately start a new relationship</label>
+<label class="quiz-option"><input type="radio" name="w6q1" value="3"> Never trust yourself again</label>
+</div>
+        </div>
+        <div class="quiz-question">
+          <h4>Q3: What is a red flag in new relationships?</h4>
+          <div class="quiz-options"><label class="quiz-option"><input type="radio" name="w6q2" value="0"> Respecting your boundaries</label>
+<label class="quiz-option"><input type="radio" name="w6q2" value="1"> Taking things slow</label>
+<label class="quiz-option"><input type="radio" name="w6q2" value="2"> Love bombing and moving too fast</label>
+<label class="quiz-option"><input type="radio" name="w6q2" value="3"> Wanting to meet your friends</label>
+</div>
+        </div>
+        <div class="quiz-question">
+          <h4>Q4: What is a green flag in healthy relationships?</h4>
+          <div class="quiz-options"><label class="quiz-option"><input type="radio" name="w6q3" value="0"> Isolating you from others</label>
+<label class="quiz-option"><input type="radio" name="w6q3" value="1"> Actions consistently matching words over time</label>
+<label class="quiz-option"><input type="radio" name="w6q3" value="2"> Making all decisions for you</label>
+<label class="quiz-option"><input type="radio" name="w6q3" value="3"> Love bombing</label>
+</div>
+        </div>
+        <div class="quiz-question">
+          <h4>Q5: What is the most important thing to remember in healing?</h4>
+          <div class="quiz-options"><label class="quiz-option"><input type="radio" name="w6q4" value="0"> Rush the process to move on quickly</label>
+<label class="quiz-option"><input type="radio" name="w6q4" value="1"> Be patient with yourself and practice self-compassion</label>
+<label class="quiz-option"><input type="radio" name="w6q4" value="2"> Never trust anyone again</label>
+<label class="quiz-option"><input type="radio" name="w6q4" value="3"> Focus on revenge</label>
+</div>
+        </div><button class="submit-btn" onclick="submitQuiz(6)">Submit Assessment</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- RESULTS OVERLAY -->
+<div id="resultsOverlay">
+  <div style="max-width:700px;margin:0 auto;">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;">
+      <h1 style="color:#a78bfa;font-size:1.3rem;">📊 Assessment Results</h1>
+      <button onclick="document.getElementById('resultsOverlay').style.display='none'" style="background:#f44336;color:#fff;border:none;padding:8px 16px;border-radius:20px;cursor:pointer;font-family:inherit;">✕ Close</button>
+    </div>
+    <div id="resultsContent"></div>
+  </div>
+</div>
+
+<div class="results-fab" onclick="viewAllResults()">📊 Results</div>
+
+<script>
+const STORAGE_PREFIX = 'coachL_UNA_';
+const TOTAL_WEEKS = 6;
+const GOOGLE_SHEET_URL = 'https://script.google.com/macros/s/AKfycbz89hcA4Z70ZyOKnk2MBBc5kVWKG5aXljNgSzpXZbfXDOhGvtpeZXGSOadoZB_RdyPK/exec';
+const SECRET_KEY = 'CoachL2025SecureKey';
+const COURSE_NAME = 'Understanding Narcissistic Abuse';
+
+let currentWeek = 1;
+let currentTab = 'content';
+let completedWeeks = new Set(JSON.parse(localStorage.getItem(STORAGE_PREFIX + 'completedWeeks') || '[]'));
+let studentName = localStorage.getItem('cl_firstName') || localStorage.getItem('studentName') || 'Learner';
+let studentEmail = localStorage.getItem('studentEmail') || 'anonymous@coachlacademy.app';
+
+const correctAnswers = {
+  1: [0, 1, 1, 1, 1],
+  2: [1, 2, 0, 1, 1],
+  3: [1, 1, 1, 1, 1],
+  4: [1, 1, 1, 1, 1],
+  5: [1, 1, 1, 2, 1],
+  6: [1, 1, 2, 1, 1],
+};
+
+// ── Init ──
+document.getElementById('userAvatar').textContent = studentName.charAt(0).toUpperCase();
+
+if (localStorage.getItem('cl_theme') === 'light') {
+  document.body.classList.add('light-mode');
+  document.getElementById('themeToggle').textContent = '🌙 Dark';
+}
+
+updateProgress();
+refreshWeekButtons();
+
+// ── Theme ──
+function toggleTheme() {
+  const isLight = document.body.classList.toggle('light-mode');
+  document.getElementById('themeToggle').textContent = isLight ? '🌙 Dark' : '☀️ Light';
+  localStorage.setItem('cl_theme', isLight ? 'light' : 'dark');
+}
+
+// ── Week selection ──
+function selectWeek(w) {
+  currentWeek = w;
+  // Hide all panels
+  for (let i = 1; i <= 6; i++) {
+    document.getElementById('week' + i).classList.remove('active');
+    document.getElementById('wbtn' + i).classList.remove('active');
+  }
+  document.getElementById('week' + w).classList.add('active');
+  document.getElementById('wbtn' + w).classList.add('active');
+  // Stay on same tab
+  switchTab(currentTab, false);
+  // Refresh assessment display for this week
+  refreshAssessment(w);
+}
+
+// ── Tab switching ──
+function switchTab(tab, scroll) {
+  currentTab = tab;
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('tab-' + tab).classList.add('active');
+  // Show correct tab panel in current week
+  for (let i = 1; i <= 6; i++) {
+    ['content','resources','assessment'].forEach(t => {
+      var el = document.getElementById('week' + i + '-' + t);
+      if (el) el.classList.remove('active');
+    });
+    var show = document.getElementById('week' + i + '-' + tab);
+    if (show) show.classList.add('active');
+  }
+}
+
+// ── Progress ──
+function updateProgress() {
+  const done = completedWeeks.size;
+  const pct = Math.round((done / TOTAL_WEEKS) * 100);
+  document.getElementById('progressBar').style.width = pct + '%';
+  document.getElementById('modulesComplete').textContent = done + '/' + TOTAL_WEEKS;
+  document.getElementById('lessonsViewed').textContent = (done * 2) + '/' + (TOTAL_WEEKS * 2);
+  document.getElementById('assessmentsPassed').textContent = done + '/' + TOTAL_WEEKS;
+}
+
+function refreshWeekButtons() {
+  for (let w = 1; w <= 6; w++) {
+    const btn = document.getElementById('wbtn' + w);
+    btn.classList.remove('completed');
+    btn.textContent = completedWeeks.has(w) ? 'Week ' + w + ' ✓' : 'Week ' + w;
+    if (completedWeeks.has(w)) btn.classList.add('completed');
+  }
+}
+
+// ── Assessment ──
+function refreshAssessment(w) {
+  const el = document.getElementById('assess' + w);
+  if (!el) return;
+  if (completedWeeks.has(w)) {
+    // Show passed notice at top, keep questions disabled
+    const notice = el.querySelector('.already-passed');
+    if (!notice) {
+      el.insertAdjacentHTML('afterbegin', '<div class="already-passed"><h3>✅ Already Passed!</h3><p>You can review the questions below.</p></div>');
+    }
+    el.querySelectorAll('input[type=radio]').forEach(i => i.disabled = true);
+    const btn = el.querySelector('.submit-btn');
+    if (btn) btn.style.display = 'none';
+  }
+}
+
+function submitQuiz(week) {
+  const correct = correctAnswers[week];
+  const total = correct.length;
+  let score = 0;
+  let allAnswered = true;
+  const answers = [];
+
+  for (let i = 0; i < total; i++) {
+    const sel = document.querySelector('input[name="w' + week + 'q' + i + '"]:checked');
+    if (!sel) { allAnswered = false; break; }
+    const ua = parseInt(sel.value);
+    const ok = ua === correct[i];
+    if (ok) score++;
+    answers.push({ question: 'Q' + (i+1), userAnswer: ua, correctAnswer: correct[i], isCorrect: ok });
+  }
+
+  if (!allAnswered) { alert('Please answer all questions.'); return; }
+
+  const pct = Math.round((score / total) * 100);
+  const passed = pct >= 70;
+
+  submitToSheets(week, pct, score, total, answers, passed);
+
+  if (passed) {
+    completedWeeks.add(week);
+    localStorage.setItem(STORAGE_PREFIX + 'completedWeeks', JSON.stringify([...completedWeeks]));
+    updateProgress();
+    refreshWeekButtons();
+    refreshAssessment(week);
+    alert('🎉 You passed with ' + pct + '%! (' + score + '/' + total + ' correct)');
+  } else {
+    alert('You scored ' + pct + '%. You need 70% to pass. Review and try again!');
+  }
+}
+
+function submitToSheets(week, score, correct, total, answers, passed) {
+  const payload = {
+    secretKey: SECRET_KEY,
+    timestamp: new Date().toLocaleString(),
+    studentName: studentName,
+    studentEmail: studentEmail,
+    courseName: COURSE_NAME,
+    week, score, correct, total,
+    passed: passed ? 'YES' : 'NO',
+    detailedAnswers: JSON.stringify(answers)
+  };
+  fetch(GOOGLE_SHEET_URL, { method:'POST', mode:'no-cors', headers:{'Content-Type':'application/json'}, body:JSON.stringify(payload) })
+    .catch(e => console.error(e));
+  const all = JSON.parse(localStorage.getItem('assessmentResults') || '[]');
+  all.push({...payload, answers});
+  localStorage.setItem('assessmentResults', JSON.stringify(all));
+}
+
+function viewAllResults() {
+  const all = JSON.parse(localStorage.getItem('assessmentResults') || '[]');
+  if (!all.length) { alert('No results yet. Complete an assessment first.'); return; }
+  const rows = all.map((r, i) => `
+    <div style="background:rgba(255,255,255,0.05);padding:16px;border-radius:10px;margin-bottom:16px;border-left:4px solid ${r.passed==='YES'?'#4caf50':'#f44336'};">
+      <h3 style="color:${r.passed==='YES'?'#4caf50':'#f44336'};margin-bottom:8px;">Submission #${i+1} — ${r.passed==='YES'?'✅ PASSED':'❌ FAILED'}</h3>
+      <p>Student: ${r.studentName} | Week: ${r.week} | Score: ${r.score}% (${r.correct}/${r.total})</p>
+      <p style="font-size:0.8rem;color:#999;margin-top:4px;">${r.timestamp}</p>
+    </div>`).join('');
+  document.getElementById('resultsContent').innerHTML = '<p style="margin-bottom:16px;color:#999;">Total: ' + all.length + ' submissions</p>' + rows;
+  document.getElementById('resultsOverlay').style.display = 'block';
+}
+
+function downloadResource(file, title) {
+  // Known uploaded files - no fetch needed, works in WebViewer
+  const uploaded = [
+    'Narcissism-Workbook.pdf',
+    'dsm-5-criteria-for-narcissistic-personality-disorder.pdf',
+    'Narcissistic-Abuse-Cycle-Worksheet-1.pdf',
+    'Disarming-the-Narcissist.pdf'
+  ];
+  if (uploaded.indexOf(file) !== -1) {
+    const a = document.createElement('a');
+    a.href = 'resources/' + file;
+    a.target = '_blank';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+  } else {
+    alert('📁 ' + title + '\nThis resource will be available soon.');
+  }
+}
+
+function playVideo(type, week) {
+  alert('Playing ' + type + ' video for Week ' + week + '.\nReplace with your actual video embed.');
+}
+
+function markComplete(week) {
+  switchTab('assessment');
+  window.scrollTo(0, 0);
+}
+
+// Init assessments for any already-completed weeks
+completedWeeks.forEach(w => refreshAssessment(w));
+</script>
+</body>
+</html>
