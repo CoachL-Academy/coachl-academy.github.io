@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Results - Understanding Narcissistic Abuse</title>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif; background:#07070c; color:#fff; min-height:100%; overflow-y:auto; -webkit-overflow-scrolling:touch; }
+body.light-mode { background:linear-gradient(135deg,#f5f7fa,#c3cfe2); color:#333; }
+.header { background:rgba(7,7,12,0.97); padding:14px 20px; border-bottom:1px solid rgba(255,255,255,0.08); display:flex; align-items:center; gap:12px; position:sticky; top:0; z-index:100; }
+body.light-mode .header { background:linear-gradient(135deg,#667eea,#764ba2); }
+.back-link { color:#a78bfa; font-size:1.4rem; text-decoration:none; }
+.header h1 { font-size:1rem; font-weight:700; }
+.content { padding:20px; max-width:700px; margin:0 auto; padding-bottom:60px; }
+.summary { background:linear-gradient(135deg,#667eea,#764ba2); border-radius:14px; padding:20px; margin-bottom:20px; text-align:center; }
+.summary h2 { font-size:1.4rem; margin-bottom:6px; }
+.summary p { opacity:0.85; font-size:0.9rem; }
+.empty { text-align:center; padding:60px 20px; color:#666; }
+.empty h2 { font-size:1.2rem; margin-bottom:10px; color:#a78bfa; }
+.empty p { font-size:0.9rem; }
+.result-card { padding:16px; border-radius:12px; margin-bottom:14px; border-left:4px solid #4caf50; background:rgba(255,255,255,0.05); }
+.result-card.failed { border-left-color:#f44336; }
+body.light-mode .result-card { background:#fff; box-shadow:0 2px 8px rgba(0,0,0,0.08); }
+.result-card h3 { font-size:1rem; margin-bottom:6px; }
+.result-card.failed h3 { color:#f44336; }
+.result-card h3.passed-label { color:#4caf50; }
+.result-card p { font-size:0.85rem; color:#bbb; margin-bottom:4px; }
+body.light-mode .result-card p { color:#666; }
+.result-card .timestamp { font-size:0.75rem; color:#666; margin-top:6px; }
+.clear-btn { display:block; width:100%; padding:14px; background:#f44336; color:#fff; border:none; border-radius:12px; font-size:1rem; font-weight:700; cursor:pointer; margin-top:20px; font-family:inherit; touch-action:manipulation; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <a href="https://coachl-academy.github.io/Inspire-Teach-Heal/index5.html" class="back-link">←</a>
+  <h1>📊 Assessment Results</h1>
+</div>
+
+<div class="content" id="content">
+  <div class="empty">
+    <h2>Loading...</h2>
+  </div>
+</div>
+
+<script>
+if (localStorage.getItem('cl_theme') === 'light') {
+  document.body.classList.add('light-mode');
+}
+
+const all = JSON.parse(localStorage.getItem('assessmentResults') || '[]');
+const content = document.getElementById('content');
+
+if (!all.length) {
+  content.innerHTML = '<div class="empty"><h2>No Results Yet</h2><p>Complete an assessment to see your results here.</p></div>';
+} else {
+  const passed = all.filter(r => r.passed === 'YES').length;
+  const total = all.length;
+  
+  let html = '<div class="summary">';
+  html += '<h2>📋 ' + total + ' Submission' + (total !== 1 ? 's' : '') + '</h2>';
+  html += '<p>✅ ' + passed + ' passed &nbsp;|&nbsp; ❌ ' + (total - passed) + ' failed</p>';
+  html += '</div>';
+
+  all.forEach(function(r, i) {
+    const isPassed = r.passed === 'YES';
+    html += '<div class="result-card' + (isPassed ? '' : ' failed') + '">';
+    html += '<h3 class="' + (isPassed ? 'passed-label' : '') + '">';
+    html += (isPassed ? '✅ PASSED' : '❌ FAILED') + ' — Submission #' + (i + 1);
+    html += '</h3>';
+    html += '<p>Course: ' + (r.courseName || 'Understanding Narcissistic Abuse') + '</p>';
+    html += '<p>Week: ' + r.week + ' &nbsp;|&nbsp; Score: ' + r.score + '% (' + r.correct + '/' + r.total + ')</p>';
+    html += '<p>Student: ' + r.studentName + '</p>';
+    html += '<p class="timestamp">' + r.timestamp + '</p>';
+    html += '</div>';
+  });
+
+  html += '<button class="clear-btn" onclick="clearResults()">🗑 Clear All Results</button>';
+  content.innerHTML = html;
+}
+
+function clearResults() {
+  if (confirm('Clear all results? This cannot be undone.')) {
+    localStorage.removeItem('assessmentResults');
+    location.reload();
+  }
+}
+</script>
+</body>
+</html>
