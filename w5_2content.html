@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Week 2 — Understanding Narcissistic Abuse | Coach L Academy</title>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif; background:#07070c; color:#fff; min-height:100%; overflow-y:auto; -webkit-overflow-scrolling:touch; }
+body.light-mode { background:linear-gradient(135deg,#f5f7fa,#c3cfe2); color:#333; }
+.header { background:rgba(7,7,12,0.97); padding:12px 16px; border-bottom:1px solid rgba(255,255,255,0.08); display:flex; align-items:center; justify-content:space-between; position:sticky; top:0; z-index:100; }
+body.light-mode .header { background:linear-gradient(135deg,#667eea,#764ba2); }
+.header-left { display:flex; align-items:center; gap:10px; }
+.back-link { color:#a78bfa; font-size:1.4rem; text-decoration:none; padding:4px; }
+.course-title h1 { font-size:0.9rem; font-weight:700; }
+.course-title p { font-size:0.7rem; opacity:0.7; }
+.theme-btn { background:rgba(255,255,255,0.1); border:1px solid rgba(255,255,255,0.2); color:#fff; padding:5px 10px; border-radius:14px; font-size:0.75rem; text-decoration:none; display:inline-block; }
+body.light-mode .theme-btn { color:#fff; }
+.progress-section { padding:14px 16px; background:rgba(255,255,255,0.03); border-bottom:1px solid rgba(255,255,255,0.06); }
+body.light-mode .progress-section { background:#fff; border-bottom:1px solid #e0e0e0; }
+.progress-bar-wrap { height:7px; background:rgba(255,255,255,0.1); border-radius:4px; margin-bottom:10px; overflow:hidden; }
+body.light-mode .progress-bar-wrap { background:#e0e0e0; }
+.progress-bar-fill { height:100%; background:linear-gradient(90deg,#667eea,#764ba2); border-radius:4px; }
+.stat-row { display:grid; grid-template-columns:repeat(3,1fr); gap:8px; }
+.stat-box { border-radius:8px; padding:8px; text-align:center; }
+.stat-box:nth-child(1) { background:linear-gradient(135deg,#667eea,#764ba2); }
+.stat-box:nth-child(2) { background:linear-gradient(135deg,#f093fb,#f5576c); }
+.stat-box:nth-child(3) { background:linear-gradient(135deg,#4facfe,#00f2fe); }
+.stat-box h3 { font-size:1.1rem; font-weight:800; }
+.stat-box p { font-size:0.6rem; opacity:0.9; }
+.tabs-row { display:flex; border-bottom:2px solid rgba(255,255,255,0.08); }
+body.light-mode .tabs-row { border-bottom-color:#e0e0e0; }
+.tab { flex:1; padding:10px 4px; text-align:center; background:rgba(255,255,255,0.04); color:#888; font-size:0.85rem; font-weight:600; text-decoration:none; display:block; }
+body.light-mode .tab { background:#f0f0f0; color:#666; }
+.tab.active { background:linear-gradient(135deg,#667eea,#764ba2); color:#fff; }
+.week-row { display:flex; flex-wrap:wrap; gap:6px; padding:12px 16px; border-bottom:1px solid rgba(255,255,255,0.06); }
+body.light-mode .week-row { border-bottom-color:#e0e0e0; }
+.wbtn { padding:7px 14px; background:rgba(255,255,255,0.05); border:2px solid rgba(102,126,234,0.5); border-radius:18px; color:#a78bfa; font-size:0.8rem; font-weight:600; text-decoration:none; display:inline-block; }
+body.light-mode .wbtn { background:#fff; border-color:#667eea; color:#667eea; }
+.wbtn.active { background:linear-gradient(135deg,#667eea,#764ba2); border-color:transparent; color:#fff; }
+.wbtn.done { background:#4caf50; border-color:#4caf50; color:#fff; }
+.content-area { padding:0 0 80px 0; }
+.video-section { padding:16px; border-bottom:1px solid rgba(255,255,255,0.06); }
+body.light-mode .video-section { background:#fff; border-bottom-color:#e0e0e0; }
+.video-section h2 { font-size:1rem; margin-bottom:14px; color:#a78bfa; }
+body.light-mode .video-section h2 { color:#667eea; }
+.video-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+@media(max-width:480px) { .video-grid { grid-template-columns:1fr; } }
+.video-player { background:#000; border-radius:10px; overflow:hidden; position:relative; padding-top:56.25%; }
+.video-player iframe { position:absolute; top:0; left:0; width:100%; height:100%; border-radius:10px; }
+.video-title { margin-top:6px; font-size:0.8rem; font-weight:600; color:#ccc; }
+body.light-mode .video-title { color:#333; }
+.lesson-content { padding:16px; }
+body.light-mode .lesson-content { background:#fff; }
+.lesson-content h2 { color:#a78bfa; margin-bottom:14px; font-size:1.2rem; }
+.lesson-content h3 { color:#c4b5fd; margin:18px 0 8px; font-size:1rem; }
+.lesson-content h4 { color:#a78bfa; margin:14px 0 6px; }
+.lesson-content p { line-height:1.8; margin-bottom:10px; color:#ccc; font-size:0.9rem; }
+.lesson-content ul { margin-left:18px; margin-bottom:10px; }
+.lesson-content li { margin-bottom:6px; line-height:1.6; color:#ccc; font-size:0.9rem; }
+.lesson-content strong { color:#e0d7ff; }
+.lesson-content em { color:#c4b5fd; }
+body.light-mode .lesson-content h2 { color:#3730a3; }
+body.light-mode .lesson-content h3 { color:#1e1b4b; }
+body.light-mode .lesson-content h4 { color:#3730a3; }
+body.light-mode .lesson-content p, body.light-mode .lesson-content li { color:#1f2937; }
+body.light-mode .lesson-content strong { color:#111827; }
+body.light-mode .lesson-content em { color:#4338ca; }
+.complete-btn { display:block; margin:16px; padding:14px; background:linear-gradient(135deg,#667eea,#764ba2); color:#fff; text-decoration:none; border-radius:12px; font-size:1rem; font-weight:700; text-align:center; }
+.resources-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; padding:16px; }
+@media(max-width:480px) { .resources-grid { grid-template-columns:1fr; } }
+.resource-card { background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.08); border-radius:12px; padding:14px; text-decoration:none; color:inherit; display:block; }
+body.light-mode .resource-card { background:#fff; border-color:#e0e0e0; color:#333; }
+.resource-icon { font-size:1.4rem; margin-bottom:6px; }
+.resource-card h4 { font-size:0.85rem; margin-bottom:4px; }
+.resource-card p { font-size:0.75rem; color:#999; }
+body.light-mode .resource-card p { color:#666; }
+.download-badge { display:inline-block; padding:3px 10px; background:#4caf50; color:#fff; border-radius:10px; font-size:0.7rem; margin-top:6px; }
+.soon-badge { display:inline-block; padding:3px 10px; background:#888; color:#fff; border-radius:10px; font-size:0.7rem; margin-top:6px; }
+.assessment-section { padding:16px; }
+body.light-mode .assessment-section { background:#fff; }
+.assessment-section > h2 { color:#a78bfa; margin-bottom:6px; font-size:1.1rem; }
+body.light-mode .assessment-section > h2 { color:#667eea; }
+.assessment-section > p { color:#ccc; font-size:0.85rem; margin-bottom:16px; }
+.quiz-question { background:rgba(255,255,255,0.05); padding:14px; border-radius:10px; margin-bottom:12px; border-left:4px solid #667eea; }
+body.light-mode .quiz-question { background:#f8f9fa; }
+.quiz-question h4 { margin-bottom:10px; font-size:0.9rem; color:#fff; }
+body.light-mode .quiz-question h4 { color:#333; }
+.quiz-options { display:flex; flex-direction:column; gap:6px; }
+.quiz-option { padding:10px 12px; background:rgba(255,255,255,0.04); border:2px solid rgba(255,255,255,0.1); border-radius:8px; color:#ccc; font-size:0.85rem; display:flex; align-items:center; gap:8px; }
+body.light-mode .quiz-option { background:#fff; border-color:#e0e0e0; color:#333; }
+.quiz-option input { width:18px; height:18px; flex-shrink:0; }
+.submit-btn { display:block; width:calc(100% - 32px); margin:0 16px 16px; padding:14px; background:linear-gradient(135deg,#667eea,#764ba2); color:#fff; border:none; border-radius:12px; font-size:1rem; font-weight:700; cursor:pointer; font-family:inherit; touch-action:manipulation; }
+.results-fab { position:fixed; bottom:20px; right:16px; padding:11px 18px; background:linear-gradient(135deg,#f093fb,#f5576c); color:#fff; border-radius:28px; font-size:0.85rem; font-weight:600; box-shadow:0 4px 16px rgba(240,147,251,0.4); text-decoration:none; display:block; z-index:50; }
+.passed-notice { background:rgba(76,175,80,0.1); border:2px solid #4caf50; border-radius:10px; padding:14px; margin-bottom:14px; text-align:center; }
+.passed-notice h3 { color:#4caf50; margin-bottom:4px; }
+.passed-notice p { color:#aaa; font-size:0.85rem; }
+</style>
+<script>
+// Theme - runs before render to avoid flash
+if (localStorage.getItem('cl_theme') === 'light') document.documentElement.classList.add('lm');
+</script>
+</head>
+<body id="body">
+<script>if (localStorage.getItem('cl_theme') === 'light') document.getElementById('body').classList.add('light-mode');</script>
+
+<div class="header">
+  <div class="header-left">
+    <a href="https://coachl-academy.github.io/Inspire-Teach-Heal/index2.html" class="back-link">←</a>
+    <div class="course-title">
+      <h1>Understanding Narcissistic Abuse</h1>
+      <p>Week 2 of 6</p>
+    </div>
+  </div>
+  <a href="#" class="theme-btn" onclick="toggleTheme();return false;" id="themebtn">☀️</a>
+</div>
+
+<div class="progress-section">
+  <div class="progress-bar-wrap"><div class="progress-bar-fill" id="pbar"></div></div>
+  <div class="stat-row">
+    <div class="stat-box"><h3 id="s1">0/6</h3><p>Modules</p></div>
+    <div class="stat-box"><h3 id="s2">0/12</h3><p>Lessons</p></div>
+    <div class="stat-box"><h3 id="s3">0/6</h3><p>Assessments</p></div>
+  </div>
+</div>
+
+<div class="tabs-row">
+  <a href="https://coachl-academy.github.io/Inspire-Teach-Heal/w5_2_content.html" class="tab active">Content</a>
+  <a href="https://coachl-academy.github.io/Inspire-Teach-Heal/w5_2_resources.html" class="tab">Resources</a>
+  <a href="https://coachl-academy.github.io/Inspire-Teach-Heal/w5_2_assessment.html" class="tab">Assessment</a>
+  
+</div>
+
+<div class="week-row">
+  <a href="https://coachl-academy.github.io/Inspire-Teach-Heal/index5.html" class="wbtn">Week 1</a>
+    <a href="https://coachl-academy.github.io/Inspire-Teach-Heal/w5_2_content.html" class="wbtn active">Week 2</a>
+    <a href="https://coachl-academy.github.io/Inspire-Teach-Heal/w5_3_content.html" class="wbtn">Week 3</a>
+    <a href="https://coachl-academy.github.io/Inspire-Teach-Heal/w5_4_content.html" class="wbtn">Week 4</a>
+    <a href="https://coachl-academy.github.io/Inspire-Teach-Heal/w5_5_content.html" class="wbtn">Week 5</a>
+    <a href="https://coachl-academy.github.io/Inspire-Teach-Heal/w5_6_content.html" class="wbtn">Week 6</a>
+    
+</div>
+
+<div class="content-area">
+<div class="video-section">
+  <h2>📹 Week 2: Recognising Manipulation Tactics</h2>
+  <div class="video-grid">
+    <div>
+      <div class="video-player"><iframe src="https://www.youtube.com/embed/vC7xdn8rQTY" frameborder="0" allowfullscreen></iframe></div>
+      <div class="video-title">Understanding Narcissistic Patterns</div>
+    </div>
+    <div>
+      <div class="video-player"><iframe src="https://www.youtube.com/embed/FISZshe9L3s" frameborder="0" allowfullscreen></iframe></div>
+      <div class="video-title">Gaslighting Explained</div>
+    </div>
+  </div>
+</div><div class="lesson-content"><h2>Week 2: Identifying Narcissistic Patterns</h2>
+      
+      <h3>🎯 Learning Objectives</h3>
+      <ul>
+        <li>Recognize common manipulation tactics used by narcissists</li>
+        <li>Understand the cycle of narcissistic abuse</li>
+        <li>Identify gaslighting techniques and their effects</li>
+        <li>Learn to document patterns of behavior</li>
+      </ul>
+
+      <h3>📖 Key Concepts</h3>
+      
+      <h4>1. Common Manipulation Tactics</h4>
+      <p>Narcissists employ various manipulation techniques to maintain control:</p>
+      <ul>
+        <li><strong>Love Bombing:</strong> Excessive attention and affection in the beginning to create dependency</li>
+        <li><strong>Triangulation:</strong> Bringing a third person into the relationship dynamic to create jealousy</li>
+        <li><strong>Silent Treatment:</strong> Withholding communication as punishment</li>
+        <li><strong>Projection:</strong> Accusing you of behaviors they themselves exhibit</li>
+        <li><strong>Word Salad:</strong> Confusing circular conversations that leave you disoriented</li>
+        <li><strong>Future Faking:</strong> Making promises about the future they never intend to keep</li>
+        <li><strong>Hoovering:</strong> Attempts to "suck you back in" after a discard</li>
+      </ul>
+
+      <h4>2. The Narcissistic Abuse Cycle</h4>
+      <p>Understanding the cycle helps you recognize patterns:</p>
+      <ul>
+        <li><strong>Idealization Phase:</strong> You're put on a pedestal; everything feels perfect. They mirror your values and interests.</li>
+        <li><strong>Devaluation Phase:</strong> Criticism begins; you can't do anything right. They systematically tear down your self-esteem.</li>
+        <li><strong>Discard Phase:</strong> You're rejected or abandoned, often suddenly and cruelly.</li>
+        <li><strong>Hoover Phase:</strong> They attempt to pull you back in with promises of change, love bombing, or inducing guilt.</li>
+      </ul>
+
+      <h4>3. Gaslighting Recognition</h4>
+      <p>Gaslighting makes you question your reality. Common phrases include:</p>
+      <ul>
+        <li>"That never happened" (denying events you clearly remember)</li>
+        <li>"You're too sensitive" (invalidating your feelings)</li>
+        <li>"You're crazy/imagining things" (questioning your sanity)</li>
+        <li>"Everyone thinks you're the problem" (isolating you)</li>
+        <li>"You're remembering it wrong" (rewriting history)</li>
+        <li>"I never said that" (denying their own words)</li>
+        <li>"You're overreacting" (minimizing abuse)</li>
+      </ul>
+
+      <h4>4. Effects of Gaslighting</h4>
+      <ul>
+        <li>Constant self-doubt</li>
+        <li>Second-guessing your memories</li>
+        <li>Difficulty making decisions</li>
+        <li>Feeling like you're "going crazy"</li>
+        <li>Apologizing constantly</li>
+        <li>Making excuses for their behavior</li>
+        <li>Loss of identity and confidence</li>
+      </ul>
+
+      <h3>💡 Practical Exercises</h3>
+      <p><strong>Exercise 1: Pattern Documentation</strong><br>
+      Keep a daily journal noting interactions that made you feel confused, upset, or manipulated. Look for recurring patterns. Include dates, what was said, and how you felt.</p>
+
+      <p><strong>Exercise 2: Reality Check</strong><br>
+      When you doubt yourself, write down the facts of what happened. Compare your account with any evidence (texts, emails). Trust your documentation over their denials.</p>
+
+      <p><strong>Exercise 3: Manipulation Identification</strong><br>
+      Review the manipulation tactics list. Circle the ones you've experienced. This helps validate that what you're experiencing has a name and pattern.</p>
+
+      <h3>📝 Reflection Questions</h3>
+      <ul>
+        <li>Which manipulation tactics have you experienced most frequently?</li>
+        <li>Where are you in the abuse cycle currently?</li>
+        <li>What gaslighting phrases sound most familiar to you?</li>
+        <li>How has this affected your sense of reality?</li>
+        <li>When did you first notice these patterns?</li>
+      </ul>
+
+      <button class="submit-btn" onclick="markComplete(2)" ontouchstart="event.preventDefault();markComplete(2)">Mark as Complete</button>
+    </div></div>
+<a href="https://coachl-academy.github.io/Inspire-Teach-Heal/w5_2_assessment.html" class="complete-btn">📝 Go to Assessment →</a>
+</div>
+
+<a href="https://coachl-academy.github.io/Inspire-Teach-Heal/results5.html" class="results-fab">📊 Results</a>
+
+<script>
+// Progress from localStorage
+const done = new Set(JSON.parse(localStorage.getItem('coachL_UNA_completedWeeks') || '[]'));
+const n = done.size;
+document.getElementById('pbar').style.width = Math.round(n/6*100) + '%';
+document.getElementById('s1').textContent = n + '/6';
+document.getElementById('s2').textContent = (n*2) + '/12';
+document.getElementById('s3').textContent = n + '/6';
+
+// Theme toggle
+function toggleTheme() {
+  const isLight = document.getElementById('body').classList.toggle('light-mode');
+  localStorage.setItem('cl_theme', isLight ? 'light' : 'dark');
+  document.getElementById('themebtn').textContent = isLight ? '🌙' : '☀️';
+}
+if (localStorage.getItem('cl_theme') === 'light') document.getElementById('themebtn').textContent = '🌙';
+
+</script>
+</body>
+</html>
