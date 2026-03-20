@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Submitting Assessment - Coach L Academy</title>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Segoe UI',sans-serif; background:#07070c; color:#fff; min-height:100vh; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:30px 20px; text-align:center; }
+body.light-mode { background:linear-gradient(135deg,#f5f7fa,#c3cfe2); color:#333; }
+.card { background:rgba(255,255,255,0.05); border-radius:20px; padding:30px 24px; max-width:360px; width:100%; }
+body.light-mode .card { background:#fff; box-shadow:0 4px 20px rgba(0,0,0,0.1); }
+.icon { font-size:3.5rem; margin-bottom:16px; }
+h1 { font-size:1.4rem; margin-bottom:10px; }
+p { color:#aaa; font-size:0.9rem; line-height:1.6; margin-bottom:8px; }
+body.light-mode p { color:#555; }
+.score { font-size:2.5rem; font-weight:800; margin:10px 0; }
+.passed { color:#4caf50; }
+.failed { color:#f44336; }
+.btn { display:block; padding:14px 20px; border-radius:12px; text-decoration:none; font-weight:700; font-size:1rem; margin-top:12px; text-align:center; }
+.btn-primary { background:linear-gradient(135deg,#667eea,#764ba2); color:#fff; }
+.btn-secondary { background:rgba(255,255,255,0.08); color:#a78bfa; border:1px solid rgba(255,255,255,0.15); }
+body.light-mode .btn-secondary { background:#f0f0f0; color:#667eea; border-color:#e0e0e0; }
+.btn-results { background:linear-gradient(135deg,#f093fb,#f5576c); color:#fff; }
+</style>
+</head>
+<body id="body">
+<script>
+if(localStorage.getItem('cl_theme')==='light') document.getElementById('body').classList.add('light-mode');
+</script>
+
+<div class="card" id="card">
+  <div class="icon">⏳</div>
+  <h1>Marking...</h1>
+  <p>Please wait</p>
+</div>
+
+<script>
+var BASE = 'https://coachl-academy.github.io/Inspire-Teach-Heal/';
+var SHEET_URL = 'https://script.google.com/macros/s/AKfycbz89hcA4Z70ZyOKnk2MBBc5kVWKG5aXljNgSzpXZbfXDOhGvtpeZXGSOadoZB_RdyPK/exec';
+var SECRET = 'CoachL2025SecureKey';
+
+// Get course and week from URL
+var params = new URLSearchParams(window.location.search);
+var coursePrefix = params.get('course') || 'UNA';
+var week = parseInt(params.get('week') || '1');
+var storageKey = 'coachL_' + coursePrefix + '_';
+
+// Course names lookup
+var courseNames = {
+  'UNA': 'Understanding Narcissistic Abuse',
+  'HFG': 'Healing from Gaslighting',
+  'NCB': 'The No-Contact Blueprint',
+  'SIB': 'Setting Ironclad Boundaries',
+  'BFT': 'Breaking Free from Toxic Relationships',
+  'HNA': 'Healing After Narcissistic Abuse',
+  'RCP': 'Recognizing Codependent Patterns',
+  'BHB': 'Building Healthy Boundaries',
+  'SLI': 'Self-Love & Independence',
+  'TIH': 'Trauma-Informed Healing',
+  'ICH': 'Inner Child Healing',
+  'GLS': 'Grief & Loss Support',
+  'AMT': 'Anxiety Management Toolkit',
+  'ODP': 'Overcoming Depression',
+  'MEB': 'Mindfulness & Emotional Balance',
+  'FLP': 'Finding Your Life Purpose',
+  'CSE': 'Confidence & Self-Esteem Building',
+  'GSA': 'Goal Setting & Achievement',
+  'ECS': 'Effective Communication Skills',
+  'BHR': 'Building Healthy Relationships',
+  'FDH': 'Family Dynamics & Healing',
+  'CCP': 'Career Change & Purpose',
+  'DSR': 'Divorce & Separation Recovery',
+  'LMC': 'Life After Major Change',
+  'ICF': 'Individual Coaching Foundations',
+  'CIS': 'Crisis Intervention & Support',
+  'HSO': 'High School Operating System',
+  'CST': 'Cyber-Safety for Teens',
+  'TIF': 'The Identity Framework'
+};
+
+// Course index lookup for back button
+var courseIndex = {
+  'UNA':5,'HFG':6,'NCB':7,'SIB':8,'BFT':9,'HNA':10,
+  'RCP':11,'BHB':12,'SLI':13,'TIH':14,'ICH':15,'GLS':16,
+  'AMT':17,'ODP':18,'MEB':19,'FLP':20,'CSE':21,'GSA':22,
+  'ECS':23,'BHR':24,'FDH':25,'CCP':26,'DSR':27,'LMC':28,
+  'ICF':29,'CIS':30,'HSO':31,'CST':32,'TIF':33
+};
+
+var courseName = courseNames[coursePrefix] || coursePrefix;
+var courseIdx = courseIndex[coursePrefix] || 5;
+var backUrl = BASE + 'index' + courseIdx + '.html';
+
+// Read saved answers
+var savedAnswers = JSON.parse(localStorage.getItem(storageKey + 'answers_' + week) || '{}');
+var correctAnswers = JSON.parse(localStorage.getItem(storageKey + 'correct_' + week) || '[]');
+var total = correctAnswers.length;
+var answered = Object.keys(savedAnswers).length;
+
+if (total === 0) {
+  // No correct answers stored - assessment wasn't set up properly
+  document.getElementById('card').innerHTML = '<div class="icon">⚠️</div><h1>Nothing to Submit</h1><p>Please go back and answer the questions first.</p><a href="' + backUrl + '" class="btn btn-primary">← Back to Course</a>';
+} else if (answered < total) {
+  document.getElementById('card').innerHTML = '<div class="icon">⚠️</div><h1>Incomplete</h1><p>You answered ' + answered + ' of ' + total + ' questions. Please go back and answer all questions.</p><a href="' + backUrl + '" class="btn btn-primary">← Back to Assessment</a>';
+} else {
+  // Score the answers
+  var score = 0;
+  var answers = [];
+  for (var i = 0; i < total; i++) {
+    var ua = parseInt(savedAnswers['q' + i]);
+    var correct = correctAnswers[i];
+    var ok = (ua === correct);
+    if (ok) score++;
+    answers.push({q: i+1, ua: ua, correct: correct, ok: ok});
+  }
+
+  var pct = Math.round(score / total * 100);
+  var passed = pct >= 70;
+  var studentName = localStorage.getItem('cl_firstName') || localStorage.getItem('studentName') || 'Learner';
+
+  // Save result
+  var payload = {
+    secretKey: SECRET,
+    timestamp: new Date().toLocaleString(),
+    studentName: studentName,
+    studentEmail: localStorage.getItem('studentEmail') || 'anonymous@coachlacademy.app',
+    courseName: courseName,
+    week: week, score: pct, correct: score, total: total,
+    passed: passed ? 'YES' : 'NO',
+    detailedAnswers: JSON.stringify(answers)
+  };
+
+  fetch(SHEET_URL, {method:'POST', mode:'no-cors', headers:{'Content-Type':'application/json'}, body:JSON.stringify(payload)}).catch(function(){});
+
+  var all = JSON.parse(localStorage.getItem('assessmentResults') || '[]');
+  all.push(payload);
+  localStorage.setItem('assessmentResults', JSON.stringify(all));
+
+  // Clear saved answers
+  localStorage.removeItem(storageKey + 'answers_' + week);
+
+  if (passed) {
+    var completed = new Set(JSON.parse(localStorage.getItem(storageKey + 'completedWeeks') || '[]'));
+    completed.add(week);
+    localStorage.setItem(storageKey + 'completedWeeks', JSON.stringify([...completed]));
+  }
+
+  var nextBtn = '';
+  if (passed) {
+    var nextIdx = courseIndex[coursePrefix];
+    nextBtn = '<a href="' + backUrl + '" class="btn btn-primary">Continue Course →</a>';
+  }
+  var retryBtn = !passed ? '<a href="' + backUrl + '" class="btn btn-primary">Try Again →</a>' : '';
+  var resultsBtn = '<a href="' + BASE + 'results.html" class="btn btn-results">📊 View Results</a>';
+  var backBtn = '<a href="' + backUrl + '" class="btn btn-secondary">← Back to Course</a>';
+
+  document.getElementById('card').innerHTML =
+    '<div class="icon">' + (passed ? '🎉' : '😔') + '</div>' +
+    '<h1 class="' + (passed ? 'passed' : 'failed') + '">' + (passed ? 'You Passed!' : 'Not Quite') + '</h1>' +
+    '<div class="score ' + (passed ? 'passed' : 'failed') + '">' + pct + '%</div>' +
+    '<p>' + score + '/' + total + ' correct.' + (passed ? ' Well done!' : ' You need 70% to pass.') + '</p>' +
+    '<p style="font-size:0.8rem;margin-top:4px;color:#888;">' + courseName + ' — Week ' + week + '</p>' +
+    nextBtn + retryBtn + resultsBtn + backBtn;
+}
+</script>
+</body>
+</html>
